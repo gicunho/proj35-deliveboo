@@ -16,7 +16,7 @@ class CreateDishesTable extends Migration
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
             $table->text('description');
-            $table->decimal('price', 5,2);
+            $table->decimal('price', 5, 2);
             $table->string('name');
             $table->boolean('is_visible');
             $table->text('image');
