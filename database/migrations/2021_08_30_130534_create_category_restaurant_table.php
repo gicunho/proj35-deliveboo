@@ -15,10 +15,11 @@ class CreateCategoryRestaurantTable extends Migration
     {
         Schema::create('category_restaurant', function (Blueprint $table) {
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
-
             $table->unsignedBigInteger('restaurant_id');
-            $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('set null');
+            
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
+
         });
     }
 
