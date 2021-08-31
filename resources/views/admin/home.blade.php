@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -15,6 +15,10 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    <div>
+                        <a href="{{route('admin.dishes.index')}}">Il tuo Menù</a>
+                    </div>
                 </div>
             </div>
         </div>
