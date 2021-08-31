@@ -1,14 +1,14 @@
 <?php
 
 namespace App;
-use App\Restaurant;
+use App\User;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    public function restaurants()
+    public function users()
     {
-        return $this->belongsToMany(Restaurant::class);
+        return $this->belongsToMany(User::class);
     }
 }

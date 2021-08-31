@@ -18,7 +18,7 @@ class CreateDishesTable extends Migration
             $table->text('description');
             $table->decimal('price', 5, 2);
             $table->string('name');
-            $table->boolean('is_visible');
+            $table->boolean('is_visible')->default(true);
             $table->text('image');
             $table->timestamps();
         });
