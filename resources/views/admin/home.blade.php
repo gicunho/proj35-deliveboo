@@ -17,7 +17,11 @@
                     {{ __('You are logged in!') }}
 
                     <div>
-                        <a href="{{route('admin.dishes.index')}}">Il tuo Menù</a>
+                        <a href="{{route('admin.dishes.index')}}">I tuoi Piatti</a>
+                    </div>
+
+                    <div>
+                        <a href="{{route('admin.orders.index')}}">Storico degli Ordini</a>
                     </div>
                 </div>
             </div>

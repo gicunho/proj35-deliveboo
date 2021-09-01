@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Dish;
+use App\User;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -16,8 +18,9 @@ class DishController extends Controller
      */
     public function index()
     {
+        $user = User::find(auth()->id());
         $dishes = Dish::all()->sortByDesc('id');
-        return view('admin.dishes.index', compact('dishes'));
+        return view('admin.dishes.index', compact('dishes','user'));
     }
 
     /**
@@ -27,7 +30,8 @@ class DishController extends Controller
      */
     public function create()
     {
-        return view('admin.dishes.create');
+        $users = User::all();
+        return view('admin.dishes.create', compact('users'));
     }
 
     /**
@@ -40,21 +44,22 @@ class DishController extends Controller
     {
         $validatedData = $request->validate([
             'description' => 'required | max:500 | min:10',
-            'price' => 'required | decimal(2, 5)', 
+            'price' => 'required | between: 0, 999.99', 
             'name' => 'required | max:100',
             'is_visible' => 'required',
-            'image' => 'required',
-            'user_id' => 'required | exists:user,id',
+            'image' => 'nullable',
+            'user_id' => 'nullable | exists: users, id',
         ]);
-        Dish::create($validatedData);
 
         if($request->hasFile('image')){
             $file_path = Storage::put('dish_images', $validatedData['image']);
             $validatedData['image'] = $file_path;
         }
 
-        $dish = Dish::create($validatedData);
+        /* $validatedData->user()->save($validatedData); */
 
+        $dish = Dish::create($validatedData);
+        
         return redirect()->route('admin.dishes.index');
     }
 
@@ -95,7 +100,7 @@ class DishController extends Controller
             'name' => 'required | max:100',
             'is_visible' => 'required',
             'image' => 'required',
-            'user_id' => 'required | exists:user,id',
+            'user_id' => 'nullable | exists:user,id',
         ]);
 
         if(array_key_exists('image', $validatedData)){
