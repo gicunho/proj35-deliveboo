@@ -94,7 +94,9 @@ class RegisterController extends Controller
 
         $categories = $data['categories']; //$data['categories'] --> quelli passati dal form (?)
 
-        $user->categories()->attach($categories); //li attacco nella tabella pivot
+        foreach ($categories as $category){
+            $user->categories()->attach([$category]); //li attacco nella tabella pivot
+        }
 
         return $user;
     }
