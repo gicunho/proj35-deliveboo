@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Category;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -15,8 +16,9 @@ class RestaurantController extends Controller
      */
     public function index()
     {
+        $categories = Category::all();
         $users = User::all()->sortByDesc('id');
-        return view('guests.restaurants.index', compact('users'));
+        return view('guests.restaurants.index', compact('users', 'categories'));
     }
 
     /**

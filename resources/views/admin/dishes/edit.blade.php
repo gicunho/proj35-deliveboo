@@ -19,7 +19,7 @@
             
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" aria-describedby="nameHelperr" placeholder="Aggiungi un titolo" value="{{$dish->name}}" requiredminlength="5" maxlength="255" />
+                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" aria-describedby="nameHelperr" placeholder="Modifica il nome del piatto" value="{{$dish->name}}" requiredminlength="5" maxlength="255" />
                 <small id="nameHelperr" class="form-text text-muted">Inserisci il nome del piatto! (max 255 caratteri)</small>
             </div>
 
@@ -27,7 +27,7 @@
                 <div>
                     <label for="price">Price</label>
                 </div>
-                <input type="number" step="0.01" class="@error('price') is-invalid @enderror" name="price" id="price" aria-describedby="priceHelperr" placeholder="Aggiungi un prezzo" value="{{$dish->price}}" requiredminlength="5" maxlength="255" />
+                <input type="number" step="0.01" class="@error('price') is-invalid @enderror" name="price" id="price" aria-describedby="priceHelperr" placeholder="Modifica il prezzo" value="{{$dish->price}}" requiredminlength="5" maxlength="255" />
                 <small id="priceHelperr" class="form-text text-muted">Inserisci il prezzo del piatto!</small>
             </div>
 
@@ -54,7 +54,7 @@
                 <div>   
                     <label for="image">Image</label>
                 </div>
-                <input type="file" class="@error('image') is-invalid @enderror" name="image" id="image" aria-describedby="imageHelperr" placeholder="Aggiungi un'immagine" {{-- value="{{ old('image') }}" --}} />
+                <input type="file" class="@error('image') is-invalid @enderror" name="image" id="image" aria-describedby="imageHelperr" placeholder="Modifica l'immagine" {{-- value="{{ old('image') }}" --}} />
                 <small id="imageHelperr" class="form-text text-muted">Inserisci un'immagine del piatto! (max 50 KB)</small>
                 <img src="{{asset('storage/' . $dish->image)}}" alt="{{$dish->name}}" width="200">
             </div>
