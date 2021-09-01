@@ -20,7 +20,7 @@
                 @foreach($dishes as $dish)
                 <tr>
                     <td>{{$dish->id}}</td>
-                    <td><img  width="100" {{-- src="{{asset(‘storage/’ . $dish->image )}}" --}} alt=""></td>
+                    <td><img  width="100" src="{{asset('storage/' . $dish->image )}}" alt=""></td>
                     <td>{{$dish->name}}</td>
                     <td class="d-flex">
                         <a href="{{route('admin.dishes.show', $dish->id)}}" class="btn btn-primary"><i class="fas fa-eye"></i></a>

@@ -19,7 +19,7 @@ class CreateDishesTable extends Migration
             $table->decimal('price', 5, 2);
             $table->string('name');
             $table->boolean('is_visible')->default(true);
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->timestamps();
         });
     }

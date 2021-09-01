@@ -47,20 +47,20 @@ class DishController extends Controller
             'price' => 'required | between: 0, 999.99', 
             'name' => 'required | max:100',
             'is_visible' => 'required',
-            'image' => 'nullable',
-            'user_id' => 'nullable | exists: users, id',
+            'image' => 'nullable | image | max:500',
         ]);
+
+        $user = User::find(auth()->id());
+        $validatedData['user_id'] = $user->id;
 
         if($request->hasFile('image')){
             $file_path = Storage::put('dish_images', $validatedData['image']);
             $validatedData['image'] = $file_path;
         }
 
-        /* $validatedData->user()->save($validatedData); */
-
         $dish = Dish::create($validatedData);
         
-        return redirect()->route('admin.dishes.index');
+        return redirect()->route('admin.dishes.index', compact('dish'));
     }
 
     /**
@@ -96,11 +96,10 @@ class DishController extends Controller
     {
         $validatedData = $request->validate([
             'description' => 'required | max:500 | min:10',
-            'price' => 'required | decimal(2, 5)', 
+            'price' => 'required | between: 0, 999.99', 
             'name' => 'required | max:100',
             'is_visible' => 'required',
-            'image' => 'required',
-            'user_id' => 'nullable | exists:user,id',
+            'image' => 'nullable | image | max:500',
         ]);
 
         if(array_key_exists('image', $validatedData)){
