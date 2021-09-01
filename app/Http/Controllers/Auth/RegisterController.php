@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Auth;
+
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -8,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
 class RegisterController extends Controller
 {
     /*
@@ -39,7 +42,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $categories=Category::all();
+        $categories = Category::all();
         return view('auth.register', compact('categories'));
     }
 
@@ -57,7 +60,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'piva' => ['required', 'string', 'min:11', 'max:11', 'unique:users'],
             'address' => ['required', 'string'],
-            'restaurant_name' => ['required', 'string', 'max:255'], 
+            'restaurant_name' => ['required', 'string', 'max:255'],
             /* 'category' => ['required'], */
         ]);
     }
@@ -69,7 +72,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        /* return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'piva' => $data['piva'],
+            'address' => $data['address'],
+            'restaurant_name' => $data['restaurant_name'],
+            //'category' => $data['category'],
+        ]); */
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -78,5 +91,11 @@ class RegisterController extends Controller
             'restaurant_name' => $data['restaurant_name'],
             /* 'category' => $data['category'], */
         ]);
+
+        $categories = $data['categories']; //$data['categories'] --> quelli passati dal form (?)
+
+        $user->categories()->attach($categories); //li attacco nella tabella pivot
+
+        return $user;
     }
 }
