@@ -101,7 +101,7 @@
                             <div class="col-md-6">
                                 <select id="categories" type="" class="form-control @error('categories') is-invalid @enderror" name="categories" value="{{ old('categories') }}" required autocomplete="category" autofocus multiple>
                                     @foreach ($categories as $category)
-                                        <option value="{{$category->name}}">{{$category->name}}</option>
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach
                                 </select>
 
