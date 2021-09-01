@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -10,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
 class RegisterController extends Controller
 {
     /*
@@ -23,16 +20,13 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
     use RegistersUsers;
-
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-
     /**
      * Create a new controller instance.
      *
@@ -47,13 +41,6 @@ class RegisterController extends Controller
     {
         $categories=Category::all();
         return view('auth.register', compact('categories'));
-    }
-
-    public function register (Request $request){
-        $category = $request->category; //this is not necessary to save category value in variable you can get it directly from request object
-        $user = User::create($request->only('required fields'));
-        $user->categories()->attach($request->category); // you can get role value directly from $request object. 
-    
     }
 
     /**
@@ -74,7 +61,6 @@ class RegisterController extends Controller
             /* 'category' => ['required'], */
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -94,6 +80,3 @@ class RegisterController extends Controller
         ]);
     }
 }
-
-
-

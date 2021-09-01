@@ -19,7 +19,7 @@ class DishSeeder extends Seeder
             $dish->price = $faker->randomFloat(2, 1, 50);
             $dish->name = $faker->word();
             $dish->is_visible = $faker->numberBetween(0,1);
-            $dish->image = $faker->imageUrl(640, 480, 'food', true);    
+            $dish->image = $faker->imageUrl(640, 480, 'food', true);
             $dish->save();
         }
     }

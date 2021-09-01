@@ -30,8 +30,8 @@ class DishController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        return view('admin.dishes.create', compact('users'));
+        $user = User::find(auth()->id());
+        return view('admin.dishes.create', compact('user'));
     }
 
     /**
@@ -42,6 +42,8 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
+        $user = User::find(auth()->id());
+
         $validatedData = $request->validate([
             'description' => 'required | max:500 | min:10',
             'price' => 'required | between: 0, 999.99', 
@@ -49,8 +51,6 @@ class DishController extends Controller
             'is_visible' => 'required',
             'image' => 'nullable | image | max:500',
         ]);
-
-        $user = User::find(auth()->id());
         $validatedData['user_id'] = $user->id;
 
         if($request->hasFile('image')){
@@ -58,8 +58,8 @@ class DishController extends Controller
             $validatedData['image'] = $file_path;
         }
 
+        /* $validatedData->user()->save($validatedData); */
         $dish = Dish::create($validatedData);
-        
         return redirect()->route('admin.dishes.index', compact('dish'));
     }
 

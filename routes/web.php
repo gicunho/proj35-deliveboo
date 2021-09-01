@@ -42,6 +42,3 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::resource('users', UserController::class);
     Route::resource('orders', OrderController::class);
 });
-
-
- 
