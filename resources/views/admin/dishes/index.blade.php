@@ -4,7 +4,7 @@
     <div class="container">
         <div class="d-flex justify-content-between mb-2">
             <h2>All dishes</h2>
-            <a class='btn btn-primary' href="{{route('admin.dishes.create')}}"><i class="fas fa-plus"></i> Add a dish</a>
+            <a class='btn btn-primary' href="{{route('admin.dishes.create', $user->id)}}"><i class="fas fa-plus"></i> Add a dish</a>
         </div>
 
         <table class="table">

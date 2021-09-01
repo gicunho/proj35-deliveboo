@@ -26,7 +26,7 @@
                 <div>
                     <label for="price">Price</label>
                 </div>
-                <input type="number" step="0.01" class="@error('price') is-invalid @enderror" price="price" id="price" aria-describedby="priceHelperr" placeholder="Aggiungi un prezzo" value="{{ old('price') }}" requiredminlength="5" maxlength="255" />
+                <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" id="price" aria-describedby="priceHelperr" placeholder="Aggiungi un prezzo" value="{{ old('price') }}" requiredminlength="5" maxlength="255" />
                 <small id="priceHelperr" class="form-text text-muted">Inserisci il prezzo del piatto!</small>
             </div>
 
@@ -34,13 +34,13 @@
                 <label for="is_visible">Is Visible</label>
 
                 <div class="form-check">
-                    <input class="form-check-input @error('is_visible') is-invalid @enderror" type="radio" name="is_visible" id="true" value="true" checked>
+                    <input class="form-check-input @error('is_visible') is-invalid @enderror" type="radio" name="is_visible" id="true" value="1" checked>
                     <label class="form-check-label" for="true">
                       Visibile
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input @error('is_visible') is-invalid @enderror" type="radio" name="is_visible" id="false" value="false">
+                    <input class="form-check-input @error('is_visible') is-invalid @enderror" type="radio" name="is_visible" id="false" value="0">
                     <label class="form-check-label" for="false">
                       Not visible
                     </label>
