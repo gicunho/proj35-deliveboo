@@ -49,9 +49,8 @@ class DishController extends Controller
             'price' => 'required | between: 0, 999.99', 
             'name' => 'required | max:100',
             'is_visible' => 'required',
-            'image' => 'nullable',
+            'image' => 'nullable | image | max:500',
         ]);
-
         $validatedData['user_id'] = $user->id;
 
         if($request->hasFile('image')){
@@ -97,11 +96,10 @@ class DishController extends Controller
     {
         $validatedData = $request->validate([
             'description' => 'required | max:500 | min:10',
-            'price' => 'required | decimal(2, 5)', 
+            'price' => 'required | between: 0, 999.99', 
             'name' => 'required | max:100',
             'is_visible' => 'required',
-            'image' => 'required',
-            'user_id' => 'nullable | exists:user,id',
+            'image' => 'nullable | image | max:500',
         ]);
 
         if(array_key_exists('image', $validatedData)){

@@ -3,6 +3,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Category;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -34,6 +36,13 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
+
+    public function showRegistrationForm()
+    {
+        $categories=Category::all();
+        return view('auth.register', compact('categories'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -48,8 +57,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'piva' => ['required', 'string', 'min:11', 'max:11', 'unique:users'],
             'address' => ['required', 'string'],
-            'restaurant_name' => ['required', 'string', 'max:255'],
-            'restaurant_image' => ['string'],
+            'restaurant_name' => ['required', 'string', 'max:255'], 
+            /* 'category' => ['required'], */
         ]);
     }
     /**
@@ -67,7 +76,7 @@ class RegisterController extends Controller
             'piva' => $data['piva'],
             'address' => $data['address'],
             'restaurant_name' => $data['restaurant_name'],
-            'restaurant_image' => $data['restaurant_image'],
+            /* 'category' => $data['category'], */
         ]);
     }
 }

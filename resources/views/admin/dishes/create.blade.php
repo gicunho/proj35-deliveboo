@@ -18,7 +18,7 @@
             
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" aria-describedby="nameHelperr" placeholder="Aggiungi un titolo" value="{{ old('name') }}" requiredminlength="5" maxlength="255" />
+                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" aria-describedby="nameHelperr" placeholder="Aggiungi il nome del piatto" value="{{ old('name') }}" requiredminlength="5" maxlength="255" />
                 <small id="nameHelperr" class="form-text text-muted">Inserisci il nome del piatto! (max 255 caratteri)</small>
             </div>
 
@@ -49,20 +49,11 @@
                 <small id="is_visibleHelperr" class="form-text text-muted">Seleziona se il tuo piatto è visibile o meno!</small>
             </div>
 
-            {{-- <div class="form-group">
-                <label for="image">Image</label>
-                <input type="text" class="form-control @error('image') is-invalid @enderror" name="image" id="image"
-                    aria-describedby="imageHelperr" placeholder="Aggiungi l'url di un'immagine" value="{{ old('image') }}" />
-                <small id="imageHelperr" class="form-text text-muted">Inserisci l'url di un'immagine! (max 255
-                    caratteri)</small>
-            </div> --}}
-            {{-- PER CARICARE UN FILE (IN QUESTI CASO UN IMG) --}}
-
             <div class="form-group">
                 <div>   
                     <label for="image">Image</label>
                 </div>
-                <input type="file" class="@error('image') is-invalid @enderror" name="image" id="image" aria-describedby="imageHelperr" placeholder="Aggiungi un'immagine" {{-- value="{{ old('image') }}" --}} />
+                <input type="file" class="@error('image') is-invalid @enderror" name="image" id="image" aria-describedby="imageHelperr" placeholder="Aggiungi un'immagine" />
                 <small id="imageHelperr" class="form-text text-muted">Inserisci un'immagine del piatto! (max 50 KB)</small>
             </div>
 

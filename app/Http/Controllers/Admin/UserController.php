@@ -46,7 +46,7 @@ class UserController extends Controller
             'password' => 'required | min:8',
             'address' => 'required | max:255 | min:5',
             'restaurant_name' => 'required | max:255 | min:5',
-            'restaurant_image' => 'nullable',
+            'restaurant_image' => 'nullable | image | max:500',
             'category_id' => 'nullable | exists:categories,id'
         ]);
         $user->update($validatedData);
