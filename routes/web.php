@@ -23,4 +23,5 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('dishes', DishController::class);
     Route::resource('users', UserController::class);
+    Route::resource('orders', OrderController::class);
 });

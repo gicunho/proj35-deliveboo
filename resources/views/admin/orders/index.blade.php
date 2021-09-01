@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
-        
-    </div>
+    <h1>Index</h1>
 @endsection
