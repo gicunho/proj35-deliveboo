@@ -59,8 +59,9 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'piva' => ['required', 'string', 'min:11', 'max:11', 'unique:users'],
-            'address' => ['required', 'string'],
+            'address' => ['required', 'string', 'min:8', 'max:255'],
             'restaurant_name' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'string', 'max:14', 'min:8'],
             /* 'category' => ['required'], */
         ]);
     }
@@ -89,6 +90,7 @@ class RegisterController extends Controller
             'piva' => $data['piva'],
             'address' => $data['address'],
             'restaurant_name' => $data['restaurant_name'],
+            'phone_number' => $data['phone_number'],
             /* 'category' => $data['category'], */
         ]);
 

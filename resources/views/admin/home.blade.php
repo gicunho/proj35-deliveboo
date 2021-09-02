@@ -39,9 +39,17 @@
                         <li>Email: {{$user->email}}</li>
                         <li>Indirizzo: {{$user->address}}</li>
                         <li>P.IVA: {{$user->piva}}</li>
-                        <li>Numero di telefono: {{-- {{$user->name}} --}}</li>
-                        <li>Categoria: {{-- {{$user->name}} --}}</li>
-                        <li>Immagine: {{$user->restaurant_image}}</li>
+                        <li>Numero di telefono: {{$user->phone_number}}</li>
+                        <li>Categoria: 
+                            <ul>
+                                @foreach($user->categories as $category)
+                                        <li>{{$category->name}}</li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li>Immagine: 
+                            <img src="{{$user->restaurant_image}}" alt="{{$user->restaurant_name}}">
+                        </li>
                     </ul>
                 </div>
             </div>
