@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Category;
+use App\Dish;
 class PageController extends Controller
 {
     public function index()
@@ -21,8 +22,8 @@ class PageController extends Controller
      */
     public function show(User $user)
     {
-        $categories = Category::all();
-        return view('guests.restaurants.show', compact('user', 'categories'));
+        $dishes = Dish::all();
+        return view('guests.restaurants.show', compact('user', 'dishes'));
     }
 }
 

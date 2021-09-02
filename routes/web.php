@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 /* Home */
 Route::get('/', "PageController@index")->name('home');
-Route::get('/{id}', "PageController@show")->name('restaurant');
+Route::get('/{user}', "PageController@show")->name('restaurant');
 
 /* Route::resource('orders', "OrderController@index")->name('order'); */
 
