@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -43,7 +43,7 @@
                             <label for="piva" class="col-md-4 col-form-label text-md-right">{{ __('P.IVA') }}</label>
 
                             <div class="col-md-6">
-                                <input id="piva" type="piva" class="form-control @error('piva') is-invalid @enderror" name="piva" value="{{ old('piva') }}" required autocomplete="piva" autofocus>
+                                <input id="piva" type="text" class="form-control @error('piva') is-invalid @enderror" name="piva" value="{{ old('piva') }}" required minlength="11" maxlength="11" autofocus>
 
                                 @error('piva')
                                     <span class="invalid-feedback" role="alert">
@@ -57,9 +57,23 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
 
                                 @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="phone_number" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus>
+
+                                @error('phone_number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -71,7 +85,7 @@
                             <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="restaurant_name" type="restaurant_name" class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name" value="{{ old('restaurant_name') }}" required autocomplete="restaurant_name" autofocus>
+                                <input id="restaurant_name" type="text" class="form-control @error('restaurant_name') is-invalid @enderror" name="restaurant_name" value="{{ old('restaurant_name') }}" required autocomplete="restaurant_name" autofocus>
 
                                 @error('restaurant_name')
                                     <span class="invalid-feedback" role="alert">
@@ -82,10 +96,29 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Name') }}</label>
+
+                            <div class="col-md-6">
+                                {{-- Nell'input di tipo select multiple aggiung [] a name per passare un array--}}
+                                <select id="categories" type="" class="form-control @error('categories') is-invalid @enderror" name="categories[]" value="{{ old('categories') }}" required autocomplete="category" autofocus multiple>
+                                    @foreach ($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('categories')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- <div class="form-group row">
                             <label for="restaurant_image" class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Image') }}</label>
 
                             <div class="col-md-6">
-                                <input id="restaurant_image" type="restaurant_image" class="form-control @error('restaurant_image') is-invalid @enderror" name="restaurant_image" value="{{ old('restaurant_image') }}" required autocomplete="restaurant_image" autofocus>
+                                <input id="restaurant_image" type="file" class="@error('restaurant_image') is-invalid @enderror" name="restaurant_image" value="{{ old('restaurant_image') }}" autocomplete="restaurant_image" autofocus>
 
                                 @error('restaurant_image')
                                     <span class="invalid-feedback" role="alert">
@@ -93,7 +126,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>

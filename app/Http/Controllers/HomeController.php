@@ -1,13 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\User;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -15,7 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = User::find(auth()->id());
-        return view('admin.home', compact('user'));
+        return view('home');
     }
 }

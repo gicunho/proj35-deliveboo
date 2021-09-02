@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Category;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -21,16 +23,13 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
     use RegistersUsers;
-
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-
     /**
      * Create a new controller instance.
      *
@@ -39,6 +38,12 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function showRegistrationForm()
+    {
+        $categories = Category::all();
+        return view('auth.register', compact('categories'));
     }
 
     /**
@@ -56,10 +61,9 @@ class RegisterController extends Controller
             'piva' => ['required', 'string', 'min:11', 'max:11', 'unique:users'],
             'address' => ['required', 'string'],
             'restaurant_name' => ['required', 'string', 'max:255'],
-            'restaurant_image' => ['string'],
+            /* 'category' => ['required'], */
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -68,14 +72,33 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        /* return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'piva' => $data['piva'],
             'address' => $data['address'],
             'restaurant_name' => $data['restaurant_name'],
-            'restaurant_image' => $data['restaurant_image'],
+            //'category' => $data['category'],
+        ]); */
+
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'piva' => $data['piva'],
+            'address' => $data['address'],
+            'restaurant_name' => $data['restaurant_name'],
+            /* 'category' => $data['category'], */
         ]);
+
+        $categories = $data['categories']; //$data['categories'] --> quelli passati dal form 
+
+        // Ciclo attraverso l'array di category passate dal form
+        foreach ($categories as $category){ 
+            $user->categories()->attach([$category]); //li attacco nella tabella pivot
+        }
+
+        return $user;
     }
 }

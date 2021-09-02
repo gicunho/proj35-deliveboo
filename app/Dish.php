@@ -9,6 +9,10 @@ use App\Order;
 
 class Dish extends Model
 {
+    protected $fillable = [
+        'description', 'name', 'price', 'is_visible', 'image', 'user_id',
+    ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }
