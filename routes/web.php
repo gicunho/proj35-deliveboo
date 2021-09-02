@@ -12,14 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-/* Home */
-Route::get('/', "PageController@index")->name('home');
-Route::get('/{user}', "PageController@show")->name('restaurant');
-
-/* Route::resource('orders', "OrderController@index")->name('order'); */
-
-Route::resource('categories', CategoryController::class);
+/* Admin */
+Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::resource('dishes', DishController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('orders', OrderController::class);
+});
 
 
 /* Auth::routes(); */
@@ -33,10 +32,9 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
-/* Admin */
-Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
-    Route::get('/', 'HomeController@index')->name('home');
-    Route::resource('dishes', DishController::class);
-    Route::resource('users', UserController::class);
-    Route::resource('orders', OrderController::class);
-});
+/* Home */
+Route::get('/', "PageController@index");
+Route::get('/{user}', "PageController@show")->name('restaurant');
+
+/* Route::resource('orders', "OrderController@index")->name('order'); */
+Route::resource('categories', CategoryController::class);
