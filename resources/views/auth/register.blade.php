@@ -43,7 +43,7 @@
                             <label for="piva" class="col-md-4 col-form-label text-md-right">{{ __('P.IVA') }}</label>
 
                             <div class="col-md-6">
-                                <input id="piva" type="text" class="form-control @error('piva') is-invalid @enderror" name="piva" value="{{ old('piva') }}" required autocomplete="piva" autofocus>
+                                <input id="piva" type="text" class="form-control @error('piva') is-invalid @enderror" name="piva" value="{{ old('piva') }}" required minlength="11" maxlength="11" autofocus>
 
                                 @error('piva')
                                     <span class="invalid-feedback" role="alert">

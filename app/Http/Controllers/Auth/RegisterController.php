@@ -94,7 +94,6 @@ class RegisterController extends Controller
 
         $categories = $data['categories']; //$data['categories'] --> quelli passati dal form 
 
-
         // Ciclo attraverso l'array di category passate dal form
         foreach ($categories as $category){ 
             $user->categories()->attach([$category]); //li attacco nella tabella pivot
