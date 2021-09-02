@@ -3,6 +3,20 @@
 
 @section('content')
     <div class="container">
+        <div class="input-group">
+            <div class="form-outline">
+              <input id="search-focus" type="search" id="form1" class="form-control" placeholder="Cerca un ristorante"/>
+            </div>
+            <button type="button" class="btn btn-primary">
+              <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="d-flex">
+            @foreach ($categories as $category)
+                    <a href="{{route('categories.show', $category->id)}}"><h2>{{$category->name}}</h2></a>    
+            @endforeach
+        </div>
+
         @foreach ($users as $user)
             <div class="card">
                 <h2>{{$user->restaurant_name}}</h2>
@@ -11,11 +25,7 @@
             </div>
         @endforeach
 
-        @foreach ($categories as $category)
-            <div class="card">
-                <a href="{{route('categories.show', $category->id)}}"><h2>{{$category->name}}</h2></a>    
-            </div>
-        @endforeach
+        
     </div>
 
    

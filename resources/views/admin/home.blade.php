@@ -47,9 +47,11 @@
                                 @endforeach
                             </ul>
                         </li>
-                        <li>Immagine: 
-                            <img src="{{$user->restaurant_image}}" alt="{{$user->restaurant_name}}">
-                        </li>
+                        @if($user->restaurant_image)
+                            <li>Immagine: 
+                                <img src="{{$user->restaurant_image}}" alt="{{$user->restaurant_name}}">
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>

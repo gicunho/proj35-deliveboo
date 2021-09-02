@@ -2,13 +2,13 @@
 
 @section('content')
     <div class="container">
-        @foreach ($users as $user)    
-        @if()
-            
+        @if($category->users)
+            @foreach ($category->users as $user)
+                <a href="{{route('restaurant', $user->id)}}">{{$user->restaurant_name}}</a>
+                @if($user->restaurant_image)
+                    <img src="{{asset('storage/'. $user->restaurant_image)}}" alt="">
+                @endif
+            @endforeach
         @endif
-        <div class="card">
-            <h2>{{$user}}</h2>
-        </div>
-        @endforeach
     </div>
 @endsection
