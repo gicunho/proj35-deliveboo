@@ -10,20 +10,21 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>IMAGE</th>
-                    <th>NAME</th>
-                    <th>ACTIONS</th>
+
+                    <th>NOME</th>
+                    <th>IMMAGINE</th>
+                    <th>PREZZO</th>
+                    <th>AZIONI</th>
                 </tr>
             </thead>
             <tbody>
 
-                @foreach($dishes as $dish)
+                @foreach($dishes->sortBy('name') as $dish)
                     @if($user->id == $dish->user_id)
                         <tr>
-                            <td>{{$dish->id}}</td>
-                            <td><img  width="100" src="{{asset('storage/' . $dish->image )}}" alt=""></td>
                             <td>{{$dish->name}}</td>
+                            <td><img  width="100" src="{{asset('storage/' . $dish->image )}}" alt=""></td>
+                            <td>€ {{$dish->price}}</td>
                             <td class="d-flex">
                                 <a href="{{route('admin.dishes.show', $dish->id)}}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                                 <a href="{{route('admin.dishes.edit', $dish->id)}}" class="btn btn-secondary mx-1"><i class="fas fa-pen"></i></a>
