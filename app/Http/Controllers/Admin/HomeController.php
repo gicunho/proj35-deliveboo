@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,7 +16,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $categories = Category::All();
         $user = User::find(auth()->id());
-        return view('admin.home', compact('user'));
+        return view('admin.home', compact('user', 'categories'));
     }
 }

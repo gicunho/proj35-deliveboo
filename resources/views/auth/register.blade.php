@@ -57,7 +57,7 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus minlength='8' maxlength='255'>
 
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
@@ -71,7 +71,7 @@
                             <label for="phone_number" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus>
+                                <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus minlength='8' maxlength='14'>
 
                                 @error('phone_number')
                                     <span class="invalid-feedback" role="alert">
@@ -96,13 +96,13 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Name') }}</label>
+                            <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Category') }}</label>
 
                             <div class="col-md-6">
                                 {{-- Nell'input di tipo select multiple aggiung [] a name per passare un array--}}
-                                <select id="categories" type="" class="form-control @error('categories') is-invalid @enderror" name="categories[]" value="{{ old('categories') }}" required autocomplete="category" autofocus multiple>
+                                <select id="categories" type="" class="form-control @error('categories') is-invalid @enderror" name="categories[]" value={{ json_encode($categories,TRUE)}} required autocomplete="category" autofocus multiple maxlength='40' >
                                     @foreach ($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                        <option value="{{$category->id}}" {{ (collect(old("categories"))->contains($category->id)) ? "selected":''}}>{{$category->name}}</option>
                                     @endforeach
                                 </select>
 
@@ -132,7 +132,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" minlength='8'>
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -146,7 +146,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password" minlength='8'>
                             </div>
                         </div>
 

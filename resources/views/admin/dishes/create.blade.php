@@ -53,7 +53,7 @@
                 <div>   
                     <label for="image">Image</label>
                 </div>
-                <input type="file" class="@error('image') is-invalid @enderror" name="image" id="image" aria-describedby="imageHelperr" placeholder="Aggiungi un'immagine" />
+                <input type="file" class="@error('image') is-invalid @enderror" name="image" id="image" aria-describedby="imageHelperr" placeholder="Aggiungi un'immagine" required />
                 <small id="imageHelperr" class="form-text text-muted">Inserisci un'immagine del piatto! (max 50 KB)</small>
             </div>
 

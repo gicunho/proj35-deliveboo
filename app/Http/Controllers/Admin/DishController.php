@@ -49,7 +49,7 @@ class DishController extends Controller
             'price' => 'required | between: 0, 999.99', 
             'name' => 'required | max:100',
             'is_visible' => 'required',
-            'image' => 'nullable | image | max:500',
+            'image' => 'required | image | max:500',
         ]);
         $validatedData['user_id'] = $user->id;
 

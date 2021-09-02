@@ -57,11 +57,12 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
             'piva' => ['required', 'string', 'min:11', 'max:11', 'unique:users'],
-            'address' => ['required', 'string'],
+            'address' => ['required', 'string', 'min:8', 'max:255'],
             'restaurant_name' => ['required', 'string', 'max:255'],
-            /* 'category' => ['required'], */
+            'phone_number' => ['required', 'string', 'max:14', 'min:8'],
+            'password' => 'min:8|required|confirmed',
+            'password_confirmation' => 'min:6'  
         ]);
     }
     /**
@@ -72,15 +73,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        /* return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'piva' => $data['piva'],
-            'address' => $data['address'],
-            'restaurant_name' => $data['restaurant_name'],
-            //'category' => $data['category'],
-        ]); */
 
         $user = User::create([
             'name' => $data['name'],
@@ -89,9 +81,8 @@ class RegisterController extends Controller
             'piva' => $data['piva'],
             'address' => $data['address'],
             'restaurant_name' => $data['restaurant_name'],
-            /* 'category' => $data['category'], */
+            'phone_number' => $data['phone_number'],
         ]);
-
         $categories = $data['categories']; //$data['categories'] --> quelli passati dal form 
 
         // Ciclo attraverso l'array di category passate dal form
