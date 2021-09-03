@@ -14,13 +14,16 @@
             @foreach ($categories as $category)
                 <a href="{{ route('categories.show', $category->id) }}">
                     <h2>{{ $category->name }}</h2>
+                    {{-- <span>{{ $category->emoji }}</span> --}}
                 </a>
             @endforeach
         </div>
 
         <div v-for='user in users' class="card">
-            <h2>@{{ user . name }}</h2>
-            <img :src="'storage/' + user.restaurant_image" alt="">
+            <a :href="'/' + user.id">
+                <h2>@{{ user . restaurant_name }}</h2>
+                <img :src="'storage/' + user.restaurant_image" alt="">
+            </a>
         </div>
 
         {{-- @foreach ($users as $user)
