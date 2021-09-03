@@ -15,7 +15,7 @@
                         <li>{{$dish->name}}</li>
                         <li>{{$dish->description}}</li>
                         <li>{{$dish->price}}</li>
-                        <li><img src="{{$dish->image}}" alt=""></li>
+                        <li><img src="{{asset('storage/' . $dish->image)}}" alt=""></li>
                     @endif
                 @endif
             @endforeach
