@@ -57,12 +57,12 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'piva' => ['required', 'string', 'min:11', 'max:11', 'unique:users'],
+            'piva' => ['required', 'string', 'unique:users', 'numeric'],
             'address' => ['required', 'string', 'min:8', 'max:255'],
             'restaurant_name' => ['required', 'string', 'max:255'],
-            'phone_number' => ['required', 'string', 'max:14', 'min:8'],
+            'phone_number' => ['required', 'string', 'numeric'],
             'password' => 'min:8|required|confirmed',
-            'password_confirmation' => 'min:6'  
+            'password_confirmation' => 'min:8'
         ]);
     }
     /**
@@ -86,7 +86,7 @@ class RegisterController extends Controller
         $categories = $data['categories']; //$data['categories'] --> quelli passati dal form 
 
         // Ciclo attraverso l'array di category passate dal form
-        foreach ($categories as $category){ 
+        foreach ($categories as $category) {
             $user->categories()->attach([$category]); //li attacco nella tabella pivot
         }
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Order;
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -15,17 +17,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('admin.orders.index');
+        $user = User::find(auth()->id());
+        /* $orders = Order::where('user_id', '=', Auth::user()->id)->get(); */
+        return view('admin.orders.index', compact('user'/* , 'orders' */));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Order $order)
+    public function stats()
     {
-        return view('admin.orders.show', compact('order'));
+        $orders = Order::all();
+        return view('admin.orders.stats', compact('orders'));
     }
 }
