@@ -5,16 +5,17 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Category;
 use App\Dish;
+
 class PageController extends Controller
 {
     public function index()
-    {   
-        $users = User::all();
+    {
+        /* $users = User::all(); */
         $categories = Category::all();
-        return view('guests.restaurants.index', compact('users', 'categories'));
+        return view('guests.restaurants.index', compact(/* 'users', */'categories'));
     }
 
-     /**
+    /**
      * Display the specified resource.
      *
      * @param  \App\Restaurant  $restaurant
@@ -26,4 +27,3 @@ class PageController extends Controller
         return view('guests.restaurants.show', compact('user', 'dishes'));
     }
 }
-
