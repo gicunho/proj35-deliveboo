@@ -30,12 +30,26 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  const app = new Vue({
     el: '#app',
     data: {
-        users: null
+        users: null,
+        orders: null,
+        search: ""
     },
     mounted() {
+<<<<<<< HEAD
         axios.get('api/users').then(resp => {
             console.log(resp);
+=======
+        axios.get('/api/users').then(resp => {
+            /* console.log(resp); */
+>>>>>>> 6e2db0b9bc8efd4b472d3d04886dc25a073b43c3
             this.users = resp.data.data;
+        }).catch(e => {
+            console.error('Sorry! ' + e);
+        })
+        axios.get('/api/orders').then(resp => {
+            this.orders = resp.data.data;
+            /* console.log(this.orders[0].user_id);
+            console.log(this.orders[0].user.id);  */
         }).catch(e => {
             console.error('Sorry! ' + e);
         })
