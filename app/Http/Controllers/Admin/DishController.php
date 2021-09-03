@@ -8,6 +8,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 
 class DishController extends Controller
 {
@@ -20,7 +21,7 @@ class DishController extends Controller
     {
         $user = User::find(auth()->id());
         $dishes = Dish::all()->sortByDesc('id');
-        return view('admin.dishes.index', compact('dishes','user'));
+        return view('admin.dishes.index', compact('dishes', 'user'));
     }
 
     /**
@@ -46,14 +47,14 @@ class DishController extends Controller
 
         $validatedData = $request->validate([
             'description' => 'required | max:500 | min:10',
-            'price' => 'required | between: 0, 999.99', 
+            'price' => 'required | between: 0, 999.99',
             'name' => 'required | max:100',
             'is_visible' => 'required',
             'image' => 'required | image | max:500',
         ]);
         $validatedData['user_id'] = $user->id;
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $file_path = Storage::put('dish_images', $validatedData['image']);
             $validatedData['image'] = $file_path;
         }
@@ -82,7 +83,15 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        return view('admin.dishes.edit', compact('dish'));
+        if ($dish->user_id != auth()->id()) {
+            // maybe a redirect with some info here???
+            /*             return redirect()->route('admin.home')->with('error', 'Non sei autorizzato!');
+ */
+            return redirect()->route('admin.home')->withErrors('Non autorizzato!');
+        } else {
+            // allow portfolio edit
+            return view('admin.dishes.edit', compact('dish'));
+        }
     }
 
     /**
@@ -96,13 +105,13 @@ class DishController extends Controller
     {
         $validatedData = $request->validate([
             'description' => 'required | max:500 | min:10',
-            'price' => 'required | between: 0, 999.99', 
+            'price' => 'required | between: 0, 999.99',
             'name' => 'required | max:100',
             'is_visible' => 'required',
             'image' => 'nullable | image | max:500',
         ]);
 
-        if(array_key_exists('image', $validatedData)){
+        if (array_key_exists('image', $validatedData)) {
             Storage::delete($dish->image);
             $file_path = Storage::put('dish_images', $validatedData['image']);
             $validatedData['image'] = $file_path;
