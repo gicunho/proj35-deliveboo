@@ -35,13 +35,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
         search: ""
     },
     mounted() {
-<<<<<<< HEAD
-        axios.get('api/users').then(resp => {
-            console.log(resp);
-=======
         axios.get('/api/users').then(resp => {
             /* console.log(resp); */
->>>>>>> 6e2db0b9bc8efd4b472d3d04886dc25a073b43c3
             this.users = resp.data.data;
         }).catch(e => {
             console.error('Sorry! ' + e);

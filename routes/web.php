@@ -49,15 +49,8 @@ Route::resource('categories', CategoryController::class);
 // Api
 Route::get('users/{user}', function (User $user) {
     return new UserResource(User::find($user));
-<<<<<<< HEAD
-}); 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-=======
 });
 
 Route::get('orders/{order}', function (Order $order) {
     return new OrderResource(Order::find($order));
 });
->>>>>>> 6e2db0b9bc8efd4b472d3d04886dc25a073b43c3
