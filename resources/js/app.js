@@ -27,13 +27,13 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+ const app = new Vue({
     el: '#app',
     data: {
         users: null
     },
     mounted() {
-        axios.get('/api/users').then(resp => {
+        axios.get('api/users').then(resp => {
             console.log(resp);
             this.users = resp.data.data;
         }).catch(e => {

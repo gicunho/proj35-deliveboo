@@ -49923,7 +49923,7 @@ var app = new Vue({
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/api/users').then(function (resp) {
+    axios.get('api/users').then(function (resp) {
       console.log(resp);
       _this.users = resp.data.data;
     })["catch"](function (e) {
@@ -50066,8 +50066,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

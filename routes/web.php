@@ -45,3 +45,6 @@ Route::resource('categories', CategoryController::class);
 Route::get('users/{user}', function (User $user){
     return new UserResource(User::find($user));
 }); 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
