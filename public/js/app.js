@@ -49918,14 +49918,22 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app',
   data: {
-    users: null
+    users: null,
+    orders: null
   },
   mounted: function mounted() {
     var _this = this;
 
     axios.get('/api/users').then(function (resp) {
-      console.log(resp);
+      /* console.log(resp); */
       _this.users = resp.data.data;
+    })["catch"](function (e) {
+      console.error('Sorry! ' + e);
+    });
+    axios.get('/api/orders').then(function (resp) {
+      _this.orders = resp.data.data;
+      /* console.log(this.orders[0].user_id);
+      console.log(this.orders[0].user.id);  */
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
@@ -50066,8 +50074,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\php\proj35-team5\proj35-deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\php\proj35-team5\proj35-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

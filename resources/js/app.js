@@ -30,12 +30,20 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
     data: {
-        users: null
+        users: null,
+        orders: null
     },
     mounted() {
         axios.get('/api/users').then(resp => {
-            console.log(resp);
+            /* console.log(resp); */
             this.users = resp.data.data;
+        }).catch(e => {
+            console.error('Sorry! ' + e);
+        })
+        axios.get('/api/orders').then(resp => {
+            this.orders = resp.data.data;
+            /* console.log(this.orders[0].user_id);
+            console.log(this.orders[0].user.id);  */
         }).catch(e => {
             console.error('Sorry! ' + e);
         })
