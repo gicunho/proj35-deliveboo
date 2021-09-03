@@ -1,6 +1,8 @@
 <?php
 
+use App\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Resources\UserResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +40,8 @@ Route::get('/{user}', "PageController@show")->name('restaurant');
 
 /* Route::resource('orders', "OrderController@index")->name('order'); */
 Route::resource('categories', CategoryController::class);
+
+// Api
+Route::get('users/{user}', function (User $user){
+    return new UserResource(User::find($user));
+}); 

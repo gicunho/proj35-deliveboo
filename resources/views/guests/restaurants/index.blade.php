@@ -17,13 +17,18 @@
             @endforeach
         </div>
 
-        @foreach ($users as $user)
+        <div v-for='user in users' class="card">
+            <h2>@{{user.name}}</h2>
+            <img :src="user.restaurant_image" alt="">
+        </div>
+
+        {{-- @foreach ($users as $user)
             <div class="card">
                 <h2>{{$user->restaurant_name}}</h2>
                 <img src="{{$user->restaurant_image}}" alt="{{$user->restaurant_name}}" width="250">
                 <a href="{{route('restaurant', $user->id)}}">Visualizza il menù</a>
             </div>
-        @endforeach
+        @endforeach --}}
 
         
     </div>
