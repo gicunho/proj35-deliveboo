@@ -8,11 +8,17 @@ use App\Dish;
 
 class Order extends Model
 {
-    public function user(){
+    protected $fillable = [
+        'total_price', 'name', 'surname', 'address', 'phone_number', 'user_id',
+    ];
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function dishes(){
+    public function dishes()
+    {
         return $this->belongsToMany(Dish::class);
     }
 }
