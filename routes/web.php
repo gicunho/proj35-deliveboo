@@ -15,11 +15,15 @@ use App\Http\Resources\UserResource;
 |
 */
 /* Admin */
-Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
+
+Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('dishes', DishController::class);
     Route::resource('users', UserController::class);
-    Route::resource('orders', OrderController::class);
+    /* Route::resource('orders', OrderController::class); */
+    Route::get('/orders', 'OrderController@index')->name('orders.index');
+    Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
+    Route::get('/orders/stats', 'OrderController@stats')->name('orders.stats');
 });
 
 
@@ -42,6 +46,6 @@ Route::get('/{user}', "PageController@show")->name('restaurant');
 Route::resource('categories', CategoryController::class);
 
 // Api
-Route::get('users/{user}', function (User $user){
+Route::get('users/{user}', function (User $user) {
     return new UserResource(User::find($user));
-}); 
+});
