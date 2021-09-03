@@ -3,6 +3,8 @@
 use App\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Resources\UserResource;
+use App\Order;
+use App\Http\Resources\OrderResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +24,6 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::resource('users', UserController::class);
     /* Route::resource('orders', OrderController::class); */
     Route::get('/orders', 'OrderController@index')->name('orders.index');
-    Route::get('/orders/{order}', 'OrderController@show')->name('orders.show');
     Route::get('/orders/stats', 'OrderController@stats')->name('orders.stats');
 });
 
@@ -48,4 +49,8 @@ Route::resource('categories', CategoryController::class);
 // Api
 Route::get('users/{user}', function (User $user) {
     return new UserResource(User::find($user));
+});
+
+Route::get('orders/{order}', function (Order $order) {
+    return new OrderResource(Order::find($order));
 });

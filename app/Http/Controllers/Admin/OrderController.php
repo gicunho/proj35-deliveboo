@@ -18,20 +18,8 @@ class OrderController extends Controller
     public function index()
     {
         $user = User::find(auth()->id());
-        $orders = Order::where('user_id', '=', Auth::user()->id)->get();
-        /* $orders = Order::where('user_id', '=', $user->id); */
-        return view('admin.orders.index', compact('user', 'orders'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Order $order)
-    {
-        return view('admin.orders.show', compact('order'));
+        /* $orders = Order::where('user_id', '=', Auth::user()->id)->get(); */
+        return view('admin.orders.index', compact('user'/* , 'orders' */));
     }
 
     public function stats()
