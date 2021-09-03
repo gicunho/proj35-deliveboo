@@ -49919,7 +49919,8 @@ var app = new Vue({
   el: '#app',
   data: {
     users: null,
-    orders: null
+    orders: null,
+    search: ""
   },
   mounted: function mounted() {
     var _this = this;

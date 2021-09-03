@@ -31,7 +31,8 @@ const app = new Vue({
     el: '#app',
     data: {
         users: null,
-        orders: null
+        orders: null,
+        search: ""
     },
     mounted() {
         axios.get('/api/users').then(resp => {
