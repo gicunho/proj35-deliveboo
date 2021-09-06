@@ -4,6 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+const { default: axios } = require('axios');
 const { forEach } = require('lodash');
 
 require('./bootstrap');
@@ -38,6 +39,10 @@ const app = new Vue({
         search: ""
     },
     methods: {
+        view(page = 1) {
+            axios.get(`/api/users?page=${page}&search=${this.search}`)
+                .then(response => this.users = response.data.data);
+        },
         selected(index) {
             if (this.categories[index].isSelected == false) {
                 return this.categories[index].isSelected = true;
