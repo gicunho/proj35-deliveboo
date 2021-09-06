@@ -17,7 +17,7 @@
         <div class="d-flex justify-content-center flex-wrap text-center border-bottom pt-2">
             @foreach ($categories as $category)
             <div class="col-md-4 mb-4">
-                <h4><?php echo $category->emoji ?></h2>
+                <h2><?php echo $category->emoji ?></h2>
                 <a href="{{ route('categories.show', $category->id) }}">
                     <h2>{{ $category->name }}</h2>
                 </a>
