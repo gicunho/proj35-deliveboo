@@ -10,7 +10,6 @@
         <table class="table">
             <thead>
                 <tr>
-
                     <th>NOME</th>
                     <th>IMMAGINE</th>
                     <th>PREZZO</th>
@@ -24,7 +23,7 @@
                     @if($user->id == $dish->user_id)
                         <tr>
                             <td>{{$dish->name}}</td>
-                            <td><img  width="100" src="{{asset('storage/' . $dish->image )}}" alt=""></td>
+                            <td><img class="rounded" width="100" src="{{asset('storage/' . $dish->image )}}" alt=""></td>
                             <td>€ {{$dish->price}}</td>
                             <td>@if($dish->is_visible)
                                     Sì

@@ -13,6 +13,7 @@ class DishSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+
         for($i = 0; $i < 10; $i++){
             $dish = new Dish();
             $dish->description = $faker->paragraphs(4, true);
