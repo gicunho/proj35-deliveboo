@@ -11,8 +11,9 @@
                 <img class="mb-3 rounded" src="{{$user->restaurant_image}}" alt="">
                 <h4>Indirizzo: {{$user->address}}</h4>
             </div>
-            <div class="col-12 d-flex">
-                <div class="row">
+
+                <div class="col-12 d-flex">
+                    <div class="row">
                     @foreach ($dishes as $dish)
                         @if($dish->user_id == $user->id)
                             @if($dish->is_visible == true) 
@@ -29,6 +30,7 @@
                             @endif
                         @endif
                     @endforeach
+                    </div>
                 </div>
             </div>
             </div>

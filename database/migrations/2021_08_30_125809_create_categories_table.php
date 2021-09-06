@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('emoji');
+            $table->boolean('isSelected')->default(false);
             $table->timestamps();
         });
     }

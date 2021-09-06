@@ -18,7 +18,8 @@ class OrderSeeder extends Seeder
             $order->address = $faker->address();
             $order->name = $faker->firstName();
             $order->surname = $faker->lastName(); 
-            $order->phone_number = $faker->phoneNumber();                    
+            $order->phone_number = $faker->phoneNumber();  
+            $order->quantity = $faker->randomNumber(1, 10);   
             $order->save();
         }
     }

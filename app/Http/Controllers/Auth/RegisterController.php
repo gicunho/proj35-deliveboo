@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -62,8 +63,9 @@ class RegisterController extends Controller
             'restaurant_name' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'string', 'numeric'],
             'password' => 'min:8|required|confirmed',
-            'password_confirmation' => 'min:8'
+            'password_confirmation' => 'min:8',
         ]);
+
     }
     /**
      * Create a new user instance after a valid registration.
@@ -73,7 +75,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+   
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],

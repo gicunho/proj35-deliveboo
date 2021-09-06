@@ -4,14 +4,14 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\User;
-use App\Http\Resources\UserResource;
+use App\Category;
+use App\Http\Resources\CategoryResource;
 
-class UserController extends Controller
+class CategoryController extends Controller
 {
     public function index()
     {
         # Con la risorsa e le relazioni
-        return UserResource::collection(User::with(['categories'])->paginate(5));
+        return CategoryResource::collection(Category::all());
     }
 }

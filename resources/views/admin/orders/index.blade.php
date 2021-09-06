@@ -5,6 +5,9 @@
     <div class="container">
 
         <h1>Ordini</h1>
+        <div>
+            <a href="{{route('admin.home')}}"> <i class="fas fa-long-arrow-alt-left">Torna al tuo profilo</i></a>
+         </div>
 
         <div>
             <a href="{{ route('admin.orders.stats') }}">Le tue statistiche</a>

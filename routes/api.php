@@ -1,5 +1,6 @@
 <?php
 
+use App\Category;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,13 @@ Route::get('orders', function () {
     return $orders;
 });
 
+Route::get('categories', function () {
+    $categories = Category::with(['users'])->paginate(12);
+    return $categories;
+});
+
 Route::get('users', 'API\UserController@index');
 
 Route::get('orders', 'API\OrderController@index');
+
+Route::get('categories', 'API\CategoryController@index');

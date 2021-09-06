@@ -94,6 +94,7 @@
     {{-- chart --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    
      <!-- Scripts -->
      <script src="{{ asset('js/app.js') }}" defer></script>
 
