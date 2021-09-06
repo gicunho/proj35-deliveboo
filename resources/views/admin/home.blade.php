@@ -22,6 +22,11 @@
                         {{ __('You are logged in!') }}
 
                         <div>
+                           <a href="{{route('restaurants')}}"> <i class="fas fa-long-arrow-alt-left">Torna alla home</i></a>
+                        </div>
+
+
+                        <div>
                             <a href="{{ route('admin.dishes.index') }}">I tuoi Piatti</a>
                         </div>
 
