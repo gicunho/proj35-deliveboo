@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('phone_number');
-            $table->timestamps();
+            $table->timestamps->format('M');
         });
     }
 
