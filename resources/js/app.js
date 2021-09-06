@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+const { forEach } = require('lodash');
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -32,21 +34,36 @@ const app = new Vue({
     data: {
         users: null,
         orders: null,
+        categories: null,
         search: ""
+    },
+    methods: {
+        selected(index) {
+            if (this.categories[index].isSelected == false) {
+                return this.categories[index].isSelected = true;
+            }
+            else {
+                return this.categories[index].isSelected = false;
+            }
+        }
     },
     mounted() {
         axios.get('/api/users').then(resp => {
-            /* console.log(resp); */
             this.users = resp.data.data;
         }).catch(e => {
             console.error('Sorry! ' + e);
         })
         axios.get('/api/orders').then(resp => {
             this.orders = resp.data.data;
-            /* console.log(this.orders[0].user_id);
-            console.log(this.orders[0].user.id);  */
         }).catch(e => {
             console.error('Sorry! ' + e);
         })
-    }
+        axios.get('/api/categories').then(resp => {
+            this.categories = resp.data.data;
+            this.categories.forEach(category => category.isSelected = false);
+        }).catch(e => {
+            console.error('Sorry! ' + e);
+        })
+    },
+
 });

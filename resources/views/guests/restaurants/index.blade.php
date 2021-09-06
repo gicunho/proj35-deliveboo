@@ -13,15 +13,8 @@
         </nav>
 
         <h3 class="d-flex mt-5 mb-3 justify-content-center">CATEGORIE</h3>
-
         <div class="d-flex justify-content-center flex-wrap text-center border-bottom pt-2">
-            @foreach ($categories as $category)
-            <div class="col-md-4 mb-4">
-                <h2><?php echo $category->emoji ?></h2>
-                    <h2>{{ $category->name }}</h2>
-                </a>
-            </div>
-            @endforeach
+            <span v-for='(category,index) in categories' v-on:click="selected(index)" :class="category.isSelected ? 'selected' : ''">@{{category.name}} </span>
         </div>
         
         <h3 class="d-flex mt-5   justify-content-center">RISTORANTI</h3>
