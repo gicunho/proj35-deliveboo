@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="container d-flex justify-content-center">Ristoranti di {{$category->name}}</h1>
+    <h1 class="container d-flex justify-content-center">
+        Ristoranti di {{$category->name}} <?php echo $category->emoji ?>
+    </h1>
+
     <div class="container d-flex justify-content-center">
         @if($category->users)
             @foreach ($category->users as $user)
