@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,96 +9,124 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
 </head>
 <body>
-
-    <canvas id="chart" width="400" height="200"></canvas>
-
+    <canvas id="chart" width="400" height="200"></canvas> 
+    
     <script>
-        var xmlhttp = new XMLHttpRequest();
-        var url = "http://127.0.0.1:8000/api/orders";
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send();
-        xmlhttp.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200) {
-                var data = JSON.parse(this.responseText);
+        const x_date = [];
+        const y_orders = [];
+        const api_url = 'http://127.0.0.1:8000/api/orders';
 
-                var name = data.data.map(function(elem) {
-                  return elem.name; 
-                });
+        chartIt();
 
-                var created_at = data.data.map(function(elem) {
-                    const result = elem.created_at;
-                    console.log(result);
-
-                    const date = result.replace("T17:00:20.000000Z", "");
-                    console.log(date);
-                });
-
-                var updated_at = data.data.map(function(elem) {
-                  return elem.updated_at; 
-                })
-                console.log(updated_at);
-            }
-        }
-
-        const ctx = document.getElementById('chart');
-        const xlabels = [];
-        const myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                datasets: [{
-                    label: 'Orders',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: 'transapernt',
-                    borderColor: 'red',
-                    borderWidth: 4
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+        async function chartIt() {
+            await getData();
+            var ctx = document.getElementById('chart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['September','October','November','December','January','February','March','April','May','June','July','August'],
+                    datasets: [{
+                        label: 'Number of orders',
+                        data: y_orders,
+                        backgroundColor: 'rgba(0, 0, 0, 1)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 5
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
+            });
+        }
+        
+
+        /* API */
+        async function getData() {
+            const response = await fetch(api_url);
+            const data = await response.json();
+            var list = [];
+
+            data.data.forEach(element => {
+                if (element.user_id == {{$user->id}}) {
+                    list.push(element);  
+                }
+            });
+
+            list.forEach(element => {
+                x_date.push(element.month);
+            });
+
+            var sep = 0; 
+            var oct = 0;
+            var nov = 0;
+            var dec = 0;
+            var jan = 0;
+            var feb = 0;
+            var mar = 0;
+            var apr = 0;
+            var may = 0;
+            var jun = 0;
+            var jul = 0;
+            var aug = 0;
+
+            for (let index = 0; index < list.length; index++) {
+                if (list[index].month === 'Sep') {
+                    sep += 1;
+                    console.log('Sep: ' + sep);
+                }
+                else if (list[index].month === 'Oct') {
+                    oct += 1;
+                    console.log('Oct: ' + oct);
+                }
+                else if (list[index].month === 'Nov') {
+                    nov += 1;
+                    console.log('Nov: ' + nov);
+                }   
+                else if (list[index].month === 'Dec') {
+                    dec += 1;
+                    console.log('Dec: ' + dec);
+                }
+                else if (list[index].month === 'Jan') {
+                    jan += 1;
+                    console.log('Jan: ' + jan);
+                }
+                else if (list[index].month === 'Feb') {
+                    feb += 1;
+                    console.log('Feb: ' + feb);
+                }
+                else if (list[index].month === 'Mar') {
+                    mar += 1;
+                    console.log('Mar: ' + mar);
+                }
+                else if (list[index].month === 'Apr') {
+                    apr += 1;
+                    console.log('Apr: ' + apr);
+                }
+                else if (list[index].month === 'May') {
+                    may += 1;
+                    console.log('May: ' + may);
+                }
+                else if (list[index].month === 'Jun') {
+                    jun += 1;
+                    console.log('Jun: ' + jun);
+                }
+                else if (list[index].month === 'Jul') {
+                    jul += 1;
+                    console.log('Jul: ' + jul);
+                }
+                else if(list[index].month === 'Aug') {
+                    aug += 1;
+                    console.log('Aug: ' + aug);
+                }
             }
-        });
+            
+            y_orders.push(sep, oct, nov, dec, jan, feb, mar, apr, may, jun, jul, aug);
+        }
     </script>
     
 </body>
 </html>
-
-
-
-{{-- @extends('layouts.admin')
-
-@section('content')
-
-    <div>
-        <canvas id="myChart"></canvas>
-    </div>  
-
-    <script>
-        // === include 'setup' then 'config' above ===
-      
-        var myChart = new Chart(
-          document.getElementById('myChart'),
-          config
-        );
-    </script>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1>Statistiche ordini</h1>
-                <div>
-                    <a href="{{route('admin.orders.index')}}"> <i class="fas fa-long-arrow-alt-left">Torna ai tuoi ordini</i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<script src="path/to/chartjs/dist/chart.js"></script>
-<script>
-    var myChart = new Chart(ctx, {...});
-</script>
-@endsection --}}
-
