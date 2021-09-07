@@ -10942,3 +10942,8 @@ a.text-dark:focus {
   }
 }
 
+#app ul li .is_active {
+  color: #0a66c2;
+  font-weight: 600;
+}
+

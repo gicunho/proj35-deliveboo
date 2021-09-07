@@ -6,9 +6,6 @@
             <h2>Tutti i piatti</h2>
             <a class='btn btn-primary' href="{{route('admin.dishes.create', $user->id)}}"><i class="fas fa-plus"></i> Aggiungi un piatto</a>
         </div>
-        <div>
-            <a href="{{route('admin.home')}}"> <i class="fas fa-long-arrow-alt-left">Torna alla home</i></a>
-         </div>
 
         <table class="table">
             <thead>
