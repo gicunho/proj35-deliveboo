@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="container">
 
         <nav class="navbar navbar-light bg-light justify-content-center">
