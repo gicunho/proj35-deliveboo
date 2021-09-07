@@ -27,7 +27,23 @@
             </div>
         </div>
 
-        {{-- {{ $users->links() }} --}}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" aria-label="Previous" v-on:click="first">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" v-on:click="prev" v-if="current_page > 1">@{{ current_page - 1 }}</a></li>
+                <li class="page-item"><a class="page-link">@{{ current_page }}</a></li>
+                <li class="page-item"><a class="page-link" v-on:click="next" v-if="current_page < last_page">@{{ current_page + 1 }}</a></li>
+                <li class="page-item">
+                    <a class="page-link" aria-label="Next" v-on:click="last">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
     </div>
 

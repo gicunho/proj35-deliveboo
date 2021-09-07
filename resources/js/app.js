@@ -56,8 +56,8 @@ const app = new Vue({
                 axios.get(`/api/users?page=${this.current_page + 1}&search=${this.search}`)
                     .then(response => {
                         this.users = response.data.data
-                        this.current_page = response.data.current_page;
-                        this.last_page = response.data.last_page;
+                        this.current_page = response.data.meta.current_page;
+                        this.last_page = response.data.meta.last_page;
                     });
             }
         },
@@ -66,8 +66,8 @@ const app = new Vue({
                 axios.get(`/api/users?page=${this.current_page - 1}&search=${this.search}`)
                     .then(response => {
                         this.users = response.data.data
-                        this.current_page = response.data.current_page;
-                        this.last_page = response.data.last_page;
+                        this.current_page = response.data.meta.current_page;
+                        this.last_page = response.data.meta.last_page;
                     });
             }
         },
@@ -75,48 +75,32 @@ const app = new Vue({
             axios.get(`/api/users?page=${this.first_page}&search=${this.search}`)
                 .then(response => {
                     this.users = response.data.data
-                    this.current_page = response.data.current_page;
-                    this.last_page = response.data.last_page;
+                    this.current_page = response.data.meta.current_page;
+                    this.last_page = response.data.meta.last_page;
                 });
         },
         last() {
             axios.get(`/api/users?page=${this.last_page}&search=${this.search}`)
                 .then(response => {
                     this.users = response.data.data
-                    this.current_page = response.data.current_page;
-                    this.last_page = response.data.last_page;
+                    this.current_page = response.data.meta.current_page;
+                    this.last_page = response.data.meta.last_page;
                 });
         },
         selected(index) {
             if (this.categories[index].isSelected == false) {
-                this.users.forEach(user => {
-                    user.categories.forEach(category => {
-                        if (category.name == this.categories[index].name) {
-                            category.isSelected = true;
-                            console.log(category.isSelected);
-                        }
-                    });
-                })
                 return this.categories[index].isSelected = true;
             }
-            else {
-                this.users.forEach(user => {
-                    user.categories.forEach(category => {
-                        if (category.name == this.categories[index].name) {
-                            category.isSelected = false;
-                            console.log(category.isSelected);
-                        }
-                    });
-                })
+            else
                 return this.categories[index].isSelected = false;
-            }
         }
     },
     mounted() {
         axios.get('/api/users').then(resp => {
+            console.log(resp);
             this.users = resp.data.data;
-            this.current_page = resp.data.current_page;
-            this.last_page = resp.data.last_page;
+            this.current_page = resp.data.meta.current_page;
+            this.last_page = resp.data.meta.last_page;
 
         }).catch(e => {
             console.error('Sorry! ' + e);

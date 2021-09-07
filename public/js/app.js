@@ -49948,8 +49948,8 @@ var app = new Vue({
       if (this.current_page != this.last_page) {
         axios.get("/api/users?page=".concat(this.current_page + 1, "&search=").concat(this.search)).then(function (response) {
           _this2.users = response.data.data;
-          _this2.current_page = response.data.current_page;
-          _this2.last_page = response.data.last_page;
+          _this2.current_page = response.data.meta.current_page;
+          _this2.last_page = response.data.meta.last_page;
         });
       }
     },
@@ -49959,8 +49959,8 @@ var app = new Vue({
       if (this.current_page != 1) {
         axios.get("/api/users?page=".concat(this.current_page - 1, "&search=").concat(this.search)).then(function (response) {
           _this3.users = response.data.data;
-          _this3.current_page = response.data.current_page;
-          _this3.last_page = response.data.last_page;
+          _this3.current_page = response.data.meta.current_page;
+          _this3.last_page = response.data.meta.last_page;
         });
       }
     },
@@ -49969,8 +49969,8 @@ var app = new Vue({
 
       axios.get("/api/users?page=".concat(this.first_page, "&search=").concat(this.search)).then(function (response) {
         _this4.users = response.data.data;
-        _this4.current_page = response.data.current_page;
-        _this4.last_page = response.data.last_page;
+        _this4.current_page = response.data.meta.current_page;
+        _this4.last_page = response.data.meta.last_page;
       });
     },
     last: function last() {
@@ -49978,55 +49978,36 @@ var app = new Vue({
 
       axios.get("/api/users?page=".concat(this.last_page, "&search=").concat(this.search)).then(function (response) {
         _this5.users = response.data.data;
-        _this5.current_page = response.data.current_page;
-        _this5.last_page = response.data.last_page;
+        _this5.current_page = response.data.meta.current_page;
+        _this5.last_page = response.data.meta.last_page;
       });
     },
     selected: function selected(index) {
-      var _this6 = this;
-
       if (this.categories[index].isSelected == false) {
-        this.users.forEach(function (user) {
-          user.categories.forEach(function (category) {
-            if (category.name == _this6.categories[index].name) {
-              category.isSelected = true;
-              console.log(category.isSelected);
-            }
-          });
-        });
         return this.categories[index].isSelected = true;
-      } else {
-        this.users.forEach(function (user) {
-          user.categories.forEach(function (category) {
-            if (category.name == _this6.categories[index].name) {
-              category.isSelected = false;
-              console.log(category.isSelected);
-            }
-          });
-        });
-        return this.categories[index].isSelected = false;
-      }
+      } else return this.categories[index].isSelected = false;
     }
   },
   mounted: function mounted() {
-    var _this7 = this;
+    var _this6 = this;
 
     axios.get('/api/users').then(function (resp) {
-      _this7.users = resp.data.data;
-      _this7.current_page = resp.data.current_page;
-      _this7.last_page = resp.data.last_page;
+      console.log(resp);
+      _this6.users = resp.data.data;
+      _this6.current_page = resp.data.meta.current_page;
+      _this6.last_page = resp.data.meta.last_page;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/orders').then(function (resp) {
-      _this7.orders = resp.data.data;
+      _this6.orders = resp.data.data;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/categories').then(function (resp) {
-      _this7.categories = resp.data.data;
+      _this6.categories = resp.data.data;
 
-      _this7.categories.forEach(function (category) {
+      _this6.categories.forEach(function (category) {
         return category.isSelected = false;
       });
     })["catch"](function (e) {
