@@ -49927,42 +49927,60 @@ var app = new Vue({
     users: null,
     orders: null,
     categories: null,
-    search: ""
+    search: "",
+    page: 1
   },
   methods: {
     view: function view() {
       var _this = this;
 
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get("/api/users?page=".concat(page, "&search=").concat(this.search)).then(function (response) {
+      axios.get("/api/users?page=".concat(this.page, "&search=").concat(this.search)).then(function (response) {
         return _this.users = response.data.data;
       });
     },
     selected: function selected(index) {
+      var _this2 = this;
+
       if (this.categories[index].isSelected == false) {
+        this.users.forEach(function (user) {
+          user.categories.forEach(function (category) {
+            if (category.name == _this2.categories[index].name) {
+              category.isSelected = true;
+              console.log(category.isSelected);
+            }
+          });
+        });
         return this.categories[index].isSelected = true;
       } else {
+        this.users.forEach(function (user) {
+          user.categories.forEach(function (category) {
+            if (category.name == _this2.categories[index].name) {
+              category.isSelected = false;
+              console.log(category.isSelected);
+            }
+          });
+        });
         return this.categories[index].isSelected = false;
       }
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this3 = this;
 
     axios.get('/api/users').then(function (resp) {
-      _this2.users = resp.data.data;
+      _this3.users = resp.data.data;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/orders').then(function (resp) {
-      _this2.orders = resp.data.data;
+      _this3.orders = resp.data.data;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/categories').then(function (resp) {
-      _this2.categories = resp.data.data;
+      _this3.categories = resp.data.data;
 
-      _this2.categories.forEach(function (category) {
+      _this3.categories.forEach(function (category) {
         return category.isSelected = false;
       });
     })["catch"](function (e) {

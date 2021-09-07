@@ -36,18 +36,35 @@ const app = new Vue({
         users: null,
         orders: null,
         categories: null,
-        search: ""
+        search: "",
+        page: 1,
     },
     methods: {
-        view(page = 1) {
-            axios.get(`/api/users?page=${page}&search=${this.search}`)
+        view() {
+            axios.get(`/api/users?page=${this.page}&search=${this.search}`)
                 .then(response => this.users = response.data.data);
         },
         selected(index) {
             if (this.categories[index].isSelected == false) {
+                this.users.forEach(user => {
+                    user.categories.forEach(category => {
+                        if (category.name == this.categories[index].name) {
+                            category.isSelected = true;
+                            console.log(category.isSelected);
+                        }
+                    });
+                })
                 return this.categories[index].isSelected = true;
             }
             else {
+                this.users.forEach(user => {
+                    user.categories.forEach(category => {
+                        if (category.name == this.categories[index].name) {
+                            category.isSelected = false;
+                            console.log(category.isSelected);
+                        }
+                    });
+                })
                 return this.categories[index].isSelected = false;
             }
         }
