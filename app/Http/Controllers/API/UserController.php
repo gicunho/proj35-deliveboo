@@ -14,8 +14,8 @@ class UserController extends Controller
         // # Con la risorsa e le relazioni
         // return UserResource::collection(User::with(['categories'])->paginate(5));
 
-        return User::when(request('search'), function($query){
+        return User::when(request('search'), function ($query) {
             $query->where('restaurant_name', 'like', '%' . request('search') . '%');
-        })->orderBy('id', 'asc')->paginate(5);
+        })->orderBy('id', 'asc')->paginate(12); //12
     }
 }

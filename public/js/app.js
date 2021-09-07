@@ -49927,15 +49927,59 @@ var app = new Vue({
     users: null,
     orders: null,
     categories: null,
-    search: ""
+    search: "",
+    first_page: 1,
+    current_page: null,
+    last_page: null
   },
   methods: {
     view: function view() {
       var _this = this;
 
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get("/api/users?page=".concat(page, "&search=").concat(this.search)).then(function (response) {
-        return _this.users = response.data.data;
+      axios.get("/api/users?page=1&search=".concat(this.search)).then(function (response) {
+        _this.users = response.data.data;
+        _this.current_page = response.data.current_page;
+        _this.last_page = response.data.last_page;
+      });
+    },
+    next: function next() {
+      var _this2 = this;
+
+      if (this.current_page != this.last_page) {
+        axios.get("/api/users?page=".concat(this.current_page + 1, "&search=").concat(this.search)).then(function (response) {
+          _this2.users = response.data.data;
+          _this2.current_page = response.data.current_page;
+          _this2.last_page = response.data.last_page;
+        });
+      }
+    },
+    prev: function prev() {
+      var _this3 = this;
+
+      if (this.current_page != 1) {
+        axios.get("/api/users?page=".concat(this.current_page - 1, "&search=").concat(this.search)).then(function (response) {
+          _this3.users = response.data.data;
+          _this3.current_page = response.data.current_page;
+          _this3.last_page = response.data.last_page;
+        });
+      }
+    },
+    first: function first() {
+      var _this4 = this;
+
+      axios.get("/api/users?page=".concat(this.first_page, "&search=").concat(this.search)).then(function (response) {
+        _this4.users = response.data.data;
+        _this4.current_page = response.data.current_page;
+        _this4.last_page = response.data.last_page;
+      });
+    },
+    last: function last() {
+      var _this5 = this;
+
+      axios.get("/api/users?page=".concat(this.last_page, "&search=").concat(this.search)).then(function (response) {
+        _this5.users = response.data.data;
+        _this5.current_page = response.data.current_page;
+        _this5.last_page = response.data.last_page;
       });
     },
     selected: function selected(index) {
@@ -49947,22 +49991,24 @@ var app = new Vue({
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this6 = this;
 
     axios.get('/api/users').then(function (resp) {
-      _this2.users = resp.data.data;
+      _this6.users = resp.data.data;
+      _this6.current_page = resp.data.current_page;
+      _this6.last_page = resp.data.last_page;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/orders').then(function (resp) {
-      _this2.orders = resp.data.data;
+      _this6.orders = resp.data.data;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/categories').then(function (resp) {
-      _this2.categories = resp.data.data;
+      _this6.categories = resp.data.data;
 
-      _this2.categories.forEach(function (category) {
+      _this6.categories.forEach(function (category) {
         return category.isSelected = false;
       });
     })["catch"](function (e) {
@@ -50105,8 +50151,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\php\proj35-team5\proj35-deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\php\proj35-team5\proj35-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

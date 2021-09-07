@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('users', function () {
-    $users = User::with(['categories'])->paginate(12);
+    $users = User::with(['categories'])->paginate(12); //12
     return $users;
 });
 

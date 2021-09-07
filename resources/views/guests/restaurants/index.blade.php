@@ -4,8 +4,9 @@
     <div class="container">
 
         <nav class="navbar navbar-light bg-light justify-content-center">
-            <form  @submit.prevent="view" class="form-inline">
-                <input id="search-focus" type="search" id="form1" class="form-control mr-sm-2" placeholder="Cerca un ristorante" v-model="search">
+            <form @submit.prevent="view" class="form-inline">
+                <input id="search-focus" type="search" id="form1" class="form-control mr-sm-2"
+                    placeholder="Cerca un ristorante" v-model="search">
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
                     <i class="fas fa-search"></i>
                 </button>
@@ -14,9 +15,10 @@
 
         <h3 class="d-flex mt-5 mb-3 justify-content-center">CATEGORIE</h3>
         <div class="d-flex justify-content-center flex-wrap text-center border-bottom pt-2">
-            <span v-for='(category,index) in categories' v-on:click="selected(index)" :class="category.isSelected ? 'selected' : ''">@{{category.name}} </span>
+            <span v-for='(category,index) in categories' v-on:click="selected(index)"
+                :class="category.isSelected ? 'selected' : ''">@{{ category . name }} </span>
         </div>
-        
+
         <h3 class="d-flex mt-5   justify-content-center">RISTORANTI</h3>
         <div class="d-flex text-center flex-wrap justify-content-center">
             <div v-for='user in users' class="card col-md-5 m-3">
@@ -28,6 +30,23 @@
         </div>
 
         {{-- {{ $users->links() }} --}}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" aria-label="Previous" v-on:click="first">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" v-on:click="prev">@{{ current_page - 1 }}</a></li>
+                <li class="page-item"><a class="page-link">@{{ current_page }}</a></li>
+                <li class="page-item"><a class="page-link" v-on:click="next">@{{ current_page + 1 }}</a></li>
+                <li class="page-item">
+                    <a class="page-link" aria-label="Next" v-on:click="last">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
     </div>
 
