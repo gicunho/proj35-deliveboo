@@ -14,13 +14,13 @@
         </nav>
 
         <h3 class="d-flex mt-5 mb-3 justify-content-center">CATEGORIE</h3>
-        <div class="d-flex justify-content-center flex-wrap text-center border-bottom pt-2">
-            <span v-for='(category,index) in categories' v-on:click="selected(index)" :class="category.isSelected ? 'selected' : ''">@{{category.name}} </span>
+        <div class="d-flex justify-content-center flex-wrap text-center shadow bg-white rounded">
+            <a href="#" class="p-4" v-for='(category,index) in categories' v-on:click="selected(index)" :class="category.isSelected ? 'selected' : ''">@{{category.name}}</a>
         </div>
         
-        <h3 class="d-flex mt-5   justify-content-center">RISTORANTI</h3>
+        <h3 class="d-flex mt-5 justify-content-center">RISTORANTI</h3>
         <div class="d-flex text-center flex-wrap justify-content-center">
-            <div v-for='user in users' class="card col-md-5 m-3">
+            <div v-for='user in users' class="card col-md-5 m-3 shadow p-3 mb-5 bg-white rounded">
                 <a :href="'/' + user.id">
                     <h2 class="text-capitalize mb-0 p-1">@{{ user . restaurant_name }}</h2>
                     {{-- <img :src="'storage/' + user.restaurant_image" alt=""> --}}
@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <nav aria-label="Page navigation example">
+        <nav aria-label="Page navigation" class="d-flex justify-content-center">
             <ul class="pagination">
                 <li class="page-item">
                     <a class="page-link" aria-label="Previous" v-on:click="first">
