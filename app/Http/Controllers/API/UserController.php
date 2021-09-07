@@ -11,12 +11,15 @@ class UserController extends Controller
 {
     public function index()
     {
-
-        return UserResource::collection(User::with(['categories'])->when(request('search'), function($query){
+        return UserResource::collection(User::with('categories')->when(request('search'), function($query){
             $query->where(
-                // 'restaurant_name', 'like', '%' . request('search') . '%',
-                'categories', 'like', '%' . request('category') . '%',
+                'restaurant_name', 'like', '%' . request('search') . '%',
             );
+        })->when(request('search_category'), function($item){
+            $item->whereHas('categories', function($q){
+                $q->where('categories.name', 'like', '%' . request('search_category') . '%');
+            });
         })->orderBy('id', 'asc')->paginate(5));
+
     }
 }

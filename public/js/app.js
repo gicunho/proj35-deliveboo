@@ -49938,8 +49938,8 @@ var app = new Vue({
 
       axios.get("/api/users?page=1&search=".concat(this.search)).then(function (response) {
         _this.users = response.data.data;
-        _this.current_page = response.data.current_page;
-        _this.last_page = response.data.last_page;
+        _this.current_page = response.data.meta.current_page;
+        _this.last_page = response.data.meta.last_page;
       });
     },
     next: function next() {

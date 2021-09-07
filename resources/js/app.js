@@ -7,6 +7,7 @@
 const { default: axios } = require('axios');
 const { forEach } = require('lodash');
 
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -47,8 +48,8 @@ const app = new Vue({
             axios.get(`/api/users?page=1&search=${this.search}`)
                 .then(response => {
                     this.users = response.data.data
-                    this.current_page = response.data.current_page;
-                    this.last_page = response.data.last_page;
+                    this.current_page = response.data.meta.current_page;
+                    this.last_page = response.data.meta.last_page;
                 });
         },
         next() {
