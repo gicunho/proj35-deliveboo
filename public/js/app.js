@@ -49928,23 +49928,67 @@ var app = new Vue({
     orders: null,
     categories: null,
     search: "",
-    page: 1
+    first_page: 1,
+    current_page: null,
+    last_page: null
   },
   methods: {
     view: function view() {
       var _this = this;
 
-      axios.get("/api/users?page=".concat(this.page, "&search=").concat(this.search)).then(function (response) {
-        return _this.users = response.data.data;
+      axios.get("/api/users?page=1&search=".concat(this.search)).then(function (response) {
+        _this.users = response.data.data;
+        _this.current_page = response.data.current_page;
+        _this.last_page = response.data.last_page;
+      });
+    },
+    next: function next() {
+      var _this2 = this;
+
+      if (this.current_page != this.last_page) {
+        axios.get("/api/users?page=".concat(this.current_page + 1, "&search=").concat(this.search)).then(function (response) {
+          _this2.users = response.data.data;
+          _this2.current_page = response.data.current_page;
+          _this2.last_page = response.data.last_page;
+        });
+      }
+    },
+    prev: function prev() {
+      var _this3 = this;
+
+      if (this.current_page != 1) {
+        axios.get("/api/users?page=".concat(this.current_page - 1, "&search=").concat(this.search)).then(function (response) {
+          _this3.users = response.data.data;
+          _this3.current_page = response.data.current_page;
+          _this3.last_page = response.data.last_page;
+        });
+      }
+    },
+    first: function first() {
+      var _this4 = this;
+
+      axios.get("/api/users?page=".concat(this.first_page, "&search=").concat(this.search)).then(function (response) {
+        _this4.users = response.data.data;
+        _this4.current_page = response.data.current_page;
+        _this4.last_page = response.data.last_page;
+      });
+    },
+    last: function last() {
+      var _this5 = this;
+
+      axios.get("/api/users?page=".concat(this.last_page, "&search=").concat(this.search)).then(function (response) {
+        _this5.users = response.data.data;
+        _this5.current_page = response.data.current_page;
+        _this5.last_page = response.data.last_page;
       });
     },
     selected: function selected(index) {
-      var _this2 = this;
+      var _this6 = this;
 
       if (this.categories[index].isSelected == false) {
         this.users.forEach(function (user) {
           user.categories.forEach(function (category) {
-            if (category.name == _this2.categories[index].name) {
+            if (category.name == _this6.categories[index].name) {
               category.isSelected = true;
               console.log(category.isSelected);
             }
@@ -49954,7 +49998,7 @@ var app = new Vue({
       } else {
         this.users.forEach(function (user) {
           user.categories.forEach(function (category) {
-            if (category.name == _this2.categories[index].name) {
+            if (category.name == _this6.categories[index].name) {
               category.isSelected = false;
               console.log(category.isSelected);
             }
@@ -49965,22 +50009,24 @@ var app = new Vue({
     }
   },
   mounted: function mounted() {
-    var _this3 = this;
+    var _this7 = this;
 
     axios.get('/api/users').then(function (resp) {
-      _this3.users = resp.data.data;
+      _this7.users = resp.data.data;
+      _this7.current_page = resp.data.current_page;
+      _this7.last_page = resp.data.last_page;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/orders').then(function (resp) {
-      _this3.orders = resp.data.data;
+      _this7.orders = resp.data.data;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/categories').then(function (resp) {
-      _this3.categories = resp.data.data;
+      _this7.categories = resp.data.data;
 
-      _this3.categories.forEach(function (category) {
+      _this7.categories.forEach(function (category) {
         return category.isSelected = false;
       });
     })["catch"](function (e) {

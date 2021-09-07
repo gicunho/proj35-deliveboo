@@ -37,12 +37,55 @@ const app = new Vue({
         orders: null,
         categories: null,
         search: "",
-        page: 1,
+        first_page: 1,
+        current_page: null,
+        last_page: null
+
     },
     methods: {
         view() {
-            axios.get(`/api/users?page=${this.page}&search=${this.search}`)
-                .then(response => this.users = response.data.data);
+            axios.get(`/api/users?page=1&search=${this.search}`)
+                .then(response => {
+                    this.users = response.data.data
+                    this.current_page = response.data.current_page;
+                    this.last_page = response.data.last_page;
+                });
+        },
+        next() {
+            if (this.current_page != this.last_page) {
+                axios.get(`/api/users?page=${this.current_page + 1}&search=${this.search}`)
+                    .then(response => {
+                        this.users = response.data.data
+                        this.current_page = response.data.current_page;
+                        this.last_page = response.data.last_page;
+                    });
+            }
+        },
+        prev() {
+            if (this.current_page != 1) {
+                axios.get(`/api/users?page=${this.current_page - 1}&search=${this.search}`)
+                    .then(response => {
+                        this.users = response.data.data
+                        this.current_page = response.data.current_page;
+                        this.last_page = response.data.last_page;
+                    });
+            }
+        },
+        first() {
+            axios.get(`/api/users?page=${this.first_page}&search=${this.search}`)
+                .then(response => {
+                    this.users = response.data.data
+                    this.current_page = response.data.current_page;
+                    this.last_page = response.data.last_page;
+                });
+        },
+        last() {
+            axios.get(`/api/users?page=${this.last_page}&search=${this.search}`)
+                .then(response => {
+                    this.users = response.data.data
+                    this.current_page = response.data.current_page;
+                    this.last_page = response.data.last_page;
+                });
         },
         selected(index) {
             if (this.categories[index].isSelected == false) {
@@ -72,6 +115,9 @@ const app = new Vue({
     mounted() {
         axios.get('/api/users').then(resp => {
             this.users = resp.data.data;
+            this.current_page = resp.data.current_page;
+            this.last_page = resp.data.last_page;
+
         }).catch(e => {
             console.error('Sorry! ' + e);
         })
