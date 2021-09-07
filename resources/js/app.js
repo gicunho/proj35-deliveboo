@@ -4,6 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+const { default: axios } = require('axios');
+const { forEach } = require('lodash');
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -27,26 +30,47 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
- const app = new Vue({
+const app = new Vue({
     el: '#app',
     data: {
         users: null,
         orders: null,
+        categories: null,
         search: ""
+    },
+    methods: {
+        view(page = 1) {
+            axios.get(`/api/users?page=${page}&search=${this.search}`)
+                .then(response => this.users = response.data.data);
+        },
+        selected(index) {
+            if (this.categories[index].isSelected == false) {
+                return this.categories[index].isSelected = true;
+            }
+            else {
+                return this.categories[index].isSelected = false;
+            }
+        }
     },
     mounted() {
         axios.get('/api/users').then(resp => {
-            /* console.log(resp); */
             this.users = resp.data.data;
         }).catch(e => {
             console.error('Sorry! ' + e);
         })
         axios.get('/api/orders').then(resp => {
             this.orders = resp.data.data;
-            /* console.log(this.orders[0].user_id);
-            console.log(this.orders[0].user.id);  */
         }).catch(e => {
             console.error('Sorry! ' + e);
         })
-    }
+        axios.get('/api/categories').then(resp => {
+            this.categories = resp.data.data;
+            this.categories.forEach(category => category.isSelected = false);
+        }).catch(e => {
+            console.error('Sorry! ' + e);
+        })
+    },
+
 });
+
+

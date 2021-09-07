@@ -1,10 +1,13 @@
 <?php
 
-use App\User;
+
 use Illuminate\Support\Facades\Route;
+use App\User;
 use App\Http\Resources\UserResource;
 use App\Order;
 use App\Http\Resources\OrderResource;
+use App\Category;
+use App\Http\Resources\CategoryResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,11 +43,8 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 /* Home */
-Route::get('/', "PageController@index");
+Route::get('/', "PageController@index")->name('restaurants');
 Route::get('/{user}', "PageController@show")->name('restaurant');
-
-/* Route::resource('orders', "OrderController@index")->name('order'); */
-Route::resource('categories', CategoryController::class);
 
 // Api
 Route::get('users/{user}', function (User $user) {
@@ -53,4 +53,8 @@ Route::get('users/{user}', function (User $user) {
 
 Route::get('orders/{order}', function (Order $order) {
     return new OrderResource(Order::find($order));
+});
+
+Route::get('categories/{category}', function (Category $category) {
+    return new CategoryResource(Category::find($category));
 });

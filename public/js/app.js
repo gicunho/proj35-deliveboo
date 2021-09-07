@@ -49895,6 +49895,12 @@ module.exports = function(module) {
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
+    axios = _require["default"];
+
+var _require2 = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
+    forEach = _require2.forEach;
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -49920,21 +49926,45 @@ var app = new Vue({
   data: {
     users: null,
     orders: null,
+    categories: null,
     search: ""
   },
+  methods: {
+    view: function view() {
+      var _this = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get("/api/users?page=".concat(page, "&search=").concat(this.search)).then(function (response) {
+        return _this.users = response.data.data;
+      });
+    },
+    selected: function selected(index) {
+      if (this.categories[index].isSelected == false) {
+        return this.categories[index].isSelected = true;
+      } else {
+        return this.categories[index].isSelected = false;
+      }
+    }
+  },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get('/api/users').then(function (resp) {
-      /* console.log(resp); */
-      _this.users = resp.data.data;
+      _this2.users = resp.data.data;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/orders').then(function (resp) {
-      _this.orders = resp.data.data;
-      /* console.log(this.orders[0].user_id);
-      console.log(this.orders[0].user.id);  */
+      _this2.orders = resp.data.data;
+    })["catch"](function (e) {
+      console.error('Sorry! ' + e);
+    });
+    axios.get('/api/categories').then(function (resp) {
+      _this2.categories = resp.data.data;
+
+      _this2.categories.forEach(function (category) {
+        return category.isSelected = false;
+      });
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
@@ -50075,8 +50105,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

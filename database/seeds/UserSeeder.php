@@ -13,18 +13,18 @@ class UserSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        // $users=['Beatrice', 'Lorenzo', 'Paolo', 'Gheorghe', 'Riccardo'];
+        $users=['Beatrice', 'Lorenzo', 'Paolo', 'Gheorghe', 'Riccardo'];
 
-        // foreach ($users as $user) {
-        //     $person = new User();
-        //     $person->name = $user;
-        //     $person->email = $faker->email();
-        //     $person->password = 'password';
-        //     $person->piva = $faker->numberBetween(11111111111, 99999999999);
-        //     $person->address = $faker->address();
-        //     $person->restaurant_name = $faker->word();
-        //     $person->restaurant_image = $faker->imageUrl(640, 480, 'food', true);
-        //     $person->save();
-        // }
+        foreach ($users as $user) {
+            $person = new User();
+            $person->name = $user;
+            $person->email = $faker->email();
+            $person->password = 'password';
+            $person->piva = $faker->numberBetween(11111111111, 99999999999);
+            $person->address = $faker->address();
+            $person->restaurant_name = $faker->word();
+            $person->restaurant_image = $faker->imageUrl(640, 480, 'food', true);
+            $person->save();
+        }
     }
 }
