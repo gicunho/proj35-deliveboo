@@ -15,7 +15,7 @@
 
         <h3 class="d-flex mt-5 mb-3 justify-content-center">CATEGORIE</h3>
         <div class="d-flex justify-content-center flex-wrap text-center shadow bg-white rounded">
-            <a href="#" class="p-4" v-for='(category,index) in categories' v-on:click="selected(index)" :class="category.isSelected ? 'selected' : ''">@{{category.name}}</a>
+            <h4 class="p-4 category_select" v-for='(category,index) in categories' v-on:click="selected(index); apiSelected(index); view()" :class="category.isSelected ? 'selected' : ''">@{{category.name}}</h4>
         </div>
         
         <h3 class="d-flex mt-5 justify-content-center">RISTORANTI</h3>

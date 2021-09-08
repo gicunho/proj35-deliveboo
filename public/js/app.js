@@ -49930,13 +49930,15 @@ var app = new Vue({
     search: "",
     first_page: 1,
     current_page: null,
-    last_page: null
+    last_page: null,
+    apiCategories: [],
+    selectedInApi: ''
   },
   methods: {
     view: function view() {
       var _this = this;
 
-      axios.get("/api/users?page=1&search=".concat(this.search)).then(function (response) {
+      axios.get("/api/users?page=1&search=".concat(this.search, "&search_category=").concat(this.selectedInApi)).then(function (response) {
         _this.users = response.data.data;
         _this.current_page = response.data.meta.current_page;
         _this.last_page = response.data.meta.last_page;
@@ -49946,7 +49948,7 @@ var app = new Vue({
       var _this2 = this;
 
       if (this.current_page != this.last_page) {
-        axios.get("/api/users?page=".concat(this.current_page + 1, "&search=").concat(this.search)).then(function (response) {
+        axios.get("/api/users?page=".concat(this.current_page + 1, "&search=").concat(this.search, "&search_category=").concat(this.selectedInApi)).then(function (response) {
           _this2.users = response.data.data;
           _this2.current_page = response.data.meta.current_page;
           _this2.last_page = response.data.meta.last_page;
@@ -49957,7 +49959,7 @@ var app = new Vue({
       var _this3 = this;
 
       if (this.current_page != 1) {
-        axios.get("/api/users?page=".concat(this.current_page - 1, "&search=").concat(this.search)).then(function (response) {
+        axios.get("/api/users?page=".concat(this.current_page - 1, "&search=").concat(this.search, "&search_category=").concat(this.selectedInApi)).then(function (response) {
           _this3.users = response.data.data;
           _this3.current_page = response.data.meta.current_page;
           _this3.last_page = response.data.meta.last_page;
@@ -49967,7 +49969,7 @@ var app = new Vue({
     first: function first() {
       var _this4 = this;
 
-      axios.get("/api/users?page=".concat(this.first_page, "&search=").concat(this.search)).then(function (response) {
+      axios.get("/api/users?page=".concat(this.first_page, "&search=").concat(this.search, "&search_category=").concat(this.selectedInApi)).then(function (response) {
         _this4.users = response.data.data;
         _this4.current_page = response.data.meta.current_page;
         _this4.last_page = response.data.meta.last_page;
@@ -49976,7 +49978,7 @@ var app = new Vue({
     last: function last() {
       var _this5 = this;
 
-      axios.get("/api/users?page=".concat(this.last_page, "&search=").concat(this.search)).then(function (response) {
+      axios.get("/api/users?page=".concat(this.last_page, "&search=").concat(this.search, "&search_category=").concat(this.selectedInApi)).then(function (response) {
         _this5.users = response.data.data;
         _this5.current_page = response.data.meta.current_page;
         _this5.last_page = response.data.meta.last_page;
@@ -49986,28 +49988,48 @@ var app = new Vue({
       if (this.categories[index].isSelected == false) {
         return this.categories[index].isSelected = true;
       } else return this.categories[index].isSelected = false;
+    },
+    apiSelected: function apiSelected(index) {
+      var _this6 = this;
+
+      this.selectedInApi = '';
+
+      if (!this.apiCategories.includes(this.categories[index].slug)) {
+        this.apiCategories.push(this.categories[index].slug);
+      } else {
+        this.apiCategories.forEach(function (category, i) {
+          if (category === _this6.categories[index].slug) {
+            _this6.apiCategories.splice(i, 1);
+          }
+        });
+      }
+
+      this.apiCategories.forEach(function (category) {
+        _this6.selectedInApi = _this6.selectedInApi + category + '&';
+      });
+      console.log(this.selectedInApi);
     }
   },
   mounted: function mounted() {
-    var _this6 = this;
+    var _this7 = this;
 
     axios.get('/api/users').then(function (resp) {
       console.log(resp);
-      _this6.users = resp.data.data;
-      _this6.current_page = resp.data.meta.current_page;
-      _this6.last_page = resp.data.meta.last_page;
+      _this7.users = resp.data.data;
+      _this7.current_page = resp.data.meta.current_page;
+      _this7.last_page = resp.data.meta.last_page;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/orders').then(function (resp) {
-      _this6.orders = resp.data.data;
+      _this7.orders = resp.data.data;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/categories').then(function (resp) {
-      _this6.categories = resp.data.data;
+      _this7.categories = resp.data.data;
 
-      _this6.categories.forEach(function (category) {
+      _this7.categories.forEach(function (category) {
         return category.isSelected = false;
       });
     })["catch"](function (e) {
@@ -50150,8 +50172,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -45,7 +45,63 @@
                                 }
                             }
                         }
-                    });
+
+
+                    }
+                }
+            });
+        }
+        
+
+        /* API */
+        async function getData() {
+            const response = await fetch(api_url);
+            const data = await response.json();
+            var list = [];
+
+            data.data.forEach(element => {
+                if (element.user_id == {{$user->id}}) {
+                    list.push(element);  
+                }
+            });
+            
+            var sep = 0; 
+            var oct = 0;
+            var nov = 0;
+            var dec = 0;
+            var jan = 0;
+            var feb = 0;
+            var mar = 0;
+            var apr = 0;
+            var may = 0;
+            var jun = 0;
+            var jul = 0;
+            var aug = 0;
+
+            for (let index = 0; index < list.length; index++) {
+                if (list[index].month === 'Sep') {
+                    sep += 1;
+                    console.log('Sep: ' + sep);
+                }
+                else if (list[index].month === 'Oct') {
+                    oct += 1;
+                    console.log('Oct: ' + oct);
+                }
+                else if (list[index].month === 'Nov') {
+                    nov += 1;
+                    console.log('Nov: ' + nov);
+                }   
+                else if (list[index].month === 'Dec') {
+                    dec += 1;
+                    console.log('Dec: ' + dec);
+                }
+                else if (list[index].month === 'Jan') {
+                    jan += 1;
+                    console.log('Jan: ' + jan);
+                }
+                else if (list[index].month === 'Feb') {
+                    feb += 1;
+                    console.log('Feb: ' + feb);
                 }
                 
 
