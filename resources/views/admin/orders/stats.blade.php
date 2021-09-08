@@ -51,11 +51,7 @@
                     list.push(element);  
                 }
             });
-
-            list.forEach(element => {
-                x_date.push(element.month);
-            });
-
+            
             var sep = 0; 
             var oct = 0;
             var nov = 0;

@@ -14,13 +14,6 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
-        // $categoriesStr = '';
-        // foreach ($this->categories as $category) {
-        //         $categoriesStr .= $category->name;
-        //         if($this->categories->last() != $category){
-        //             $categoriesStr .= ', ';
-        //         }
-        // }
         return [
             'id' => $this->id,
             'restaurant_name' => $this->restaurant_name,

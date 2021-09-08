@@ -40,12 +40,13 @@ const app = new Vue({
         search: "",
         first_page: 1,
         current_page: null,
-        last_page: null
-
+        last_page: null,
+        apiCategories: [],
+        selectedInApi: '',
     },
     methods: {
         view() {
-            axios.get(`/api/users?page=1&search=${this.search}`)
+            axios.get(`/api/users?page=1&search=${this.search}&search_category=${this.selectedInApi}`)
                 .then(response => {
                     this.users = response.data.data
                     this.current_page = response.data.meta.current_page;
@@ -54,7 +55,7 @@ const app = new Vue({
         },
         next() {
             if (this.current_page != this.last_page) {
-                axios.get(`/api/users?page=${this.current_page + 1}&search=${this.search}`)
+                axios.get(`/api/users?page=${this.current_page + 1}&search=${this.search}&search_category=${this.selectedInApi}`)
                     .then(response => {
                         this.users = response.data.data
                         this.current_page = response.data.meta.current_page;
@@ -64,7 +65,7 @@ const app = new Vue({
         },
         prev() {
             if (this.current_page != 1) {
-                axios.get(`/api/users?page=${this.current_page - 1}&search=${this.search}`)
+                axios.get(`/api/users?page=${this.current_page - 1}&search=${this.search}&search_category=${this.selectedInApi}`)
                     .then(response => {
                         this.users = response.data.data
                         this.current_page = response.data.meta.current_page;
@@ -73,7 +74,7 @@ const app = new Vue({
             }
         },
         first() {
-            axios.get(`/api/users?page=${this.first_page}&search=${this.search}`)
+            axios.get(`/api/users?page=${this.first_page}&search=${this.search}&search_category=${this.selectedInApi}`)
                 .then(response => {
                     this.users = response.data.data
                     this.current_page = response.data.meta.current_page;
@@ -81,7 +82,7 @@ const app = new Vue({
                 });
         },
         last() {
-            axios.get(`/api/users?page=${this.last_page}&search=${this.search}`)
+            axios.get(`/api/users?page=${this.last_page}&search=${this.search}&search_category=${this.selectedInApi}`)
                 .then(response => {
                     this.users = response.data.data
                     this.current_page = response.data.meta.current_page;
@@ -94,6 +95,25 @@ const app = new Vue({
             }
             else
                 return this.categories[index].isSelected = false;
+        },
+        apiSelected(index) {
+            this.selectedInApi = '';
+            if (!this.apiCategories.includes(this.categories[index].slug)) {
+                this.apiCategories.push(this.categories[index].slug);
+            }
+            else {
+                this.apiCategories.forEach((category, i) => {
+                    if (category === this.categories[index].slug) {
+                        this.apiCategories.splice(i, 1);
+                    }
+                })
+            }
+            this.apiCategories.forEach(category => {
+                this.selectedInApi = this.selectedInApi + category + '&';
+            })
+            console.log(this.selectedInApi);
+
+
         }
     },
     mounted() {
