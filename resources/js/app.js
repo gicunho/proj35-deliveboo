@@ -37,14 +37,17 @@ const app = new Vue({
         users: null,
         orders: null,
         categories: null,
+        dishes: null,
         search: "",
         first_page: 1,
         current_page: null,
         last_page: null,
         apiCategories: [],
         selectedInApi: '',
+        cart: [],
     },
     methods: {
+        // Search bar
         view() {
             axios.get(`/api/users?page=1&search=${this.search}${this.selectedInApi}`)
                 .then(response => {
@@ -53,6 +56,7 @@ const app = new Vue({
                     this.last_page = response.data.meta.last_page;
                 });
         },
+        // Next page
         next() {
             if (this.current_page != this.last_page) {
                 axios.get(`/api/users?page=${this.current_page + 1}&search=${this.search}${this.selectedInApi}`)
@@ -63,6 +67,7 @@ const app = new Vue({
                     });
             }
         },
+        // Previous page
         prev() {
             if (this.current_page != 1) {
                 axios.get(`/api/users?page=${this.current_page - 1}&search=${this.search}${this.selectedInApi}`)
@@ -73,6 +78,7 @@ const app = new Vue({
                     });
             }
         },
+        // First page
         first() {
             axios.get(`/api/users?page=${this.first_page}&search=${this.search}${this.selectedInApi}`)
                 .then(response => {
@@ -81,6 +87,7 @@ const app = new Vue({
                     this.last_page = response.data.meta.last_page;
                 });
         },
+        // Last page
         last() {
             axios.get(`/api/users?page=${this.last_page}&search=${this.search}${this.selectedInApi}`)
                 .then(response => {
@@ -89,6 +96,7 @@ const app = new Vue({
                     this.last_page = response.data.meta.last_page;
                 });
         },
+        // Add selected class to category
         selected(index) {
             if (this.categories[index].isSelected == false) {
                 return this.categories[index].isSelected = true;
@@ -96,6 +104,7 @@ const app = new Vue({
             else
                 return this.categories[index].isSelected = false;
         },
+        // Change api call based on selection
         apiSelected(index) {
             this.selectedInApi = '';
             if (!this.apiCategories.includes(this.categories[index].slug)) {
@@ -111,10 +120,29 @@ const app = new Vue({
             this.apiCategories.forEach(category => {
                 this.selectedInApi = this.selectedInApi + '&search_category=' + category;
             })
-            console.log(this.selectedInApi);
-
-
-        }
+        },
+        addToCart(dish) {
+            if (!this.cart.includes(dish)) {
+                this.cart.push(dish);
+            } else {
+                dish.quantity += 1;
+            }
+            console.log(dish.name);
+        },
+        removeFromCart(dish) {
+            if (this.cart.includes(dish)) {
+                if (dish.quantity == 1) {
+                    this.cart.forEach((item, index) => {
+                        if (item.name == dish.name) {
+                            this.cart.splice(index, 1);
+                            console.log('rimosso' + dish.name);
+                        }
+                    })
+                } else {
+                    dish.quantity -= 1;
+                }
+            }
+        },
     },
     mounted() {
         axios.get('/api/users').then(resp => {
@@ -134,6 +162,11 @@ const app = new Vue({
         axios.get('/api/categories').then(resp => {
             this.categories = resp.data.data;
             this.categories.forEach(category => category.isSelected = false);
+        }).catch(e => {
+            console.error('Sorry! ' + e);
+        })
+        axios.get('/api/dishes').then(resp => {
+            this.dishes = resp.data.data;
         }).catch(e => {
             console.error('Sorry! ' + e);
         })
