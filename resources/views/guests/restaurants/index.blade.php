@@ -2,28 +2,21 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="restaurant_container">
 
-        <nav class="navbar navbar-light bg-light justify-content-center">
-            <form  @submit.prevent="view" class="form-inline">
-                <input id="search-focus" type="search" id="form1" class="form-control mr-sm-2" placeholder="Cerca un ristorante" v-model="search">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
-        </nav>
-
-        <h3 class="d-flex mt-5 mb-3 justify-content-center">CATEGORIE</h3>
-        <div class="d-flex justify-content-center flex-wrap text-center shadow bg-white rounded">
-            <a href="#" class="p-4" v-for='(category,index) in categories' v-on:click="selected(index)" :class="category.isSelected ? 'selected' : ''">@{{category.name}}</a>
+        <div class="categories">
+            <a href="#" class="category" v-for='(category,index) in categories' v-on:click="selected(index)" :class="category.isSelected ? 'selected' : ''">
+                <img :src="'img/' + category.emoji" alt="">
+                <h5>@{{category.name}}</h5>
+            </a>
         </div>
-        
-        <h3 class="d-flex mt-5 justify-content-center">RISTORANTI</h3>
-        <div class="d-flex text-center flex-wrap justify-content-center">
-            <div v-for='user in users' class="card col-md-5 m-3 shadow p-3 mb-5 bg-white rounded">
+
+        <div class="restaurants">
+            <h1>RISTORANTI</h1>
+            <div class="restaurant" v-for='user in users'>
                 <a :href="'/' + user.id">
-                    <h2 class="text-capitalize mb-0 p-1">@{{ user . restaurant_name }}</h2>
-                    {{-- <img :src="'storage/' + user.restaurant_image" alt=""> --}}
+                    <h2>@{{ user . restaurant_name }}</h2>
+                    <img src="" alt="">
                 </a>
             </div>
         </div>

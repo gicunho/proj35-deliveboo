@@ -14,7 +14,7 @@
             <!-- Grafico per mesi -->
             <canvas id="month_chart" width="400" height="200"></canvas> 
 
-            <script>
+            <script type="application/javascript">
                 const y_orders = [];
                 const api_url = 'http://127.0.0.1:8000/api/orders';
 
@@ -122,7 +122,7 @@
             <!-- Grafico per anni -->
             <canvas id="year_chart" width="400" height="200"></canvas> 
 
-            <script>
+            <script type="application/javascript">
                 const y_orders_year = [];
 
                 chartYear();
@@ -134,14 +134,16 @@
                         type: 'line',
                         data: {
                             labels: ['2017','2018','2019','2020','2021','2022'],
-                            datasets: [{
-                                label: 'Orders x Year',
-                                data: y_orders_year,
-                                backgroundColor: 'rgba(255, 255, 255, 1)',
-                                borderColor: 'rgba(20, 99, 132, 1)',
-                                borderWidth: 4,
-                                tension: 0.1
-                            }]
+                            datasets: [
+                                {
+                                    label: 'Orders x Year',
+                                    data: y_orders_year,
+                                    backgroundColor: 'rgba(255, 255, 255, 1)',
+                                    borderColor: 'rgba(20, 99, 132, 1)',
+                                    borderWidth: 4,
+                                    tension: 0.1
+                                }
+                            ]
                         },
                         options: {
                             scales: {
@@ -198,7 +200,7 @@
             </script>
         </div>
 
-        <script type="text/javascript">
+        <script type="application/javascript">
             function showDiv(select){
                if(select.value==1){
                     document.getElementById('hidden_months').style.display = "none";
