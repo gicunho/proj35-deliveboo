@@ -1,5 +1,7 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+*{
+    font-family: 'Glory', sans-serif;
+}
 
 // Variables
 @import 'variables';
@@ -7,6 +9,8 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+
+// Partials
 @import 'partials/admin';
 @import 'partials/guestHome';
 @import 'partials/layouts_guest';
