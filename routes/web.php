@@ -7,7 +7,9 @@ use App\Http\Resources\UserResource;
 use App\Order;
 use App\Http\Resources\OrderResource;
 use App\Category;
+use App\Dish;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\DishResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,4 +59,8 @@ Route::get('orders/{order}', function (Order $order) {
 
 Route::get('categories/{category}', function (Category $category) {
     return new CategoryResource(Category::find($category));
+});
+
+Route::get('dishes/{dish}', function (Dish $dish) {
+    return new DishResource(Category::find($dish));
 });
