@@ -1,4 +1,8 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@charset "UTF-8";
+
+* {
+  font-family: "Glory", sans-serif;
+}
 
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
@@ -10953,5 +10957,24 @@ a.text-dark:focus {
 
 .selected {
   color: #0a66c2 !important;
+}
+
+.ristorante_info h1 {
+  font-weight: bold !important;
+  font-family: "Nunito", sans-serif !important;
+}
+
+.cart {
+  background-color: white !important;
+  padding: 2rem;
+}
+
+.cart ul {
+  list-style: none !important;
+  margin-top: 1.5rem;
+}
+
+.cart ul li .quantity {
+  color: #bcbcbc !important;
 }
 

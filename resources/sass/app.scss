@@ -1,5 +1,7 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+*{
+    font-family: 'Glory', sans-serif;
+}
 
 // Variables
 @import 'variables';
@@ -11,3 +13,7 @@
 // Partials
 @import 'partials/admin';
 @import 'partials/guests.home';
+@import 'partials/guests.show';
+@import 'partials/cart';
+
+

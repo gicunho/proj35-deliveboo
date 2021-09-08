@@ -45,6 +45,7 @@ const app = new Vue({
         apiCategories: [],
         selectedInApi: '',
         cart: [],
+        total_price: 0
     },
     methods: {
         // Search bar
@@ -127,7 +128,9 @@ const app = new Vue({
             } else {
                 dish.quantity += 1;
             }
-            console.log(dish.name);
+            var price = parseFloat(dish.price);
+            this.total_price += price
+            this.total_price = Math.round(this.total_price * 100) / 100
         },
         removeFromCart(dish) {
             if (this.cart.includes(dish)) {
@@ -141,6 +144,9 @@ const app = new Vue({
                 } else {
                     dish.quantity -= 1;
                 }
+                var price = parseFloat(dish.price);
+                this.total_price -= price
+                this.total_price = Math.round(this.total_price * 100) / 100
             }
         },
     },

@@ -1,0 +1,13 @@
+.cart{
+    background-color: white!important;
+    padding: 2rem;
+    ul{
+        list-style: none!important;
+        margin-top: 1.5rem;
+        li{
+            .quantity{
+                color: #bcbcbc!important;
+            }
+        }
+    }
+}

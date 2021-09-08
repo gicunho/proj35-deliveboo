@@ -49934,7 +49934,8 @@ var app = new Vue({
     last_page: null,
     apiCategories: [],
     selectedInApi: '',
-    cart: []
+    cart: [],
+    total_price: 0
   },
   methods: {
     // Search bar
@@ -50024,7 +50025,9 @@ var app = new Vue({
         dish.quantity += 1;
       }
 
-      console.log(dish.name);
+      var price = parseFloat(dish.price);
+      this.total_price += price;
+      this.total_price = Math.round(this.total_price * 100) / 100;
     },
     removeFromCart: function removeFromCart(dish) {
       var _this7 = this;
@@ -50041,6 +50044,10 @@ var app = new Vue({
         } else {
           dish.quantity -= 1;
         }
+
+        var price = parseFloat(dish.price);
+        this.total_price -= price;
+        this.total_price = Math.round(this.total_price * 100) / 100;
       }
     }
   },
