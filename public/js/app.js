@@ -49938,7 +49938,7 @@ var app = new Vue({
     view: function view() {
       var _this = this;
 
-      axios.get("/api/users?page=1&search=".concat(this.search, "&search_category=").concat(this.selectedInApi)).then(function (response) {
+      axios.get("/api/users?page=1&search=".concat(this.search).concat(this.selectedInApi)).then(function (response) {
         _this.users = response.data.data;
         _this.current_page = response.data.meta.current_page;
         _this.last_page = response.data.meta.last_page;
@@ -49948,7 +49948,7 @@ var app = new Vue({
       var _this2 = this;
 
       if (this.current_page != this.last_page) {
-        axios.get("/api/users?page=".concat(this.current_page + 1, "&search=").concat(this.search, "&search_category=").concat(this.selectedInApi)).then(function (response) {
+        axios.get("/api/users?page=".concat(this.current_page + 1, "&search=").concat(this.search).concat(this.selectedInApi)).then(function (response) {
           _this2.users = response.data.data;
           _this2.current_page = response.data.meta.current_page;
           _this2.last_page = response.data.meta.last_page;
@@ -49959,7 +49959,7 @@ var app = new Vue({
       var _this3 = this;
 
       if (this.current_page != 1) {
-        axios.get("/api/users?page=".concat(this.current_page - 1, "&search=").concat(this.search, "&search_category=").concat(this.selectedInApi)).then(function (response) {
+        axios.get("/api/users?page=".concat(this.current_page - 1, "&search=").concat(this.search).concat(this.selectedInApi)).then(function (response) {
           _this3.users = response.data.data;
           _this3.current_page = response.data.meta.current_page;
           _this3.last_page = response.data.meta.last_page;
@@ -49969,7 +49969,7 @@ var app = new Vue({
     first: function first() {
       var _this4 = this;
 
-      axios.get("/api/users?page=".concat(this.first_page, "&search=").concat(this.search, "&search_category=").concat(this.selectedInApi)).then(function (response) {
+      axios.get("/api/users?page=".concat(this.first_page, "&search=").concat(this.search).concat(this.selectedInApi)).then(function (response) {
         _this4.users = response.data.data;
         _this4.current_page = response.data.meta.current_page;
         _this4.last_page = response.data.meta.last_page;
@@ -49978,7 +49978,7 @@ var app = new Vue({
     last: function last() {
       var _this5 = this;
 
-      axios.get("/api/users?page=".concat(this.last_page, "&search=").concat(this.search, "&search_category=").concat(this.selectedInApi)).then(function (response) {
+      axios.get("/api/users?page=".concat(this.last_page, "&search=").concat(this.search).concat(this.selectedInApi)).then(function (response) {
         _this5.users = response.data.data;
         _this5.current_page = response.data.meta.current_page;
         _this5.last_page = response.data.meta.last_page;
@@ -50005,7 +50005,7 @@ var app = new Vue({
       }
 
       this.apiCategories.forEach(function (category) {
-        _this6.selectedInApi = _this6.selectedInApi + category + '&';
+        _this6.selectedInApi = _this6.selectedInApi + '&search_category=' + category;
       });
       console.log(this.selectedInApi);
     }

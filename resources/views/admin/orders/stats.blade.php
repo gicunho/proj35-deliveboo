@@ -1,25 +1,18 @@
 @extends('layouts.admin')
-
 @section('content')
     <div class="container">    
         <h1 class="text-center">Le tue statistiche</h1>
-
         <select class="form-select p-1" id="select" name="form_select" onchange="showDiv(this)">
             <option value="0">Months</option>
             <option value="1">Years</option>
         </select>
-
-
         <div id="hidden_months" style="display:block;">
             <!-- Grafico per mesi -->
             <canvas id="month_chart" width="400" height="200"></canvas> 
-
-            <script>
-                const y_orders = [];
-                const api_url = 'http://127.0.0.1:8000/api/orders';
-
+            <script type="application/javascript">
+                var y_orders = [];
+                var api_url = 'http://127.0.0.1:8000/api/orders';
                 chartIt();
-
                 async function chartIt() {
                     await getData();
                     var ctx = document.getElementById('month_chart').getContext('2d');
@@ -45,78 +38,18 @@
                                 }
                             }
                         }
-
-
-                    }
+                    });
                 }
-            });
-        }
-        
-
-        /* API */
-        async function getData() {
-            const response = await fetch(api_url);
-            const data = await response.json();
-            var list = [];
-
-            data.data.forEach(element => {
-                if (element.user_id == {{$user->id}}) {
-                    list.push(element);  
-                }
-            });
-            
-            var sep = 0; 
-            var oct = 0;
-            var nov = 0;
-            var dec = 0;
-            var jan = 0;
-            var feb = 0;
-            var mar = 0;
-            var apr = 0;
-            var may = 0;
-            var jun = 0;
-            var jul = 0;
-            var aug = 0;
-
-            for (let index = 0; index < list.length; index++) {
-                if (list[index].month === 'Sep') {
-                    sep += 1;
-                    console.log('Sep: ' + sep);
-                }
-                else if (list[index].month === 'Oct') {
-                    oct += 1;
-                    console.log('Oct: ' + oct);
-                }
-                else if (list[index].month === 'Nov') {
-                    nov += 1;
-                    console.log('Nov: ' + nov);
-                }   
-                else if (list[index].month === 'Dec') {
-                    dec += 1;
-                    console.log('Dec: ' + dec);
-                }
-                else if (list[index].month === 'Jan') {
-                    jan += 1;
-                    console.log('Jan: ' + jan);
-                }
-                else if (list[index].month === 'Feb') {
-                    feb += 1;
-                    console.log('Feb: ' + feb);
-                }
-                
-
                 /* API */
                 async function getData() {
                     const response = await fetch(api_url);
                     const data = await response.json();
                     var list = [];
-
                     data.data.forEach(element => {
                         if (element.user_id == {{$user->id}}) {
                             list.push(element);  
                         }
                     });
-
                     var sep = 0; 
                     var oct = 0;
                     var nov = 0;
@@ -129,7 +62,6 @@
                     var jun = 0;
                     var jul = 0;
                     var aug = 0;
-
                     for (let index = 0; index < list.length; index++) {
                         if (list[index].month === 'Sep') {
                             sep += 1;
@@ -168,21 +100,16 @@
                             aug += 1;
                         }
                     }
-                    
                     y_orders.push(sep, oct, nov, dec, jan, feb, mar, apr, may, jun, jul, aug);
                 }
             </script>
         </div>
-
         <div id="hidden_years" style="display:none;">
             <!-- Grafico per anni -->
             <canvas id="year_chart" width="400" height="200"></canvas> 
-
-            <script>
-                const y_orders_year = [];
-
+            <script type="application/javascript">
+                var y_orders_year = [];
                 chartYear();
-
                 async function chartYear() {
                     await getData();
                     var ctx = document.getElementById('year_chart').getContext('2d');
@@ -190,14 +117,16 @@
                         type: 'line',
                         data: {
                             labels: ['2017','2018','2019','2020','2021','2022'],
-                            datasets: [{
-                                label: 'Orders x Year',
-                                data: y_orders_year,
-                                backgroundColor: 'rgba(255, 255, 255, 1)',
-                                borderColor: 'rgba(20, 99, 132, 1)',
-                                borderWidth: 4,
-                                tension: 0.1
-                            }]
+                            datasets: [
+                                {
+                                    label: 'Orders x Year',
+                                    data: y_orders_year,
+                                    backgroundColor: 'rgba(255, 255, 255, 1)',
+                                    borderColor: 'rgba(20, 99, 132, 1)',
+                                    borderWidth: 4,
+                                    tension: 0.1
+                                }
+                            ]
                         },
                         options: {
                             scales: {
@@ -208,27 +137,22 @@
                         }
                     });
                 }
-                
-
                 /* API */
                 async function getData() {
                     const response = await fetch(api_url);
                     const data = await response.json();
                     var list = [];
-
                     data.data.forEach(element => {
                         if (element.user_id == {{$user->id}}) {
                             list.push(element);  
                         }
                     });
-
                     var year_1 = 0; 
                     var year_2 = 0;
                     var year_3 = 0;
                     var year_4 = 0;
                     var year_5 = 0;
                     var year_6 = 0;
-
                     for (let index = 0; index < list.length; index++) {
                         if (list[index].year === '2017') {
                             year_1 += 1;;
@@ -253,8 +177,7 @@
                 }
             </script>
         </div>
-
-        <script type="text/javascript">
+        <script type="application/javascript">
             function showDiv(select){
                if(select.value==1){
                     document.getElementById('hidden_months').style.display = "none";
@@ -267,3 +190,5 @@
         </script>
     </div>
 @endsection
+
+
