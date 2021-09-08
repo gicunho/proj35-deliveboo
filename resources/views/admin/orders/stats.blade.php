@@ -7,7 +7,7 @@
 
     <canvas id="chart" width="400" height="200"></canvas> 
 
-    <script>
+    <script type="text/javascript">
         const x_date = [];
         const y_orders = [];
         const api_url = 'http://127.0.0.1:8000/api/orders';
