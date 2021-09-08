@@ -12,7 +12,7 @@ class Order extends Model
         'total_price', 'name', 'surname', 'address', 'phone_number', 'user_id',
     ];
 
-    protected $dates = ['month'];
+    protected $dates = ['month', 'year'];
 
     public function user()
     {

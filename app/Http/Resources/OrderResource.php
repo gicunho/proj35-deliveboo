@@ -23,7 +23,8 @@ class OrderResource extends JsonResource
             'surname' => $this->surname,
             'phone_number' => $this->phone_number,
             'quantity' => $this->quantity,
-            'month' => $this->created_at->format('M')
+            'month' => $this->created_at->format('M'),
+            'year' => $this->created_at->format('Y'),
         ];
     }
 }
