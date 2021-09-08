@@ -5,6 +5,7 @@ use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\User;
+use App\Dish;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +37,16 @@ Route::get('categories', function () {
     return $categories;
 });
 
+Route::get('dishes', function () {
+    $dishes = Dish::with(['users'])->get();
+    return $dishes;
+});
+
 Route::get('users', 'API\UserController@index');
 
 Route::get('orders', 'API\OrderController@index');
 
 Route::get('categories', 'API\CategoryController@index');
+
+Route::get('dishes', 'API\DishController@index');
+

@@ -49932,9 +49932,19 @@ var app = new Vue({
     current_page: null,
     last_page: null,
     apiCategories: [],
-    selectedInApi: ''
+    selectedInApi: '',
+    dishes: null,
+    cart: []
   },
   methods: {
+    aggiungi: function aggiungi(dish, index) {
+      if (this.cart.includes(dish)) {
+        dish.quantity += 1;
+      } else {
+        this.cart.push(dish);
+        console.log(this.cart);
+      }
+    },
     view: function view() {
       var _this = this;
 
@@ -50014,7 +50024,7 @@ var app = new Vue({
     var _this7 = this;
 
     axios.get('/api/users').then(function (resp) {
-      console.log(resp);
+      /*             console.log(resp);*/
       _this7.users = resp.data.data;
       _this7.current_page = resp.data.meta.current_page;
       _this7.last_page = resp.data.meta.last_page;
@@ -50032,6 +50042,17 @@ var app = new Vue({
       _this7.categories.forEach(function (category) {
         return category.isSelected = false;
       });
+    })["catch"](function (e) {
+      console.error('Sorry! ' + e);
+    });
+    axios.get('/api/dishes').then(function (resp) {
+      // resp.data.forEach(element => {
+      //     if (element.user_id == {{ $user -> id }
+      // }) {
+      //     list.push(element);
+      // }
+      _this7.dishes = resp.data.data;
+      console.log(_this7.dishes);
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });

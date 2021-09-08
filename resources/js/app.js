@@ -43,8 +43,19 @@ const app = new Vue({
         last_page: null,
         apiCategories: [],
         selectedInApi: '',
+        dishes: null,
+        cart: [],
+
     },
     methods: {
+        aggiungi(dish, index) {
+            if (this.cart.includes(dish)) {
+                dish.quantity += 1;
+            } else {
+                this.cart.push(dish);
+                console.log(this.cart);
+            }
+        },
         view() {
             axios.get(`/api/users?page=1&search=${this.search}${this.selectedInApi}`)
                 .then(response => {
@@ -118,7 +129,7 @@ const app = new Vue({
     },
     mounted() {
         axios.get('/api/users').then(resp => {
-            console.log(resp);
+            /*             console.log(resp);*/
             this.users = resp.data.data;
             this.current_page = resp.data.meta.current_page;
             this.last_page = resp.data.meta.last_page;
@@ -134,6 +145,17 @@ const app = new Vue({
         axios.get('/api/categories').then(resp => {
             this.categories = resp.data.data;
             this.categories.forEach(category => category.isSelected = false);
+        }).catch(e => {
+            console.error('Sorry! ' + e);
+        })
+        axios.get('/api/dishes').then(resp => {
+            // resp.data.forEach(element => {
+            //     if (element.user_id == {{ $user -> id }
+            // }) {
+            //     list.push(element);
+            // }
+            this.dishes = resp.data.data;
+            console.log(this.dishes);
         }).catch(e => {
             console.error('Sorry! ' + e);
         })
