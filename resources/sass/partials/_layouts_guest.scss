@@ -2,6 +2,7 @@
     .searchbar{
         margin-left: 50px;
         form{
+            font-size: 15px;
             display: flex;
             align-items: center;
             border-bottom: 1px solid rgb(180, 180, 180);
@@ -22,6 +23,7 @@
                 border: none;
                 background-color: white;
                 i{
+                    padding-left: 100px;
                     font-size: 13px;
                     color: rgb(180, 180, 180);
                 }
