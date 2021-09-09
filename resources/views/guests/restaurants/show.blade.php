@@ -22,7 +22,7 @@
                         <h5>€ @{{dish.price}}</h5>
                         <img :src="'/storage/' + dish.image" class="rounded" width="200" alt="">
                         <div class="d-flex m-2">
-                            <i class="fa fa-plus-circle mr-2" aria-hidden="true" @click="addToCart(dish)"></i>
+                            <i class="fa fa-plus-circle mr-2" aria-hidden="true" @click="addToCart(dish, {{$user->id}})"></i>
                             <i class="fa fa-minus-circle" aria-hidden="true" @click="removeFromCart(dish,index)"></i>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                 <button disabled class="btn btn-primary btn-block" v-else>Vai alla cassa</button>
                 <h4 v-if="cart.length > 0" class="mt-4">Il tuo ordine:</h4>
                 <ul class='px-0' v-if="cart.length > 0">
-                    <li v-for="(dish, index) in cart">
+                    <li v-for="(dish, index) in cart" v-if="dish.user_id === {{$user->id}}">
                         <div class="row">
                             <div class="col-12">
                             </div>
