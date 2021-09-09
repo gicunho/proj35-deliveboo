@@ -25,9 +25,9 @@
                     <div class="col-12 col-sm-12 col-md-6 col-xl-4 d-flex flex-column align-items-center mb-5" v-for="(dish, index) in dishes" v-if="dish.user_id == {{$user->id}}">
                         <img :src="'/storage/' + dish.image" class="dish_image" width="200" alt="">
                         <div class="d-flex align-items-center justify-content-center mt-3 text-center">
-                            <i class="fa fa-plus-circle mr-2" aria-hidden="true" @click="addToCart(dish)"></i>
-                            <h4 class="m-0 px-2 dish_name">@{{dish.name}}</h4>
                             <i class="fa fa-minus-circle" aria-hidden="true" @click="removeFromCart(dish,index)"></i>
+                            <h4 class="m-0 px-2 dish_name">@{{dish.name}}</h4>
+                            <i class="fa fa-plus-circle mr-2" aria-hidden="true" @click="addToCart(dish)"></i>
                         </div>
                         <p class="dish_price">Prezzo: € @{{dish.price}}</p>
                     </div>
@@ -43,9 +43,9 @@
                             <div class="col-12">
                             </div>
                             <div class="col-3 py-1 pl-3">
-                                <i class="fa fa-plus-circle" aria-hidden="true" @click="addToCart(dish)"></i>
-                                <span class="quantity">@{{dish.quantity}}</span>
                                 <i class="fa fa-minus-circle" aria-hidden="true" @click="removeFromCart(dish,index)"></i>
+                                <span class="quantity">@{{dish.quantity}}</span>
+                                <i class="fa fa-plus-circle" aria-hidden="true" @click="addToCart(dish)"></i>
                             </div> 
                             <div class="col-5 py-1 px-0">
                                 <span>@{{dish.name}}</span>
