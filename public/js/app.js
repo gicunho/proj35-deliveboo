@@ -50021,10 +50021,22 @@ var app = new Vue({
     addToCart: function addToCart(dish, id) {
       if (this.cart.length > 0) {
         if (this.cart[0].user_id === id) {
-          if (!this.cart.includes(dish)) {
+          /* if (!this.cart.includes(dish)) {
+              this.cart.push(dish);
+          } else {
+              dish.quantity += 1;
+          } */
+          var ind = null;
+          this.cart.forEach(function (el, index) {
+            if (dish.id === el.id) {
+              ind = index;
+            }
+          });
+
+          if (ind === null) {
             this.cart.push(dish);
           } else {
-            dish.quantity += 1;
+            this.cart[ind].quantity += 1; //dish
           }
 
           var price = parseFloat(dish.price);
@@ -50052,19 +50064,35 @@ var app = new Vue({
       }
     },
     removeFromCart: function removeFromCart(dish) {
-      var _this7 = this;
+      /* if (this.cart.includes(dish)) {
+          if (dish.quantity == 1) {
+              this.cart.forEach((item, index) => {
+                  if (item.name == dish.name) {
+                      this.cart.splice(index, 1);
+                  }
+              })
+          } else {
+              dish.quantity -= 1;
+          }
+          var price = parseFloat(dish.price);
+          this.total_price -= price;
+          this.total_price = Math.round(this.total_price * 100) / 100;
+          localStorage.setItem('cart', JSON.stringify(this.cart));
+          localStorage.setItem('total_price', JSON.stringify(this.total_price));
+      } */
+      var ind = null;
+      this.cart.forEach(function (el, index) {
+        if (dish.id === el.id) {
+          ind = index;
+        }
+      });
 
-      if (this.cart.includes(dish)) {
-        if (dish.quantity == 1) {
-          this.cart.forEach(function (item, index) {
-            if (item.name == dish.name) {
-              _this7.cart.splice(index, 1);
-
-              console.log('rimosso' + dish.name);
-            }
-          });
+      if (ind === null) {} else {
+        if (this.cart[ind].quantity == 1) {
+          //dish
+          this.cart.splice(ind, 1);
         } else {
-          dish.quantity -= 1;
+          this.cart[ind].quantity -= 1; //dish
         }
 
         var price = parseFloat(dish.price);
@@ -50075,17 +50103,27 @@ var app = new Vue({
       }
     },
     deleteDish: function deleteDish(dish, index) {
-      var price = parseFloat(dish.price * dish.quantity);
+      var ind = null;
+      this.cart.forEach(function (el, index) {
+        if (dish.id === el.id) {
+          ind = index;
+        }
+      });
+      var price = parseFloat(dish.price * this.cart[ind].quantity); //dish
+
       this.total_price -= price;
       this.total_price = Math.round(this.total_price * 100) / 100;
       this.cart.splice(index, 1);
-      dish.quantity = 1;
+      this.cart[ind].quantity = 1; // dish
+
       localStorage.setItem('cart', JSON.stringify(this.cart));
       localStorage.setItem('total_price', JSON.stringify(this.total_price));
     },
     emptyCart: function emptyCart() {
-      this.cart.forEach(function (dish) {
-        dish.quantity = 1;
+      var _this7 = this;
+
+      this.cart.forEach(function (dish, ind) {
+        _this7.cart[ind].quantity = 1; //dish
       });
       this.cart = [];
       this.total_price = 0;
@@ -50097,7 +50135,6 @@ var app = new Vue({
     var _this8 = this;
 
     axios.get('/api/users').then(function (resp) {
-      console.log(resp);
       _this8.users = resp.data.data;
       _this8.current_page = resp.data.meta.current_page;
       _this8.last_page = resp.data.meta.last_page;
@@ -50260,8 +50297,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\php\proj35-team5\proj35-deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\php\proj35-team5\proj35-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
