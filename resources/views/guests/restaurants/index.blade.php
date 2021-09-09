@@ -11,7 +11,7 @@
             </div>
         </div>
 
-        <div class="restaurants">
+        <div class="restaurants" >
             <h1>RISTORANTI</h1>
             <div class="restaurant" v-for='user in users'>
                 <a :href="'/' + user.id">

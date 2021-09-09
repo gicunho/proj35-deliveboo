@@ -39,7 +39,7 @@
                                     <span>@{{dish.name}}</span>
                                 </div>
                                 <div class="col-3 py-1 px-0">
-                                    <span>@{{dish.price}}</span>
+                                    <span>€ @{{dish.price}}</span>
                                 </div>
                         </div>
                     </li>
@@ -47,7 +47,7 @@
                     <li>
                         <div class="row">
                             <div class="col-4 offset-5 py-1">Totale: </div>
-                            <div class="col-3 py-1 px-0">@{{total_price}}</div>
+                            <div class="col-3 py-1 px-0">€ @{{total_price}}</div>
                         </div>
                     </li>
                 </ul>
