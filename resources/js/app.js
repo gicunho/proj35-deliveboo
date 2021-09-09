@@ -44,8 +44,8 @@ const app = new Vue({
         last_page: null,
         apiCategories: [],
         selectedInApi: '',
-        cart: [],
-        total_price: 0
+        cart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [],
+        total_price: localStorage.getItem('total_price') ? JSON.parse(localStorage.getItem('total_price')) : 0
     },
     methods: {
         // Search bar
@@ -122,15 +122,18 @@ const app = new Vue({
                 this.selectedInApi = this.selectedInApi + '&search_category=' + category;
             })
         },
-        addToCart(dish) {
+        addToCart(dish, id) {
             if (!this.cart.includes(dish)) {
                 this.cart.push(dish);
             } else {
                 dish.quantity += 1;
             }
             var price = parseFloat(dish.price);
-            this.total_price += price
-            this.total_price = Math.round(this.total_price * 100) / 100
+            this.total_price += price;
+            this.total_price = Math.round(this.total_price * 100) / 100;
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+            localStorage.setItem('total_price', JSON.stringify(this.total_price));
+            console.log(id);
         },
         removeFromCart(dish) {
             if (this.cart.includes(dish)) {
@@ -145,16 +148,20 @@ const app = new Vue({
                     dish.quantity -= 1;
                 }
                 var price = parseFloat(dish.price);
-                this.total_price -= price
-                this.total_price = Math.round(this.total_price * 100) / 100
+                this.total_price -= price;
+                this.total_price = Math.round(this.total_price * 100) / 100;
+                localStorage.setItem('cart', JSON.stringify(this.cart));
+                localStorage.setItem('total_price', JSON.stringify(this.total_price));
             }
         },
         deleteDish(dish, index) {
             var price = parseFloat(dish.price * dish.quantity);
-            this.total_price -= price
-            this.total_price = Math.round(this.total_price * 100) / 100
+            this.total_price -= price;
+            this.total_price = Math.round(this.total_price * 100) / 100;
             this.cart.splice(index, 1);
-            dish.quantity = 1
+            dish.quantity = 1;
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+            localStorage.setItem('total_price', JSON.stringify(this.total_price));
         },
         emptyCart() {
             this.cart.forEach(dish => {
@@ -162,6 +169,8 @@ const app = new Vue({
             })
             this.cart = [];
             this.total_price = 0;
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+            localStorage.setItem('total_price', JSON.stringify(this.total_price));
         }
     },
     mounted() {

@@ -17,6 +17,7 @@
                     <hr>
                 </div>
                 <div class="row">
+
                     <div class="col-12">
                         <h4>Il nostro menú: </h4>
                     </div>
@@ -38,7 +39,7 @@
                 <button disabled class="btn btn-primary btn-block" v-else>Vai alla cassa</button>
                 <h4 v-if="cart.length > 0" class="mt-4">Il tuo ordine:</h4>
                 <ul class='px-0' v-if="cart.length > 0">
-                    <li v-for="(dish, index) in cart">
+                    <li v-for="(dish, index) in cart" v-if="dish.user_id === {{$user->id}}">
                         <div class="row">
                             <div class="col-12">
                             </div>

@@ -49934,8 +49934,8 @@ var app = new Vue({
     last_page: null,
     apiCategories: [],
     selectedInApi: '',
-    cart: [],
-    total_price: 0
+    cart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [],
+    total_price: localStorage.getItem('total_price') ? JSON.parse(localStorage.getItem('total_price')) : 0
   },
   methods: {
     // Search bar
@@ -50018,7 +50018,7 @@ var app = new Vue({
         _this6.selectedInApi = _this6.selectedInApi + '&search_category=' + category;
       });
     },
-    addToCart: function addToCart(dish) {
+    addToCart: function addToCart(dish, id) {
       if (!this.cart.includes(dish)) {
         this.cart.push(dish);
       } else {
@@ -50028,6 +50028,9 @@ var app = new Vue({
       var price = parseFloat(dish.price);
       this.total_price += price;
       this.total_price = Math.round(this.total_price * 100) / 100;
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+      localStorage.setItem('total_price', JSON.stringify(this.total_price));
+      console.log(id);
     },
     removeFromCart: function removeFromCart(dish) {
       var _this7 = this;
@@ -50048,6 +50051,8 @@ var app = new Vue({
         var price = parseFloat(dish.price);
         this.total_price -= price;
         this.total_price = Math.round(this.total_price * 100) / 100;
+        localStorage.setItem('cart', JSON.stringify(this.cart));
+        localStorage.setItem('total_price', JSON.stringify(this.total_price));
       }
     },
     deleteDish: function deleteDish(dish, index) {
@@ -50056,6 +50061,8 @@ var app = new Vue({
       this.total_price = Math.round(this.total_price * 100) / 100;
       this.cart.splice(index, 1);
       dish.quantity = 1;
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+      localStorage.setItem('total_price', JSON.stringify(this.total_price));
     },
     emptyCart: function emptyCart() {
       this.cart.forEach(function (dish) {
@@ -50063,6 +50070,8 @@ var app = new Vue({
       });
       this.cart = [];
       this.total_price = 0;
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+      localStorage.setItem('total_price', JSON.stringify(this.total_price));
     }
   },
   mounted: function mounted() {
@@ -50232,8 +50241,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\Proj Finale\proj35-deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Proj Finale\proj35-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
