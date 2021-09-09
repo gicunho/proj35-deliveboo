@@ -19,7 +19,7 @@ class UserController extends Controller
             $item->whereHas('categories', function($q){
                 $q->where('categories.slug', '=' , request('search_category') );
             });
-        })->orderBy('id', 'asc')->paginate(5));
+        })->orderBy('id', 'asc')->paginate(9));
 
     }
 }

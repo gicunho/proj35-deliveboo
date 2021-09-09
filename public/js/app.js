@@ -50019,18 +50019,37 @@ var app = new Vue({
       });
     },
     addToCart: function addToCart(dish, id) {
-      if (!this.cart.includes(dish)) {
-        this.cart.push(dish);
-      } else {
-        dish.quantity += 1;
-      }
+      if (this.cart.length > 0) {
+        if (this.cart[0].user_id === id) {
+          if (!this.cart.includes(dish)) {
+            this.cart.push(dish);
+          } else {
+            dish.quantity += 1;
+          }
 
-      var price = parseFloat(dish.price);
-      this.total_price += price;
-      this.total_price = Math.round(this.total_price * 100) / 100;
-      localStorage.setItem('cart', JSON.stringify(this.cart));
-      localStorage.setItem('total_price', JSON.stringify(this.total_price));
-      console.log(id);
+          var price = parseFloat(dish.price);
+          this.total_price += price;
+          this.total_price = Math.round(this.total_price * 100) / 100;
+          localStorage.setItem('cart', JSON.stringify(this.cart));
+          localStorage.setItem('total_price', JSON.stringify(this.total_price));
+        } else {
+          this.cart = [];
+          this.total_price = 0;
+          this.cart.push(dish);
+          var price = parseFloat(dish.price);
+          this.total_price += price;
+          this.total_price = Math.round(this.total_price * 100) / 100;
+          localStorage.setItem('cart', JSON.stringify(this.cart));
+          localStorage.setItem('total_price', JSON.stringify(this.total_price));
+        }
+      } else {
+        this.cart.push(dish);
+        var price = parseFloat(dish.price);
+        this.total_price += price;
+        this.total_price = Math.round(this.total_price * 100) / 100;
+        localStorage.setItem('cart', JSON.stringify(this.cart));
+        localStorage.setItem('total_price', JSON.stringify(this.total_price));
+      }
     },
     removeFromCart: function removeFromCart(dish) {
       var _this7 = this;
@@ -50241,8 +50260,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\Proj Finale\proj35-deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Proj Finale\proj35-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
