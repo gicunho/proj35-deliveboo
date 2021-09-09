@@ -38,6 +38,7 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>
 
+                @if(Route::currentRouteName() == 'restaurants')
                 <div class="searchbar">
                     <form  @submit.prevent="view">
                         <input id="search-focus" type="search" id="form1" placeholder="Cerca un ristorante" v-model="search">
@@ -46,6 +47,7 @@
                         </button>
                     </form>
                 </div>
+                @endif
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
