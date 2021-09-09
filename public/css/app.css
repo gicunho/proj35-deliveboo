@@ -10011,69 +10011,6 @@ h3 {
   font-weight: 600;
 }
 
-.restaurant_container {
-  max-width: 1170px;
-  margin: auto;
-}
-.restaurant_container .categories {
-  display: flex;
-  justify-content: space-between;
-}
-.restaurant_container .categories .category {
-  margin: 10px;
-  width: 150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  text-decoration: none;
-  color: #131313;
-}
-.restaurant_container .categories .category:hover img {
-  background-color: #ececec;
-  border-radius: 50%;
-}
-.restaurant_container .categories .category img {
-  height: 60px;
-  width: 60px;
-  margin-bottom: 10px;
-}
-.restaurant_container .categories .category h5 {
-  font-size: 14px;
-  font-weight: 600;
-}
-.restaurant_container h1 {
-  margin: 50px 0px 15px 15px;
-  font-size: 35px;
-  margin-bottom: 20px;
-}
-.restaurant_container .restaurants {
-  margin: 15px 15px 150px 15px;
-  display: flex;
-  flex-wrap: wrap;
-}
-.restaurant_container .restaurants .restaurant {
-  margin: 30px 30px 30px 0;
-  width: 350px;
-  border-radius: 3px;
-  background-color: #4ca2d4;
-  padding: 10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
-.restaurant_container .restaurants .restaurant:hover {
-  background-color: #1c8aca;
-}
-.restaurant_container .restaurants .restaurant a {
-  display: block;
-  padding-bottom: 70px;
-  text-decoration: none;
-}
-.restaurant_container .restaurants .restaurant a h2 {
-  font-size: 20px;
-  position: absolute;
-  color: white;
-}
-
 #app .searchbar {
   margin-left: 50px;
 }
@@ -10105,12 +10042,74 @@ h3 {
   color: #b4b4b4;
 }
 
-.category_select:hover {
-  cursor: pointer;
+.restaurant_container {
+  max-width: 1170px;
+  margin: auto;
 }
-
-.selected {
+.restaurant_container .categories {
+  display: flex;
+  justify-content: space-between;
+}
+.restaurant_container .categories .category {
+  margin: 10px;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: #131313;
+}
+.restaurant_container .categories .category:hover img {
+  background-color: #ececec;
+  border-radius: 50%;
+}
+.restaurant_container .categories .category img {
+  height: 60px;
+  width: 60px;
+  margin-bottom: 10px;
+}
+.restaurant_container .categories .category h5 {
+  font-size: 14px;
+  font-weight: 600;
+}
+.restaurant_container .categories .selected {
   color: #0a66c2 !important;
+}
+.restaurant_container .categories .selected img {
+  background-color: #ececec;
+  border-radius: 50%;
+}
+.restaurant_container h1 {
+  margin: 50px 0px 15px 15px;
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+.restaurant_container .restaurants {
+  margin: 15px 15px 150px 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.restaurant_container .restaurants .restaurant {
+  margin: 30px 30px 30px 0;
+  width: 350px;
+  border-radius: 3px;
+  background-color: #4ca2d4;
+  padding: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.restaurant_container .restaurants .restaurant:hover {
+  background-color: #1c8aca;
+}
+.restaurant_container .restaurants .restaurant a {
+  display: block;
+  padding-bottom: 70px;
+  text-decoration: none;
+}
+.restaurant_container .restaurants .restaurant a h2 {
+  font-size: 20px;
+  position: absolute;
+  color: white;
 }
 
 .ristorante_info h1 {
