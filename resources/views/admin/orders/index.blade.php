@@ -5,7 +5,7 @@
 
     <div class="container">
         <div class="text-right">
-            <a href="{{ route('admin.orders.stats') }}"> ~ Le tue statistiche ~ </a>
+            <a href="{{ route('admin.orders.stats') }}">Le tue statistiche <i class="fas fa-chart-line"></i>  </a>
         </div>
 
         <h1 class="text-center">I tuoi ordini</h1>
