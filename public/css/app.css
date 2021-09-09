@@ -10028,16 +10028,17 @@ h3 {
 }
 #app .searchbar form input {
   border: none;
+  width: 250px;
 }
 #app .searchbar form input:focus {
   outline: none;
+  -webkit-appearance: none;
 }
 #app .searchbar form button {
   border: none;
   background-color: white;
 }
 #app .searchbar form button i {
-  padding-left: 100px;
   font-size: 13px;
   color: #b4b4b4;
 }
