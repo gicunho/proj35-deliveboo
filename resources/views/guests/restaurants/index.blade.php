@@ -4,11 +4,11 @@
 
     <div class="restaurant_container">
 
-        <div class="categories">
-            <a href="#" class="category" v-for='(category,index) in categories' v-on:click="selected(index)" :class="category.isSelected ? 'selected' : ''">
+        <div class="categories d-flex">
+            <div class="category" v-for='(category,index) in categories' v-on:click="selected(index); apiSelected(index); view(index);" :class="category.isSelected ? 'selected' : ''">
                 <img :src="'img/' + category.emoji" alt="">
                 <h5>@{{category.name}}</h5>
-            </a>
+            </div>
         </div>
 
         <div class="restaurants">
