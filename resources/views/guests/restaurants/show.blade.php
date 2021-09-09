@@ -17,12 +17,14 @@
 
                 </div>
                 <div class="row">
-                    <div class="col-6" v-for="(dish, index) in dishes" v-if="dish.user_id == {{$user->id}}">
+                    <div class="col-5 mr-3 mb-5" v-for="(dish, index) in dishes" v-if="dish.user_id == {{$user->id}}">
                         <h4>@{{dish.name}}</h4>
                         <h5>€ @{{dish.price}}</h5>
-                        <i class="fa fa-plus-circle" aria-hidden="true" @click="addToCart(dish)"></i>
-                        <i class="fa fa-minus-circle" aria-hidden="true" @click="removeFromCart(dish,index)"></i>
-                        <img :src="'/storage/' + dish.image" width="200" alt="">
+                        <img :src="'/storage/' + dish.image" class="rounded" width="200" alt="">
+                        <div class="d-flex m-2">
+                            <i class="fa fa-plus-circle mr-2" aria-hidden="true" @click="addToCart(dish)"></i>
+                            <i class="fa fa-minus-circle" aria-hidden="true" @click="removeFromCart(dish,index)"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -32,15 +34,15 @@
                 <ul class='px-0' v-if="cart.length > 0">
                     <li v-for="dish in cart">
                         <div class="row">
-                                <div class="col-3 py-1 pl-3">
-                                    <span class="quantity">@{{dish.quantity}}</span>
-                                </div> 
-                                <div class="col-6 py-1 px-0">
-                                    <span>@{{dish.name}}</span>
-                                </div>
-                                <div class="col-3 py-1 px-0">
-                                    <span>€ @{{dish.price}}</span>
-                                </div>
+                            <div class="col-3 py-1 pl-3">
+                                <span class="quantity">@{{dish.quantity}}</span>
+                            </div> 
+                            <div class="col-6 py-1 px-0">
+                                <span>@{{dish.name}}</span>
+                            </div>
+                            <div class="col-3 py-1 px-0">
+                                <span>€ @{{dish.price}}</span>
+                            </div>
                         </div>
                     </li>
                     <hr>
