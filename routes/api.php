@@ -41,3 +41,6 @@ Route::get('users', 'API\UserController@index');
 Route::get('orders', 'API\OrderController@index');
 
 Route::get('categories', 'API\CategoryController@index');
+
+Route::get('dishes', 'API\DishController@index');
+

@@ -7,6 +7,7 @@
 const { default: axios } = require('axios');
 const { forEach } = require('lodash');
 
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -36,25 +37,126 @@ const app = new Vue({
         users: null,
         orders: null,
         categories: null,
-        search: ""
+        dishes: null,
+        search: "",
+        first_page: 1,
+        current_page: null,
+        last_page: null,
+        apiCategories: [],
+        selectedInApi: '',
+        cart: [],
+        total_price: 0
     },
     methods: {
-        view(page = 1) {
-            axios.get(`/api/users?page=${page}&search=${this.search}`)
-                .then(response => this.users = response.data.data);
+        // Search bar
+        view() {
+            axios.get(`/api/users?page=1&search=${this.search}${this.selectedInApi}`)
+                .then(response => {
+                    this.users = response.data.data
+                    this.current_page = response.data.meta.current_page;
+                    this.last_page = response.data.meta.last_page;
+                });
         },
+        // Next page
+        next() {
+            if (this.current_page != this.last_page) {
+                axios.get(`/api/users?page=${this.current_page + 1}&search=${this.search}${this.selectedInApi}`)
+                    .then(response => {
+                        this.users = response.data.data
+                        this.current_page = response.data.meta.current_page;
+                        this.last_page = response.data.meta.last_page;
+                    });
+            }
+        },
+        // Previous page
+        prev() {
+            if (this.current_page != 1) {
+                axios.get(`/api/users?page=${this.current_page - 1}&search=${this.search}${this.selectedInApi}`)
+                    .then(response => {
+                        this.users = response.data.data
+                        this.current_page = response.data.meta.current_page;
+                        this.last_page = response.data.meta.last_page;
+                    });
+            }
+        },
+        // First page
+        first() {
+            axios.get(`/api/users?page=${this.first_page}&search=${this.search}${this.selectedInApi}`)
+                .then(response => {
+                    this.users = response.data.data
+                    this.current_page = response.data.meta.current_page;
+                    this.last_page = response.data.meta.last_page;
+                });
+        },
+        // Last page
+        last() {
+            axios.get(`/api/users?page=${this.last_page}&search=${this.search}${this.selectedInApi}`)
+                .then(response => {
+                    this.users = response.data.data
+                    this.current_page = response.data.meta.current_page;
+                    this.last_page = response.data.meta.last_page;
+                });
+        },
+        // Add selected class to category
         selected(index) {
             if (this.categories[index].isSelected == false) {
                 return this.categories[index].isSelected = true;
             }
-            else {
+            else
                 return this.categories[index].isSelected = false;
+        },
+        // Change api call based on selection
+        apiSelected(index) {
+            this.selectedInApi = '';
+            if (!this.apiCategories.includes(this.categories[index].slug)) {
+                this.apiCategories.push(this.categories[index].slug);
             }
-        }
+            else {
+                this.apiCategories.forEach((category, i) => {
+                    if (category === this.categories[index].slug) {
+                        this.apiCategories.splice(i, 1);
+                    }
+                })
+            }
+            this.apiCategories.forEach(category => {
+                this.selectedInApi = this.selectedInApi + '&search_category=' + category;
+            })
+        },
+        addToCart(dish) {
+            if (!this.cart.includes(dish)) {
+                this.cart.push(dish);
+            } else {
+                dish.quantity += 1;
+            }
+            var price = parseFloat(dish.price);
+            this.total_price += price
+            this.total_price = Math.round(this.total_price * 100) / 100
+        },
+        removeFromCart(dish) {
+            if (this.cart.includes(dish)) {
+                if (dish.quantity == 1) {
+                    this.cart.forEach((item, index) => {
+                        if (item.name == dish.name) {
+                            this.cart.splice(index, 1);
+                            console.log('rimosso' + dish.name);
+                        }
+                    })
+                } else {
+                    dish.quantity -= 1;
+                }
+                var price = parseFloat(dish.price);
+                this.total_price -= price
+                this.total_price = Math.round(this.total_price * 100) / 100
+            }
+        },
     },
     mounted() {
         axios.get('/api/users').then(resp => {
+            console.log(resp);
             this.users = resp.data.data;
+            this.current_page = resp.data.meta.current_page;
+            this.last_page = resp.data.meta.last_page;
+
         }).catch(e => {
             console.error('Sorry! ' + e);
         })
@@ -66,6 +168,11 @@ const app = new Vue({
         axios.get('/api/categories').then(resp => {
             this.categories = resp.data.data;
             this.categories.forEach(category => category.isSelected = false);
+        }).catch(e => {
+            console.error('Sorry! ' + e);
+        })
+        axios.get('/api/dishes').then(resp => {
+            this.dishes = resp.data.data;
         }).catch(e => {
             console.error('Sorry! ' + e);
         })

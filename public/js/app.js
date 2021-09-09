@@ -49927,44 +49927,157 @@ var app = new Vue({
     users: null,
     orders: null,
     categories: null,
-    search: ""
+    dishes: null,
+    search: "",
+    first_page: 1,
+    current_page: null,
+    last_page: null,
+    apiCategories: [],
+    selectedInApi: '',
+    cart: [],
+    total_price: 0
   },
   methods: {
+    // Search bar
     view: function view() {
       var _this = this;
 
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get("/api/users?page=".concat(page, "&search=").concat(this.search)).then(function (response) {
-        return _this.users = response.data.data;
+      axios.get("/api/users?page=1&search=".concat(this.search).concat(this.selectedInApi)).then(function (response) {
+        _this.users = response.data.data;
+        _this.current_page = response.data.meta.current_page;
+        _this.last_page = response.data.meta.last_page;
       });
     },
+    // Next page
+    next: function next() {
+      var _this2 = this;
+
+      if (this.current_page != this.last_page) {
+        axios.get("/api/users?page=".concat(this.current_page + 1, "&search=").concat(this.search).concat(this.selectedInApi)).then(function (response) {
+          _this2.users = response.data.data;
+          _this2.current_page = response.data.meta.current_page;
+          _this2.last_page = response.data.meta.last_page;
+        });
+      }
+    },
+    // Previous page
+    prev: function prev() {
+      var _this3 = this;
+
+      if (this.current_page != 1) {
+        axios.get("/api/users?page=".concat(this.current_page - 1, "&search=").concat(this.search).concat(this.selectedInApi)).then(function (response) {
+          _this3.users = response.data.data;
+          _this3.current_page = response.data.meta.current_page;
+          _this3.last_page = response.data.meta.last_page;
+        });
+      }
+    },
+    // First page
+    first: function first() {
+      var _this4 = this;
+
+      axios.get("/api/users?page=".concat(this.first_page, "&search=").concat(this.search).concat(this.selectedInApi)).then(function (response) {
+        _this4.users = response.data.data;
+        _this4.current_page = response.data.meta.current_page;
+        _this4.last_page = response.data.meta.last_page;
+      });
+    },
+    // Last page
+    last: function last() {
+      var _this5 = this;
+
+      axios.get("/api/users?page=".concat(this.last_page, "&search=").concat(this.search).concat(this.selectedInApi)).then(function (response) {
+        _this5.users = response.data.data;
+        _this5.current_page = response.data.meta.current_page;
+        _this5.last_page = response.data.meta.last_page;
+      });
+    },
+    // Add selected class to category
     selected: function selected(index) {
       if (this.categories[index].isSelected == false) {
         return this.categories[index].isSelected = true;
+      } else return this.categories[index].isSelected = false;
+    },
+    // Change api call based on selection
+    apiSelected: function apiSelected(index) {
+      var _this6 = this;
+
+      this.selectedInApi = '';
+
+      if (!this.apiCategories.includes(this.categories[index].slug)) {
+        this.apiCategories.push(this.categories[index].slug);
       } else {
-        return this.categories[index].isSelected = false;
+        this.apiCategories.forEach(function (category, i) {
+          if (category === _this6.categories[index].slug) {
+            _this6.apiCategories.splice(i, 1);
+          }
+        });
+      }
+
+      this.apiCategories.forEach(function (category) {
+        _this6.selectedInApi = _this6.selectedInApi + '&search_category=' + category;
+      });
+    },
+    addToCart: function addToCart(dish) {
+      if (!this.cart.includes(dish)) {
+        this.cart.push(dish);
+      } else {
+        dish.quantity += 1;
+      }
+
+      var price = parseFloat(dish.price);
+      this.total_price += price;
+      this.total_price = Math.round(this.total_price * 100) / 100;
+    },
+    removeFromCart: function removeFromCart(dish) {
+      var _this7 = this;
+
+      if (this.cart.includes(dish)) {
+        if (dish.quantity == 1) {
+          this.cart.forEach(function (item, index) {
+            if (item.name == dish.name) {
+              _this7.cart.splice(index, 1);
+
+              console.log('rimosso' + dish.name);
+            }
+          });
+        } else {
+          dish.quantity -= 1;
+        }
+
+        var price = parseFloat(dish.price);
+        this.total_price -= price;
+        this.total_price = Math.round(this.total_price * 100) / 100;
       }
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this8 = this;
 
     axios.get('/api/users').then(function (resp) {
-      _this2.users = resp.data.data;
+      console.log(resp);
+      _this8.users = resp.data.data;
+      _this8.current_page = resp.data.meta.current_page;
+      _this8.last_page = resp.data.meta.last_page;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/orders').then(function (resp) {
-      _this2.orders = resp.data.data;
+      _this8.orders = resp.data.data;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/categories').then(function (resp) {
-      _this2.categories = resp.data.data;
+      _this8.categories = resp.data.data;
 
-      _this2.categories.forEach(function (category) {
+      _this8.categories.forEach(function (category) {
         return category.isSelected = false;
       });
+    })["catch"](function (e) {
+      console.error('Sorry! ' + e);
+    });
+    axios.get('/api/dishes').then(function (resp) {
+      _this8.dishes = resp.data.data;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });

@@ -23,7 +23,7 @@ class PageController extends Controller
      */
     public function show(User $user)
     {
-        $dishes = Dish::all();
-        return view('guests.restaurants.show', compact('user', 'dishes'));
+
+        return view('guests.restaurants.show', compact('user'));
     }
 }

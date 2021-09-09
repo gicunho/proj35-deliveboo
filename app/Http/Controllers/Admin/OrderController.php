@@ -18,13 +18,13 @@ class OrderController extends Controller
     public function index()
     {
         $user = User::find(auth()->id());
-        /* $orders = Order::where('user_id', '=', Auth::user()->id)->get(); */
         return view('admin.orders.index', compact('user'/* , 'orders' */));
     }
 
     public function stats()
     {
-        $orders = Order::all();
-        return view('admin.orders.stats', compact('orders'));
+        $user = User::find(auth()->id());
+        $orders = Order::where('user_id', '=', Auth::user()->id)->get();
+        return view('admin.orders.stats', compact('orders', 'user'));
     }
 }
