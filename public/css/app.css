@@ -10120,12 +10120,25 @@ h3 {
   cursor: pointer;
   opacity: 60%;
 }
+.ristorante_info .dish_name {
+  font-size: 16px !important;
+}
+.ristorante_info .dish_image {
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.ristorante_info .dish_price {
+  color: #bcbcbc !important;
+  font-size: 12px;
+}
 
 .cart {
   background-color: white !important;
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  position: sticky;
+  top: 0;
 }
 .cart ul {
   list-style: none !important;
