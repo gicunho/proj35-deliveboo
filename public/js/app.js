@@ -50049,6 +50049,20 @@ var app = new Vue({
         this.total_price -= price;
         this.total_price = Math.round(this.total_price * 100) / 100;
       }
+    },
+    deleteDish: function deleteDish(dish, index) {
+      var price = parseFloat(dish.price * dish.quantity);
+      this.total_price -= price;
+      this.total_price = Math.round(this.total_price * 100) / 100;
+      this.cart.splice(index, 1);
+      dish.quantity = 1;
+    },
+    emptyCart: function emptyCart() {
+      this.cart.forEach(function (dish) {
+        dish.quantity = 1;
+      });
+      this.cart = [];
+      this.total_price = 0;
     }
   },
   mounted: function mounted() {
@@ -50218,8 +50232,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

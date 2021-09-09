@@ -10116,10 +10116,16 @@ h3 {
   font-weight: bold !important;
   font-family: "Nunito", sans-serif !important;
 }
+.ristorante_info i:hover {
+  cursor: pointer;
+  opacity: 60%;
+}
 
 .cart {
   background-color: white !important;
   padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 .cart ul {
   list-style: none !important;
@@ -10127,4 +10133,8 @@ h3 {
 }
 .cart ul li .quantity {
   color: #bcbcbc !important;
+}
+.cart i:hover {
+  cursor: pointer;
+  opacity: 60%;
 }

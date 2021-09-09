@@ -31,17 +31,25 @@
             <div class="col-4 cart">
                 <button type="button" class="btn btn-primary btn-block" v-if="cart.length > 0">Vai alla cassa</button>
                 <button disabled class="btn btn-primary btn-block" v-else>Vai alla cassa</button>
+                <h4 v-if="cart.length > 0" class="mt-4">Il tuo ordine:</h4>
                 <ul class='px-0' v-if="cart.length > 0">
-                    <li v-for="dish in cart">
+                    <li v-for="(dish, index) in cart">
                         <div class="row">
+                            <div class="col-12">
+                            </div>
                             <div class="col-3 py-1 pl-3">
+                                <i class="fa fa-plus-circle" aria-hidden="true" @click="addToCart(dish)"></i>
                                 <span class="quantity">@{{dish.quantity}}</span>
+                                <i class="fa fa-minus-circle" aria-hidden="true" @click="removeFromCart(dish,index)"></i>
                             </div> 
-                            <div class="col-6 py-1 px-0">
+                            <div class="col-5 py-1 px-0">
                                 <span>@{{dish.name}}</span>
                             </div>
-                            <div class="col-3 py-1 px-0">
+                            <div class="col-2 py-1 px-0">
                                 <span>€ @{{dish.price}}</span>
+                            </div>
+                            <div class="col-1">
+                                <i class="fas fa-times-circle" @click="deleteDish(dish, index)"></i>
                             </div>
                         </div>
                     </li>
@@ -53,6 +61,7 @@
                         </div>
                     </li>
                 </ul>
+                <button type="button" class="btn btn-danger btn-block" v-if="cart.length > 0" @click="emptyCart">Svuota il carrello</button>
                 <div class="row d-flex text-center align-items-center h-100" v-else>
                     <div class='col-12'>
                         Il carrello è vuoto
