@@ -1,6 +1,8 @@
 .cart{
     background-color: white!important;
     padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     ul{
         list-style: none!important;
         margin-top: 1.5rem;
@@ -8,6 +10,12 @@
             .quantity{
                 color: #bcbcbc!important;
             }
+        }
+    }
+    i{
+        &:hover{
+            cursor: pointer;
+            opacity: 60%;
         }
     }
 }

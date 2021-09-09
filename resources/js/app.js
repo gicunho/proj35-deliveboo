@@ -149,6 +149,20 @@ const app = new Vue({
                 this.total_price = Math.round(this.total_price * 100) / 100
             }
         },
+        deleteDish(dish, index) {
+            var price = parseFloat(dish.price * dish.quantity);
+            this.total_price -= price
+            this.total_price = Math.round(this.total_price * 100) / 100
+            this.cart.splice(index, 1);
+            dish.quantity = 1
+        },
+        emptyCart() {
+            this.cart.forEach(dish => {
+                dish.quantity = 1;
+            })
+            this.cart = [];
+            this.total_price = 0;
+        }
     },
     mounted() {
         axios.get('/api/users').then(resp => {

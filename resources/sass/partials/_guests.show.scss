@@ -3,4 +3,10 @@
         font-weight: bold!important;
         font-family: "Nunito", sans-serif!important;
     }
+    i{
+        &:hover{
+            cursor: pointer;
+            opacity: 60%;
+        }
+    }
 }
