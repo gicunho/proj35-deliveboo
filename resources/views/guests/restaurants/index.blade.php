@@ -11,8 +11,8 @@
             </div>
         </div>
 
+        <h1>RISTORANTI</h1>
         <div class="restaurants">
-            <h1>RISTORANTI</h1>
             <div class="restaurant" v-for='user in users'>
                 <a :href="'/' + user.id">
                     <h2>@{{ user . restaurant_name }}</h2>
