@@ -1,0 +1,33 @@
+#app{
+    .searchbar{
+        margin-left: 50px;
+        form{
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgb(180, 180, 180);
+            &:hover{
+                border-bottom: 1px solid rgb(76, 162, 212);
+                i{
+                    color: rgb(76, 162, 212);
+                }
+            }
+            
+            input{
+                border: none;
+                &:focus{
+                    outline: none;
+                }
+            }
+            button{
+                border: none;
+                background-color: white;
+                i{
+                    padding-left: 100px;
+                    font-size: 13px;
+                    color: rgb(180, 180, 180);
+                }
+            }
+        }
+    }
+}

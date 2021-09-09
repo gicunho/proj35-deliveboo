@@ -9,9 +9,11 @@
         <div id="hidden_months" style="display:block;">
             <!-- Grafico per mesi -->
             <canvas id="month_chart" width="400" height="200"></canvas> 
+
             <script type="application/javascript">
-                var y_orders = [];
-                var api_url = 'http://127.0.0.1:8000/api/orders';
+                const y_orders = [];
+                const api_url = 'http://127.0.0.1:8000/api/orders';
+
                 chartIt();
                 async function chartIt() {
                     await getData();

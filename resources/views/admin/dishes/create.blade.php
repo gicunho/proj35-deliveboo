@@ -3,9 +3,6 @@
 @section('content')
     <div class="container">
         <h1>Crea un nuovo piatto!</h1>
-        <div>
-            <a href="{{route('admin.dishes.index')}}"> <i class="fas fa-long-arrow-alt-left">Torna ai tuoi piatti</i></a>
-         </div>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
