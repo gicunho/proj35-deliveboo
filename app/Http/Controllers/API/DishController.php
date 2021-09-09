@@ -12,6 +12,6 @@ class DishController extends Controller
 {
     public function index()
     {
-        return DishResource::collection(Dish::with(['user'])->paginate());
+        return DishResource::collection(Dish::with(['user'])->get());
     }
 }
