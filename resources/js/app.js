@@ -44,8 +44,8 @@ const app = new Vue({
         last_page: null,
         apiCategories: [],
         selectedInApi: '',
-        cart: [],
-        total_price: 0
+        cart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [],
+        total_price: localStorage.getItem('total_price') ? JSON.parse(localStorage.getItem('total_price')) : 0
     },
     methods: {
         // Search bar
@@ -122,51 +122,119 @@ const app = new Vue({
                 this.selectedInApi = this.selectedInApi + '&search_category=' + category;
             })
         },
-        addToCart(dish) {
-            if (!this.cart.includes(dish)) {
-                this.cart.push(dish);
+        addToCart(dish, id) {
+            if (this.cart.length > 0) {
+                if (this.cart[0].user_id === id) {
+                    /* if (!this.cart.includes(dish)) {
+                        this.cart.push(dish);
+                    } else {
+                        dish.quantity += 1;
+                    } */
+                    
+                    var ind = null;
+                    this.cart.forEach((el, index) => {
+                        if (dish.id === el.id) {
+                            ind = index;
+                        }
+                    });
+                    if (ind === null) {
+                        this.cart.push(dish);
+                    } else {
+                        this.cart[ind].quantity += 1; //dish
+                    }
+
+                    var price = parseFloat(dish.price);
+                    this.total_price += price;
+                    this.total_price = Math.round(this.total_price * 100) / 100;
+                    localStorage.setItem('cart', JSON.stringify(this.cart));
+                    localStorage.setItem('total_price', JSON.stringify(this.total_price));
+                }
+                else {
+                    this.cart = [];
+                    this.total_price = 0;
+                    this.cart.push(dish);
+                    var price = parseFloat(dish.price);
+                    this.total_price += price;
+                    this.total_price = Math.round(this.total_price * 100) / 100;
+                    localStorage.setItem('cart', JSON.stringify(this.cart));
+                    localStorage.setItem('total_price', JSON.stringify(this.total_price));
+                }
             } else {
-                dish.quantity += 1;
+                this.cart.push(dish);
+                var price = parseFloat(dish.price);
+                this.total_price += price;
+                this.total_price = Math.round(this.total_price * 100) / 100;
+                localStorage.setItem('cart', JSON.stringify(this.cart));
+                localStorage.setItem('total_price', JSON.stringify(this.total_price));
             }
-            var price = parseFloat(dish.price);
-            this.total_price += price
-            this.total_price = Math.round(this.total_price * 100) / 100
         },
         removeFromCart(dish) {
-            if (this.cart.includes(dish)) {
+            /* if (this.cart.includes(dish)) {
                 if (dish.quantity == 1) {
                     this.cart.forEach((item, index) => {
                         if (item.name == dish.name) {
                             this.cart.splice(index, 1);
-                            console.log('rimosso' + dish.name);
                         }
                     })
                 } else {
                     dish.quantity -= 1;
                 }
                 var price = parseFloat(dish.price);
-                this.total_price -= price
-                this.total_price = Math.round(this.total_price * 100) / 100
+                this.total_price -= price;
+                this.total_price = Math.round(this.total_price * 100) / 100;
+                localStorage.setItem('cart', JSON.stringify(this.cart));
+                localStorage.setItem('total_price', JSON.stringify(this.total_price));
+            } */
+
+            var ind = null;
+            this.cart.forEach((el, index) => {
+                if (dish.id === el.id) {
+                    ind = index;
+                }
+            });
+
+            if (ind === null) {
+            } else {
+                if (this.cart[ind].quantity == 1) { //dish
+                    this.cart.splice(ind, 1);
+                } else {
+                    this.cart[ind].quantity -= 1; //dish
+                }
+                var price = parseFloat(dish.price);
+                this.total_price -= price;
+                this.total_price = Math.round(this.total_price * 100) / 100;
+                localStorage.setItem('cart', JSON.stringify(this.cart));
+                localStorage.setItem('total_price', JSON.stringify(this.total_price));
             }
         },
         deleteDish(dish, index) {
-            var price = parseFloat(dish.price * dish.quantity);
-            this.total_price -= price
-            this.total_price = Math.round(this.total_price * 100) / 100
+            var ind = null;
+            this.cart.forEach((el, index) => {
+                if (dish.id === el.id) {
+                    ind = index;
+                }
+            });
+
+            var price = parseFloat(dish.price * this.cart[ind].quantity); //dish
+            this.total_price -= price;
+            this.total_price = Math.round(this.total_price * 100) / 100;
             this.cart.splice(index, 1);
-            dish.quantity = 1
+            this.cart[ind].quantity = 1; // dish
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+            localStorage.setItem('total_price', JSON.stringify(this.total_price));
         },
         emptyCart() {
-            this.cart.forEach(dish => {
-                dish.quantity = 1;
+            this.cart.forEach((dish, ind) => {
+                this.cart[ind].quantity = 1; //dish
             })
             this.cart = [];
             this.total_price = 0;
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+            localStorage.setItem('total_price', JSON.stringify(this.total_price));
         }
     },
     mounted() {
         axios.get('/api/users').then(resp => {
-            console.log(resp);
             this.users = resp.data.data;
             this.current_page = resp.data.meta.current_page;
             this.last_page = resp.data.meta.last_page;
