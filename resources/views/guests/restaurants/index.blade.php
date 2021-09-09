@@ -11,6 +11,7 @@
             </div>
         </div>
 
+
         <h1>RISTORANTI</h1>
         <div class="restaurants">
             <div class="restaurant" v-for='user in users'>
