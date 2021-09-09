@@ -10042,14 +10042,18 @@ h3 {
   font-size: 14px;
   font-weight: 600;
 }
-.restaurant_container .restaurants {
-  margin: 50px 15px 150px 15px;
-}
-.restaurant_container .restaurants h1 {
+.restaurant_container h1 {
+  margin: 50px 0px 15px 15px;
   font-size: 35px;
   margin-bottom: 20px;
 }
+.restaurant_container .restaurants {
+  margin: 15px 15px 150px 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
 .restaurant_container .restaurants .restaurant {
+  margin: 30px 30px 30px 0;
   width: 350px;
   border-radius: 3px;
   background-color: #4ca2d4;
