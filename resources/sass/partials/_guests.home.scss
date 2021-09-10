@@ -11,7 +11,7 @@
             align-items: center;
             text-align: center;
             text-decoration: none;
-            color: rgb(19, 19, 19);
+            color: $brand-black;
             &:hover{
                 cursor: pointer;
                 img{
@@ -31,8 +31,7 @@
             }  
         }
         .selected{
-            color: #0a66c2!important;
-            
+            color: $brand-secondary!important;
             img{
                 background-color: rgb(236, 236, 236);
                 border-radius: 50%;

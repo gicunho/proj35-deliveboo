@@ -10047,6 +10047,9 @@ h3 {
   font-size: 13px;
   color: #b4b4b4;
 }
+#app h1 {
+  color: #2D3333;
+}
 
 .drop-down-user {
   z-index: 1;
@@ -10071,7 +10074,7 @@ h3 {
   align-items: center;
   text-align: center;
   text-decoration: none;
-  color: #131313;
+  color: #2D3333;
 }
 .restaurant_container .categories .category:hover {
   cursor: pointer;
@@ -10090,7 +10093,7 @@ h3 {
   font-weight: 600;
 }
 .restaurant_container .categories .selected {
-  color: #0a66c2 !important;
+  color: #00828C !important;
 }
 .restaurant_container .categories .selected img {
   background-color: #ececec;
