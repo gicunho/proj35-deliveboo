@@ -165,6 +165,7 @@
                                 <i class="fab fa-google-play"></i>
                                 <div>
                                     <h6>DISPONIBILE SU</h6>
+                                    
                                     <h5>Google Play</h5>
                                 </div>
                             </div>
