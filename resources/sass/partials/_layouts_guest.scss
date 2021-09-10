@@ -1,22 +1,28 @@
-#app {
-    .searchbar {
+
+#app{
+    .navbar-brand{
+        font-family: 'Courgette', cursive; 
+        font-size: 25px;
+        color: $brand-secondary;
+    }
+    .searchbar{
         margin-left: 50px;
         form {
             font-size: 15px;
             display: flex;
             align-items: center;
             border-bottom: 1px solid rgb(180, 180, 180);
-            &:hover {
-                border-bottom: 1px solid rgb(76, 162, 212);
-                i {
-                    color: rgb(76, 162, 212);
+            &:hover{
+                border-bottom: 1px solid $brand-primary;
+                i{
+                    color: $brand-secondary;
                 }
             }
 
             input {
                 border: none;
-                width: 250px;
-                &:focus {
+                width: 150px;
+                &:focus{
                     outline: none;
                     -webkit-appearance: none;
                 }
