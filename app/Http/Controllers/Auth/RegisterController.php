@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -64,6 +65,7 @@ class RegisterController extends Controller
             'phone_number' => ['required', 'string', 'numeric'],
             'password' => 'min:8|required|confirmed',
             'password_confirmation' => 'min:8',
+            'restaurant_image' => 'required | image | max:500'
         ]);
 
     }
@@ -74,8 +76,10 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
-   
+    {  
+
+        $file_path = Storage::put('users_images', $data['restaurant_image']);
+        
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -84,6 +88,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'restaurant_name' => $data['restaurant_name'],
             'phone_number' => $data['phone_number'],
+            'restaurant_image' => $file_path
         ]);
         $categories = $data['categories']; //$data['categories'] --> quelli passati dal form 
 

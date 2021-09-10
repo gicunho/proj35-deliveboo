@@ -125,12 +125,6 @@ const app = new Vue({
         addToCart(dish, id) {
             if (this.cart.length > 0) {
                 if (this.cart[0].user_id === id) {
-                    /* if (!this.cart.includes(dish)) {
-                        this.cart.push(dish);
-                    } else {
-                        dish.quantity += 1;
-                    } */
-                    
                     var ind = null;
                     this.cart.forEach((el, index) => {
                         if (dish.id === el.id) {
@@ -169,23 +163,6 @@ const app = new Vue({
             }
         },
         removeFromCart(dish) {
-            /* if (this.cart.includes(dish)) {
-                if (dish.quantity == 1) {
-                    this.cart.forEach((item, index) => {
-                        if (item.name == dish.name) {
-                            this.cart.splice(index, 1);
-                        }
-                    })
-                } else {
-                    dish.quantity -= 1;
-                }
-                var price = parseFloat(dish.price);
-                this.total_price -= price;
-                this.total_price = Math.round(this.total_price * 100) / 100;
-                localStorage.setItem('cart', JSON.stringify(this.cart));
-                localStorage.setItem('total_price', JSON.stringify(this.total_price));
-            } */
-
             var ind = null;
             this.cart.forEach((el, index) => {
                 if (dish.id === el.id) {

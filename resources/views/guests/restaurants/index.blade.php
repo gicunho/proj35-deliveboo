@@ -16,7 +16,7 @@
             <div class="restaurant" v-for='user in users'>
                 <a :href="'/' + user.id">
                     <h2>@{{ user . restaurant_name }}</h2>
-                    <img src="" alt="">
+                    <img :src="'storage/' + user.restaurant_image" alt="">
                 </a>
             </div>
         </div>
