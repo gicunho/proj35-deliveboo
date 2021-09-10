@@ -50,7 +50,7 @@
                                             @click="addToCart(dish, {{ $user->id }})"></i>
                                     </div>
                                 </div>
-                                <img :src="'/storage/' + dish.image" class="dish_image" width="150" height="150" alt="">
+                                <img :src="'/storage/' + dish.image" class="dish_image" width="150" height="130" alt="">
                             </div>
                         </div>
 

@@ -10100,7 +10100,7 @@ h3 {
   border-radius: 50%;
 }
 .restaurant_container h1 {
-  margin: 30px 0px 15px 15px;
+  margin: 30px 0px 15px 29px;
   font-size: 35px;
   margin-bottom: 20px;
 }
@@ -10141,19 +10141,11 @@ h3 {
 
 .ristorante_info h1 {
   font-weight: bold !important;
-  font-family: "Nunito", sans-serif !important;
-}
-.ristorante_info .dish_name {
-  font-size: 16px !important;
-}
-.ristorante_info .dish_price {
-  color: #bcbcbc !important;
-  font-size: 12px;
 }
 .ristorante_info .dish {
   display: flex;
   justify-content: space-between;
-  height: 150px;
+  height: 130px;
   width: 400px;
   margin: 20px;
   border-radius: 5px;
@@ -10168,30 +10160,32 @@ h3 {
   justify-content: space-between;
 }
 .ristorante_info .dish .description h4 {
+  font-size: 16px;
   padding: 15px 0 0 20px;
+  margin: 0;
   width: 120px;
 }
 .ristorante_info .dish .description p {
+  color: #bcbcbc !important;
+  font-size: 12px;
+  margin-bottom: 0;
   padding-left: 20px;
 }
 .ristorante_info .dish .description .button {
-  padding: 0 0 15px 20px;
+  padding: 0 0 12px 12px;
 }
 .ristorante_info .dish .description .button i {
-  font-size: 7px;
-  color: white;
-  background-color: black;
-  border-radius: 3px;
+  font-size: 13px;
+  color: #3490dc;
+  background-color: #e2e9ee;
+  border-radius: 50%;
   text-align: center;
-  padding: 5px 8px;
-}
-.ristorante_info .dish .description .button .minus:hover {
-  cursor: pointer;
-  background-color: #e3342f;
+  padding: 5px;
 }
 .ristorante_info .dish .description .button .plus:hover {
   cursor: pointer;
   background-color: #3490dc;
+  color: #e2e9ee;
 }
 .ristorante_info .dish img {
   border-top-right-radius: 5px;
@@ -10259,7 +10253,7 @@ h3 {
 }
 
 footer {
-  background-color: #2e3333;
+  background-color: #2d3333;
   padding: 30px 0;
 }
 footer .footer_card {
@@ -10284,6 +10278,32 @@ footer .footer_card .container span:hover {
   cursor: pointer;
   font-weight: 700;
 }
+footer .footer_card .container .store {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  border-radius: 5px;
+  padding: 3px;
+  margin-bottom: 15px;
+  border: 1px solid white;
+  background-color: black;
+}
+footer .footer_card .container .store:hover {
+  cursor: pointer;
+}
+footer .footer_card .container .store i {
+  font-size: 25px;
+  margin-right: 10px;
+}
+footer .footer_card .container .store h6 {
+  font-size: 9px;
+  margin: 0;
+}
+footer .footer_card .container .store h5 {
+  font-size: 18px;
+  margin: 0;
+}
 footer .icon {
   padding: 10px 15px 0 0;
   color: white;
@@ -10300,6 +10320,9 @@ footer .icon .fa-instagram:hover {
 footer .icon i {
   font-size: 22px;
   padding-right: 20px;
+}
+footer .icon i:hover {
+  cursor: pointer;
 }
 footer .copyright {
   color: #d1d1d1;
