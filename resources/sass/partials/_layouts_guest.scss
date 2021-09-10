@@ -15,15 +15,16 @@
             
             input{
                 border: none;
+                width: 250px;
                 &:focus{
                     outline: none;
+                    -webkit-appearance: none;
                 }
             }
             button{
                 border: none;
                 background-color: white;
                 i{
-                    padding-left: 100px;
                     font-size: 13px;
                     color: rgb(180, 180, 180);
                 }

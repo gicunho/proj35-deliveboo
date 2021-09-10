@@ -10028,16 +10028,17 @@ h3 {
 }
 #app .searchbar form input {
   border: none;
+  width: 250px;
 }
 #app .searchbar form input:focus {
   outline: none;
+  -webkit-appearance: none;
 }
 #app .searchbar form button {
   border: none;
   background-color: white;
 }
 #app .searchbar form button i {
-  padding-left: 100px;
   font-size: 13px;
   color: #b4b4b4;
 }
@@ -10081,17 +10082,18 @@ h3 {
   border-radius: 50%;
 }
 .restaurant_container h1 {
-  margin: 50px 0px 15px 15px;
+  margin: 30px 0px 15px 15px;
   font-size: 35px;
   margin-bottom: 20px;
 }
 .restaurant_container .restaurants {
-  margin: 15px 15px 150px 15px;
+  margin: 15px 15px 50px 15px;
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 .restaurant_container .restaurants .restaurant {
-  margin: 30px 30px 30px 0;
+  margin: 20px 0 20px 0;
   width: 350px;
   border-radius: 3px;
   background-color: #4ca2d4;
@@ -10116,20 +10118,59 @@ h3 {
   font-weight: bold !important;
   font-family: "Nunito", sans-serif !important;
 }
-.ristorante_info i:hover {
-  cursor: pointer;
-  opacity: 60%;
-}
 .ristorante_info .dish_name {
   font-size: 16px !important;
-}
-.ristorante_info .dish_image {
-  border-radius: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 .ristorante_info .dish_price {
   color: #bcbcbc !important;
   font-size: 12px;
+}
+.ristorante_info .dish {
+  display: flex;
+  justify-content: space-between;
+  height: 150px;
+  width: 400px;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+.ristorante_info .dish:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.ristorante_info .dish .description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ristorante_info .dish .description h4 {
+  padding: 15px 0 0 20px;
+  width: 120px;
+}
+.ristorante_info .dish .description p {
+  padding-left: 20px;
+}
+.ristorante_info .dish .description .button {
+  padding: 0 0 15px 20px;
+}
+.ristorante_info .dish .description .button i {
+  font-size: 7px;
+  color: white;
+  background-color: black;
+  border-radius: 3px;
+  text-align: center;
+  padding: 5px 8px;
+}
+.ristorante_info .dish .description .button .minus:hover {
+  cursor: pointer;
+  background-color: #e3342f;
+}
+.ristorante_info .dish .description .button .plus:hover {
+  cursor: pointer;
+  background-color: #3490dc;
+}
+.ristorante_info .dish img {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .cart {

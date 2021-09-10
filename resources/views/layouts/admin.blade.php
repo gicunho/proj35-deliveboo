@@ -16,6 +16,10 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
@@ -29,9 +33,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand pt-1 mr-4" href="{{ url('/') }}">
-                    {{-- <i class="fas fa-home" style="color: #0a66c2; font-size: 20px;"></i> --}}
-                    {{ config('app.name', 'Laravel') }}     
+                <a class="navbar-brand" href="{{ url('/') }}" style="font-family: 'Courgette', cursive; font-size: 25px" >
+                    {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
