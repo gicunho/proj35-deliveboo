@@ -1,6 +1,62 @@
 .ristorante_info{
     h1{
         font-weight: bold!important;
-        font-family: "Nunito", sans-serif!important;
+    }
+
+    .dish{
+        display: flex;
+        justify-content: space-between;
+        height: 130px;
+        width: 400px;
+        margin: 20px;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
+        &:hover{
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        }
+
+        .description{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            h4{
+                font-size: 16px;
+                padding: 15px 0 0 20px;
+                margin: 0;
+                width: 120px;
+            }
+            p{
+                color: $cartGrey;
+                font-size: 12px;
+                margin-bottom: 0;
+                padding-left: 20px;   
+            }
+
+            .button{
+                padding: 0 0 12px 12px;
+
+                i{
+                    font-size: 13px;
+                    color: #3490dc;
+                    background-color: #e2e9ee;
+                    border-radius: 50%;
+                    text-align: center; 
+                    padding: 5px;
+                }
+                .plus{   
+                    &:hover{
+                        cursor: pointer;
+                        background-color: #3490dc;
+                        color: #e2e9ee;
+                    }
+                }
+            }
+        }
+        img{
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
     }
 }

@@ -13,6 +13,6 @@ class OrderController extends Controller
 {
     public function index()
     {
-        return OrderResource::collection(Order::with(['user'])->paginate());
+        return OrderResource::collection(Order::with(['user'])->get());
     }
 }

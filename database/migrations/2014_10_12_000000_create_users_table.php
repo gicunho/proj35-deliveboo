@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('piva', 11)->unique();
             $table->string('address');
             $table->string('restaurant_name');
-            $table->string('restaurant_image')->nullable();
+            $table->string('restaurant_image')->nullable()->default('storage/users_images/italian.png');
             $table->string('phone_number')->nullable();
             $table->rememberToken();
             $table->timestamps();

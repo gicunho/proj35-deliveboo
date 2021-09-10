@@ -114,20 +114,6 @@
                             </div>
                         </div>
 
-                        {{-- <div class="form-group row">
-                            <label for="restaurant_image" class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Image') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="restaurant_image" type="file" class="@error('restaurant_image') is-invalid @enderror" name="restaurant_image" value="{{ old('restaurant_image') }}" autocomplete="restaurant_image" autofocus>
-
-                                @error('restaurant_image')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div> --}}
-
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password *') }}</label>
 
@@ -150,6 +136,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="restaurant_image" class="col-md-4 col-form-label text-md-right">Immagine del Ristorante *</label>
+                            <div class="col-md-6">
+                                <input type="file" class="@error('restaurant_image') is-invalid @enderror " name="restaurant_image" id="restaurant_image" aria-describedby="restaurant_imageHelperr" placeholder="Aggiungi un'immagine" required />
+                            </div>
+                            <small id="restaurant_imageHelperr" class="form-text text-muted col-md-6 offset-md-4">Una volta inserita un'immagine non potrà più essere modificata</small>
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

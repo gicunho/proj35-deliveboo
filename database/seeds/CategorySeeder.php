@@ -12,7 +12,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $categories = ['Pizza' => 'pizza.png', 'Sushi' => 'sushi.png', 'Fast Food' => 'fastfood.png', 'Poke' => 'poke.png', 'Cucina Cinese' => 'chinese.png', 'Cucina Italiana' => 'italian.png', 'Cucina Americana' => 'american.png', 'Cucina Sana' => 'healthy.png', 'Cucina Giapponese' => 'japanese.png', 'Panini' => 'sandwich.png', 'Cucina Coreana' => 'korean.png', 'Cucina Asiatica' => 'asian.png', 'Gelato e yougurt' => 'icecreamandyogort.png'];
+        $categories = ['Pizza' => 'pizza.png', 'Sushi' => 'sushi.png', 'Fast Food' => 'fastfood.png', 'Poke' => 'poke.png', 'Cucina Cinese' => 'chinese.png', 'Cucina Italiana' => 'italian.png', 'Cucina Americana' => 'american.png', 'Cucina Sana' => 'healthy.png', 'Cucina Giapponese' => 'japanese.png', 'Panini' => 'sandwich.png', 'Cucina Coreana' => 'korean.png', 'Gelato e yougurt' => 'icecreamandyogort.png'];
         foreach ($categories as $category_name => $category_emoji) {
             $cat = new Category();
             $cat->name = $category_name;
