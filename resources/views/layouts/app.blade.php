@@ -113,6 +113,67 @@
         <main class="py-4 position-relative">
             @yield('content')
         </main>
+
+        <footer>
+            <div class="container">
+                <div class="row d-flex">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-3 footer_card">
+                        <div class="container">
+                            <h4>Scopri Deliveboo</h4>
+                            <span>Investitori</span>
+                            <span>Chi siamo</span>
+                            <span>Ristoranti</span>
+                            <span>Altro</span>
+                            <span>Il nostro blog</span>
+                            <span>Programmazione</span>
+                            <span>Design</span>
+                            <span>Lavora con noi</span>
+                            <span>Diventa nostro partner</span>
+                        </div>    
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-3 footer_card">
+                        <div class="container">
+                            <h4>Note Legali</h4>
+                            <span>Termini & Condizioni</span>
+                            <span>Informativa sulla privacy</span>
+                            <span>Coockies</span>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-3 footer_card">
+                        <div class="container">
+                            <h4>Aiuto</h4>
+                            <span>Contatti</span>
+                            <span>FAQ</span>
+                            <span>Tipi di cucina</span>
+                            <span>Mappa del sito</span>
+                        </div> 
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-3 footer_card">
+                        <div class="container">
+                            <h4>Porta Deliveboo con te</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-between align-items-center">
+                        <div class="icon">
+                            <i class="fab fa-facebook"></i>
+                            <i class="fab fa-twitter"></i>
+                            <i class="fab fa-instagram"></i>
+                        </div>
+
+                        <div class="copyright d-flex align-items-center">
+                            <i class="far fa-copyright"></i>
+                            <span>2021 Deliveboo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
 
