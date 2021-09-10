@@ -24,11 +24,8 @@
                         @foreach ($user->categories as $category)
                             <h5 class="pl-2">• {{ $category->name }}</h5>
                         @endforeach
-                        
-                        @if ($user->restaurant_image)
-                            <span style="font-size: 10px">IMMAGINE:</span> 
-                            <img src="{{ $user->restaurant_image }}" alt="{{ $user->restaurant_name }}">    
-                        @endif    
+                        <span style="font-size: 10px">IMMAGINE:</span> 
+                        <img src="{{ asset('storage/' . $user->restaurant_image) }}" alt="{{ $user->restaurant_name }}">    
                 </div>
             </div>
         </div>
