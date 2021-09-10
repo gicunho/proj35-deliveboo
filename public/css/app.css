@@ -10048,6 +10048,14 @@ h3 {
   color: #b4b4b4;
 }
 
+.drop-down-user {
+  z-index: 1;
+}
+
+.carrello {
+  z-index: -1;
+}
+
 .restaurant_container {
   max-width: 1170px;
   margin: auto;

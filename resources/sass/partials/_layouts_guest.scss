@@ -1,3 +1,4 @@
+
 #app{
     .navbar-brand{
         font-family: 'Courgette', cursive; 
@@ -6,7 +7,7 @@
     }
     .searchbar{
         margin-left: 50px;
-        form{
+        form {
             font-size: 15px;
             display: flex;
             align-items: center;
@@ -17,8 +18,8 @@
                     color: $brand-secondary;
                 }
             }
-            
-            input{
+
+            input {
                 border: none;
                 width: 150px;
                 &:focus{
@@ -26,14 +27,22 @@
                     -webkit-appearance: none;
                 }
             }
-            button{
+            button {
                 border: none;
                 background-color: white;
-                i{
+                i {
                     font-size: 13px;
                     color: rgb(180, 180, 180);
                 }
             }
         }
     }
+}
+
+.drop-down-user {
+    z-index: 1;
+}
+
+.carrello {
+    z-index: -1;
 }
