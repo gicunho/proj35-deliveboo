@@ -2,21 +2,25 @@
 
 @section('content')
 
-    <div class="restaurant_container">
-
-        <div class="categories d-flex">
-            <div class="category" v-for='(category,index) in categories' v-on:click="selected(index); apiSelected(index); view(index);" :class="category.isSelected ? 'selected' : ''">
-                <img :src="'img/' + category.emoji" alt="">
-                <h5>@{{category.name}}</h5>
+    <div class="restaurant_container container">
+        <div class="row justify-content-center">
+            <div class="col-12 categories">
+                <div class="row">
+                    <div class="category col-lg-1 col-md-2 col-3" v-for='(category,index) in categories' v-on:click="selected(index); apiSelected(index); view(index);" :class="category.isSelected ? 'selected' : ''">
+                        <img :src="'img/' + category.emoji" alt="">
+                        <h5>@{{category.name}}</h5>
+                    </div>
+                </div>
             </div>
         </div>
 
         <h1>RISTORANTI</h1>
         <div class="restaurants">
-            <div class="restaurant" v-for='user in users'>
+            <div  v-for='user in users ' class='col-4'>
                 <a :href="'/' + user.id">
-                    <h2>@{{ user . restaurant_name }}</h2>
-                    <img src="" alt="">
+                <div class="restaurant"  :style="{ backgroundImage: 'url(\'storage/' + user.restaurant_image + '\')' }">
+                </div>
+                    <h4>@{{ user . restaurant_name }}</h4>
                 </a>
             </div>
         </div>

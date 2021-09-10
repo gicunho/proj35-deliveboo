@@ -59,7 +59,6 @@ class DishController extends Controller
             $validatedData['image'] = $file_path;
         }
 
-        /* $validatedData->user()->save($validatedData); */
         $dish = Dish::create($validatedData);
         return redirect()->route('admin.dishes.index', compact('dish'));
     }
