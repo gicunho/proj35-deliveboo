@@ -10217,3 +10217,94 @@ h3 {
   cursor: pointer;
   opacity: 60%;
 }
+
+.dish_card {
+  margin-top: 50px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dish_card span {
+  width: 90%;
+  font-weight: 600;
+  font-size: 17px;
+  padding: 10px;
+  border-bottom: 1px solid #b1b1b1;
+  text-align: center;
+}
+.dish_card img {
+  height: 300px;
+  height: 300px;
+  margin: 25px;
+  border-radius: 5px;
+}
+.dish_card p {
+  text-transform: capitalize;
+}
+.dish_card .price {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+  border-top: 1px solid #b1b1b1;
+}
+.dish_card .price span {
+  padding: 5px 30px;
+  background-color: #4ca2d4;
+  border-radius: 5px;
+  color: white;
+  font-size: 25px;
+}
+
+footer {
+  background-color: #2e3333;
+  padding: 30px 0;
+}
+footer .footer_card {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+footer .footer_card .container {
+  height: 325px;
+  padding: 18px 0 20px 25px;
+  background-color: #434848;
+}
+footer .footer_card .container h4 {
+  font-weight: 700;
+}
+footer .footer_card .container span {
+  display: block;
+  font-size: 15px;
+  margin: 5px 0;
+}
+footer .footer_card .container span:hover {
+  cursor: pointer;
+  font-weight: 700;
+}
+footer .icon {
+  padding: 10px 15px 0 0;
+  color: white;
+}
+footer .icon .fa-facebook:hover {
+  color: #1977f3;
+}
+footer .icon .fa-twitter:hover {
+  color: #00a2f5;
+}
+footer .icon .fa-instagram:hover {
+  color: #f74954;
+}
+footer .icon i {
+  font-size: 22px;
+  padding-right: 20px;
+}
+footer .copyright {
+  color: #d1d1d1;
+  font-size: 13px;
+}
+footer .copyright i {
+  padding-right: 5px;
+}
