@@ -14,8 +14,8 @@
                             <div class="d-flex align-items-center">
                                 <span>€</span>
                                 @foreach($user->categories as $category)
-                                <span class="m-1" style="font-size: 10px">•</span>
-                                <span>{{$category->name}}</span>
+                                    <span class="m-1" style="font-size: 10px">•</span>
+                                    <span>{{$category->name}}</span>
                                 @endforeach
                             </div>
 
@@ -38,18 +38,17 @@
                         </div>
 
                         <div class="row pl-2">
-                            <div class="col-12 col-sm-12 col-md-6 col-xl-5 p-0  dish" v-for="(dish, index) in dishes" v-if="dish.user_id == {{$user->id}}">
+                            <div class="col-12 col-sm-12 col-md-6 col-xl-5 p-0 dish" v-for="(dish, index) in dishes" v-if="dish.user_id == {{$user->id}}">
                                 <div class="description">
                                     <div>
                                         <h4 class="dish_name">@{{dish.name}}</h4>
                                         <p class="dish_price">Prezzo: € @{{dish.price}}</p>
                                     </div>
                                     <div class="button">
-                                        <i class="fa fa-minus minus" aria-hidden="true" @click="removeFromCart(dish,index)"></i>
                                         <i class="fa fa-plus plus ml-2" aria-hidden="true" @click="addToCart(dish, {{$user->id}})"></i>
                                     </div>
                                 </div>
-                                <img :src="'/storage/' + dish.image" class="dish_image" width="150" height="150" alt="">
+                                <img :src="'/storage/' + dish.image" class="dish_image" width="150" height="130" alt="">
                             </div>
                         </div>
 

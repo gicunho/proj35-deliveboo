@@ -143,6 +143,20 @@
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-3 footer_card">
                         <div class="container">
                             <h4>Porta Deliveboo con te</h4>
+                            <div class="store">
+                                <i class="fab fa-apple" style="font-size: 30px"></i>
+                                <div>
+                                    <h6>Scarica su</h6>
+                                    <h5>App Store</h5>
+                                </div>
+                            </div>
+                            <div class="store">
+                                <i class="fab fa-google-play"></i>
+                                <div>
+                                    <h6>DISPONIBILE SU</h6>
+                                    <h5>Google Play</h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
