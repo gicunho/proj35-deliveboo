@@ -50015,7 +50015,7 @@ var app = new Vue({
       }
 
       this.apiCategories.forEach(function (category) {
-        _this6.selectedInApi = _this6.selectedInApi + '&search_category=' + category;
+        _this6.selectedInApi = _this6.selectedInApi + '&search_category[]=' + category;
       });
     },
     addToCart: function addToCart(dish, id) {

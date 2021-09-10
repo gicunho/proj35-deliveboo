@@ -119,7 +119,7 @@ const app = new Vue({
                 })
             }
             this.apiCategories.forEach(category => {
-                this.selectedInApi = this.selectedInApi + '&search_category=' + category;
+                this.selectedInApi = this.selectedInApi + '&search_category[]=' + category;
             })
         },
         addToCart(dish, id) {
