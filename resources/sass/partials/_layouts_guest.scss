@@ -1,34 +1,42 @@
-#app{
-    .searchbar{
+#app {
+    .searchbar {
         margin-left: 50px;
-        form{
+        form {
             font-size: 15px;
             display: flex;
             align-items: center;
             border-bottom: 1px solid rgb(180, 180, 180);
-            &:hover{
+            &:hover {
                 border-bottom: 1px solid rgb(76, 162, 212);
-                i{
+                i {
                     color: rgb(76, 162, 212);
                 }
             }
-            
-            input{
+
+            input {
                 border: none;
                 width: 250px;
-                &:focus{
+                &:focus {
                     outline: none;
                     -webkit-appearance: none;
                 }
             }
-            button{
+            button {
                 border: none;
                 background-color: white;
-                i{
+                i {
                     font-size: 13px;
                     color: rgb(180, 180, 180);
                 }
             }
         }
     }
+}
+
+.drop-down-user {
+    z-index: 1;
+}
+
+.carrello {
+    z-index: -1;
 }
