@@ -1,6 +1,8 @@
 .ristorante_info{
-    h1{
+    .restaurant_name{
+        border-bottom: 4px solid $brand-secondary;
         font-weight: bold!important;
+        width: fit-content;
     }
 
     .dish{

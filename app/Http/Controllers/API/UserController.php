@@ -24,7 +24,7 @@ class UserController extends Controller
                     ->orWhere('categories.slug', '=', $request[$i]);
                 }
             });
-        })->orderBy('id', 'asc')->paginate(9));
+        })->orderBy('id', 'asc')->paginate(6));
 
     }
 }

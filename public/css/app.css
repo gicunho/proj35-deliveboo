@@ -10024,6 +10024,7 @@ h3 {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #b4b4b4;
+  position: relative;
 }
 #app .searchbar form:hover {
   border-bottom: 1px solid #4EAB89;
@@ -10042,6 +10043,8 @@ h3 {
 #app .searchbar form button {
   border: none;
   background-color: white;
+  position: absolute;
+  right: 0;
 }
 #app .searchbar form button i {
   font-size: 13px;
@@ -10139,8 +10142,12 @@ h3 {
   cursor: pointer;
 }
 
-.ristorante_info h1 {
+.ristorante_info .restaurant_name {
+  border-bottom: 4px solid #00828C;
   font-weight: bold !important;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .ristorante_info .dish {
   display: flex;
@@ -10199,6 +10206,18 @@ h3 {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   position: sticky;
   top: 0;
+}
+.cart .btn-brand-secondary {
+  background-color: #00828C;
+}
+.cart .btn-brand-secondary.active:hover {
+  background-color: #4EAB89;
+}
+.cart .btn-brand-danger {
+  background-color: #8A4747;
+}
+.cart .btn-brand-danger:hover {
+  background-color: #ba5c5c;
 }
 .cart ul {
   list-style: none !important;

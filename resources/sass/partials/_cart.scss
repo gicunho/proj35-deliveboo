@@ -5,6 +5,18 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     position: sticky;
     top: 0;
+    .btn-brand-secondary {
+        background-color: $brand-secondary;
+        &.active:hover{
+            background-color: $brand-primary;
+        }
+    }
+    .btn-brand-danger{
+        background-color: $brand-danger;
+        &:hover{
+            background-color: #ba5c5c;
+        }
+    }
     ul{
         list-style: none!important;
         margin-top: 1.5rem;

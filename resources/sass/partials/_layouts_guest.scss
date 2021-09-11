@@ -12,6 +12,7 @@
             display: flex;
             align-items: center;
             border-bottom: 1px solid rgb(180, 180, 180);
+            position: relative;
             &:hover{
                 border-bottom: 1px solid $brand-primary;
                 i{
@@ -30,6 +31,8 @@
             button {
                 border: none;
                 background-color: white;
+                position: absolute;
+                right: 0;
                 i {
                     font-size: 13px;
                     color: rgb(180, 180, 180);
