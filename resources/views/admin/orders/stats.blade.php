@@ -29,7 +29,7 @@
                                     backgroundColor: 'rgba(255, 255, 255, 1)',
                                     borderColor: 'rgb(255, 51, 0)',
                                     borderWidth: 4,
-                                    tension: 0.1,
+                                    tension: 0.3,
                                 },
                             ]
                         },
