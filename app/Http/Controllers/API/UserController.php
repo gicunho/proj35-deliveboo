@@ -17,7 +17,12 @@ class UserController extends Controller
             );
         })->when(request('search_category'), function($item){
             $item->whereHas('categories', function($q){
-            $q->where('categories.slug', '=',  request('search_category') );
+                $request = request('search_category');
+                for ($i=0; $i < count($request); $i++) { 
+                    $q->where('categories.slug', '=', $request[$i])
+                    ->orWhere('categories.slug', '=', $request[$i])
+                    ->orWhere('categories.slug', '=', $request[$i]);
+                }
             });
         })->orderBy('id', 'asc')->paginate(9));
 
