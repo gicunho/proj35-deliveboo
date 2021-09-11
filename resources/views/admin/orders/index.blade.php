@@ -4,8 +4,8 @@
 @section('content')
 
     <div class="container">
-        <div class="text-right">
-            <a href="{{ route('admin.orders.stats') }}">Le tue statistiche <i class="fas fa-chart-line"></i>  </a>
+        <div class="text-right mr-3">
+            <a class="border rounded-circle p-2" href="{{ route('admin.orders.stats') }}"><i class="fas fa-chart-line"></i></a>
         </div>
 
         <h1 class="text-center">I tuoi ordini</h1>

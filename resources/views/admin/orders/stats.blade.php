@@ -21,10 +21,10 @@
                     var myChart = new Chart(ctx, {
                         type: 'line',
                         data: {
-                            labels: ['September','October','November','December','January','February','March','April','May','June','July','August'],
+                            labels: ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'],
                             datasets: [
                                 {
-                                    label: 'Orders x Months',
+                                    label: 'Ordini x Mese',
                                     data: y_orders,
                                     backgroundColor: 'rgba(255, 255, 255, 1)',
                                     borderColor: 'rgb(255, 51, 0)',
@@ -102,7 +102,7 @@
                             aug += 1;
                         }
                     }
-                    y_orders.push(sep, oct, nov, dec, jan, feb, mar, apr, may, jun, jul, aug);
+                    y_orders.push(jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec,);
                 }
             </script>
         </div>
@@ -121,7 +121,7 @@
                             labels: ['2017','2018','2019','2020','2021','2022'],
                             datasets: [
                                 {
-                                    label: 'Orders x Year',
+                                    label: 'Ordini x Anni',
                                     data: y_orders_year,
                                     backgroundColor: 'rgba(255, 255, 255, 1)',
                                     borderColor: 'rgba(20, 99, 132, 1)',
