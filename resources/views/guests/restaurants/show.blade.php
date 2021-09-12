@@ -7,7 +7,7 @@
             <div class="col-7 mr-5">
                 <div class="row">
                     <div class="col-12 ristorante_info">
-                        <h1 class="text-capitalize">{{$user->restaurant_name}}</h1>
+                        <h1 class="restaurant_name text-capitalize">{{$user->restaurant_name}}</h1>
                         <div class="col-12">
                             <div class="d-flex align-items-center">
                                 <span>€</span>
@@ -48,11 +48,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4 position-relative pr-4">
+            <div class="col-4 position-relative pr-4 mt-5">
                 <div class="row sticky-top">
                     <div class="col-12 cart">
-                        <button type="button" class="btn btn-primary btn-block" v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">Vai alla cassa</button>
-                        <button disabled class="btn btn-primary btn-block" v-else>Vai alla cassa</button>
+                        <button type="button" class="btn active btn-brand-secondary text-white btn-block" v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">Vai alla cassa</button>
+                        <button disabled class="btn btn-brand-secondary text-white btn-block" v-else>Vai alla cassa</button>
                         <h4 v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}" class="mt-4">Il tuo ordine:</h4>
                         <ul class='px-0' v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">
                             <li v-for="(dish, index) in cart" v-if="dish.user_id == {{$user->id}}">
@@ -87,7 +87,7 @@
                                 </div>
                             </li>
                         </ul>
-                        <button type="button" class="btn btn-danger btn-block" v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}" @click="emptyCart">Svuota il carrello</button>
+                        <button type="button" class="btn btn-brand-danger text-white btn-block" v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}" @click="emptyCart">Svuota il carrello</button>
                         <div class="row d-flex text-center align-items-center" v-else>
                             <div class='col-12 pt-4'>
                                 Il carrello è vuoto
