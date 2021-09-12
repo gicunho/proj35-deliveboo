@@ -28,7 +28,7 @@
             h5{
                 font-size: 14px;
                 font-weight: 600;
-            }  
+            }
         }
         .selected{
             color: $brand-secondary!important;
@@ -44,7 +44,7 @@
         margin-bottom: 20px;
     }
     .restaurants{
-        margin: 15px 15px 50px 15px; 
+        margin: 15px 15px 50px 15px;
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
@@ -78,6 +78,59 @@
         }
     }
 
+}
+
+
+// Jumbotron
+
+.container-fluid{
+    background-image: linear-gradient(to right, #4EAB89, #00828C);
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.left{
+    padding-left: 15%;
+}
+
+#slide_in_l{
+    animation: slideIn 1.5s ease-in;
+}
+@keyframes slideIn {
+    0% {
+         transform: skew(-45deg) translateX(-500px);
+    }
+    60%{
+        transform: skew(0deg) translateX(30px);
+    }
+    100% {
+        transform: skew(0deg);
+    }
+}
+
+.right{
+    text-align: center;
+}
+
+#hero_img{
+    width: 50%;
+    animation: grow 1s ease;
+}
+@keyframes grow{
+    0%{
+        transform: scaleX(0);
+    }
+    60%{
+        transform: scaleX(0.5);
+    }
+    100%{
+        transform: scaleX(1);
+
+    }
 }
 
 
