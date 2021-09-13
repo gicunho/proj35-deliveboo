@@ -10010,8 +10010,8 @@ h3 {
   padding-top: 5px;
 }
 #app ul li {
-  margin-right: 10px;
   font-size: 15px;
+  cursor: pointer;
 }
 #app ul li .is_active {
   font-weight: 600;
@@ -10150,7 +10150,7 @@ h3 {
 }
 
 .ristorante_info .restaurant_name {
-  border-bottom: 4px solid #00828C;
+  border-bottom: 4px solid #1892ca;
   font-weight: bold !important;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -10215,13 +10215,13 @@ h3 {
   top: 0;
 }
 .cart .btn-brand-secondary {
-  background-color: #00828C;
+  background-color: #1892ca;
 }
 .cart .btn-brand-secondary.active:hover {
-  background-color: #4EAB89;
+  background-color: #4eab89;
 }
 .cart .btn-brand-danger {
-  background-color: #8A4747;
+  background-color: #c72020;
 }
 .cart .btn-brand-danger:hover {
   background-color: #ba5c5c;
@@ -10255,7 +10255,6 @@ h3 {
   text-align: center;
 }
 .dish_card img {
-  height: 300px;
   height: 300px;
   margin: 25px;
   border-radius: 5px;

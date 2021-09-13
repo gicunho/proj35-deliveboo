@@ -25,8 +25,8 @@
                             <h5 class="pl-2">• {{ $category->name }}</h5>
                         @endforeach
                         <span style="font-size: 10px">IMMAGINE:</span> 
-                        <div>
-                            <img src="{{ asset('storage/' . $user->restaurant_image) }}" alt="{{ $user->restaurant_name }}">    
+                        <div class="px-2 py-1">
+                            <img src="{{ asset('storage/' . $user->restaurant_image) }}" width="150" class="rounded" alt="{{ $user->restaurant_name }}">    
                         </div>
                 </div>
             </div>

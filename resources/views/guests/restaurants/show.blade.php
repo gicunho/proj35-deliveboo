@@ -54,15 +54,13 @@
                         <h4 v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}" class="mt-4">Il tuo ordine:</h4>
                         <ul class='px-0' v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">
                             <li v-for="(dish, index) in cart" v-if="dish.user_id == {{$user->id}}">
-                                <div class="row">
-                                    <div class="col-12">
-                                    </div>
-                                    <div class="col-3 py-1 pl-3">
+                                <div class="row d-flex justify-content-around">
+                                    <div class="col-4 py-1 pl-3">
                                         <i class="fa fa-minus-circle" aria-hidden="true" @click="removeFromCart(dish,index)"></i>
-                                        <span class="quantity p-1">@{{dish.quantity}}</span>
+                                        <span class="quantity px-1">@{{dish.quantity}}</span>
                                         <i class="fa fa-plus-circle" aria-hidden="true" @click="addToCart(dish, {{$user->id}})"></i>
                                     </div> 
-                                    <div class="col-5 py-1 px-0">
+                                    <div class="col-4 py-1 px-0">
                                         <span>@{{dish.name}}</span>
                                     </div>
                                     <div class="col-2 py-1 px-0">
