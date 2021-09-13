@@ -2,23 +2,22 @@
 @section('content')
     <div class="container">
         <div class="row d-flex justify-content-between">
-            <div class="col-7 mr-5">
+            <div class="col-sm-12 col-lg-7 {{-- mr-5 --}}">
                 <div class="row">
                     <div class="col-12 ristorante_info">
                         <h1 class="restaurant_name text-capitalize">{{$user->restaurant_name}}</h1>
                         <div class="col-12">
-                            <div class="d-flex align-items-center">
-                                <span>€</span>
+                            <div class="col-12 d-flex p-0">
+                                <span class="">€</span>
                                 @foreach($user->categories as $category)
                                     <span class="m-1" style="font-size: 10px">•</span>
-                                    <span>{{$category->name}}</span>
+                                    <span class="">{{$category->name}}</span>
                                 @endforeach
                             </div>
-                            <div class="pb-1">
-                                <span>{{$user->address}} - </span>
-                                <a href="#">Vedi mappa</a>
+                            <div class="col-12 p-0">
+                                <span>{{$user->address}}</span>
                             </div>
-                            <div style="font-size: 11px">
+                            <div class="col-12 p-0" style="font-size: 11px">
                                 <span>Consegna gratuita &</span>
                                 <span>Aperti fino alle 23 *</span>
                             </div>
@@ -29,8 +28,8 @@
                                 <h4>Il nostro menú: </h4>
                             </div>
                         </div>
-                        <div class="row pl-2">
-                            <div class="col-12 col-sm-12 col-md-6 col-xl-5 p-0 dish" v-for="(dish, index) in dishes" v-if="dish.user_id == {{$user->id}}">
+                        <div class="row">
+                            <div class="col-10 ml-4 col-sm-6 {{-- mr-xs-1 --}} col-md-5 mx-md-4 col-lg-6 {{-- mr-lg-3 --}} col-xl-5 mx-xl-4 p-0 dish" v-for="(dish, index) in dishes" v-if="dish.user_id == {{$user->id}}">
                                 <div class="description">
                                     <div>
                                         <h4 class="dish_name">@{{dish.name}}</h4>
@@ -46,7 +45,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4 position-relative pr-4 mt-5">
+
+            <!-- Cart -->
+            <div class="col-sm-12 col-lg-4 position-relative pr-4 mt-5">
                 <div class="row sticky-top">
                     <div class="col-12 cart">
                         <a href="{{route('orders.create', $user->id)}}" class="btn active btn-brand-secondary text-white btn-block" v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">Vai alla cassa</a>
@@ -55,18 +56,18 @@
                         <ul class='px-0' v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">
                             <li v-for="(dish, index) in cart" v-if="dish.user_id == {{$user->id}}">
                                 <div class="row d-flex justify-content-around">
-                                    <div class="col-4 py-1 pl-3">
+                                    <div class="col-3 col-md-4 col-lg-3 py-1 px-0">
                                         <i class="fa fa-minus-circle" aria-hidden="true" @click="removeFromCart(dish,index)"></i>
                                         <span class="quantity px-1">@{{dish.quantity}}</span>
                                         <i class="fa fa-plus-circle" aria-hidden="true" @click="addToCart(dish, {{$user->id}})"></i>
                                     </div> 
-                                    <div class="col-4 py-1 px-0">
+                                    <div class="col-6 col-md-3 col-lg-5 py-1 px-0">
                                         <span>@{{dish.name}}</span>
                                     </div>
-                                    <div class="col-2 py-1 px-0">
+                                    <div class="col-2 col-md-2 col-lg-2 py-1 px-0">
                                         <span>€ @{{dish.price}}</span>
                                     </div>
-                                    <div class="col-1 py-1">
+                                    <div class="col-1 col-md-1 col-lg-1 py-1 px-0">
                                         <i class="fas fa-times-circle" @click="deleteDish(dish, index)"></i>
                                     </div>
                                 </div>
@@ -74,10 +75,10 @@
                             <hr>
                             <li>
                                 <div class="row">
-                                    <div class="col-4 offset-5 py-1">
+                                    <div class="col-sm-3 offset-sm-7 col-md-6 col-lg-4 offset-md-2 offset-lg-5 py-1">
                                         <h3>Totale: </h3>
                                     </div>
-                                    <div class="col-3 py-1 px-0">
+                                    <div class="col-sm-2 col-md-4 col-lg-3 py-1 px-0">
                                         <h3>€ @{{total_price}}</h3>
                                     </div>
                                 </div>

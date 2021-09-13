@@ -10110,7 +10110,7 @@ h3 {
   border-radius: 50%;
 }
 .restaurant_container h1 {
-  margin: 30px 0px 15px 15px;
+  margin: 30px 0px 10px 15px;
   font-size: 35px;
   margin-bottom: 20px;
 }
@@ -10164,7 +10164,7 @@ h3 {
   justify-content: space-between;
   height: 130px;
   width: 400px;
-  margin: 20px;
+  margin-bottom: 30px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
@@ -10396,7 +10396,7 @@ footer .copyright i {
 .admin_dishes table tbody td {
   width: calc(100% / 5);
   padding: 2rem 0;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .admin_dishes table tbody td span {
   font-size: 18px;
@@ -10444,78 +10444,46 @@ footer .copyright i {
   color: white;
 }
 
-.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
-  background-image: linear-gradient(to right, #4EAB89, #00828C);
+/* .container-fluid{
+    background-image: linear-gradient(to right, #4EAB89, #00828C);
 }
-
-.row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
-
-.left {
-  padding-left: 15%;
+.left{
+    padding-left: 15%;
 }
-
-#slide_in_l {
-  -webkit-animation: slideIn 1.5s ease-in;
-          animation: slideIn 1.5s ease-in;
+#slide_in_l{
+    animation: slideIn 1.5s ease-in;
 }
-
-@-webkit-keyframes slideIn {
-  0% {
-    transform: skew(-45deg) translateX(-500px);
-  }
-  60% {
-    transform: skew(0deg) translateX(30px);
-  }
-  100% {
-    transform: skew(0deg);
-  }
-}
-
 @keyframes slideIn {
-  0% {
-    transform: skew(-45deg) translateX(-500px);
-  }
-  60% {
-    transform: skew(0deg) translateX(30px);
-  }
-  100% {
-    transform: skew(0deg);
-  }
+    0% {
+         transform: skew(-45deg) translateX(-500px);
+    }
+    60%{
+        transform: skew(0deg) translateX(30px);
+    }
+    100% {
+        transform: skew(0deg);
+    }
 }
-.right {
-  text-align: center;
+.right{
+    text-align: center;
 }
-
-#hero_img {
-  width: 50%;
-  -webkit-animation: grow 1s ease;
-          animation: grow 1s ease;
+#hero_img{
+    width: 50%;
+    animation: grow 1s ease;
 }
-
-@-webkit-keyframes grow {
-  0% {
-    transform: scaleX(0);
-  }
-  60% {
-    transform: scaleX(0.5);
-  }
-  100% {
-    transform: scaleX(1);
-  }
-}
-
-@keyframes grow {
-  0% {
-    transform: scaleX(0);
-  }
-  60% {
-    transform: scaleX(0.5);
-  }
-  100% {
-    transform: scaleX(1);
-  }
-}
+@keyframes grow{
+    0%{
+        transform: scaleX(0);
+    }
+    60%{
+        transform: scaleX(0.5);
+    }
+    100%{
+        transform: scaleX(1);
+    }
+} */
