@@ -41,7 +41,7 @@
 
                 i{
                     font-size: 13px;
-                    color: #3490dc;
+                    color: $brand-secondary;
                     background-color: #e2e9ee;
                     border-radius: 50%;
                     text-align: center; 
@@ -50,7 +50,7 @@
                 .plus{   
                     &:hover{
                         cursor: pointer;
-                        background-color: #3490dc;
+                        background-color: $brand-secondary;
                         color: #e2e9ee;
                     }
                 }

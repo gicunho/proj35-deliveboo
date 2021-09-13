@@ -1,9 +1,12 @@
 #app{
     ul{
+        padding-top: 5px;
         li{
+            margin-right: 10px;
+            font-size: 15px;
             .is_active{
-                color: #0a66c2;
                 font-weight: 600;
+                color: #1892ca !important;
             }
         }
     }
