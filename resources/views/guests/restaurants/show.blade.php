@@ -51,7 +51,11 @@
             <div class="col-4 position-relative pr-4">
                 <div class="row sticky-top">
                     <div class="col-12 cart">
-                        <button type="button" class="btn btn-primary btn-block" v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">Vai alla cassa</button>
+                        
+                            <a href="{{route('checkout')}}">
+                                <button type="button" class="btn btn-primary btn-block" v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}"> Vai alla cassa </button>
+                            </a>
+                        
                         <button disabled class="btn btn-primary btn-block" v-else>Vai alla cassa</button>
                         <h4 v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}" class="mt-4">Il tuo ordine:</h4>
                         <ul class='px-0' v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">

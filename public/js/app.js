@@ -50141,6 +50141,16 @@ var app = new Vue({
     });
   }
 });
+var button = document.querySelector('#submit-button');
+braintree.dropin.create({
+  authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
+  selector: '#dropin-container'
+}, function (err, instance) {
+  button.addEventListener('click', function () {
+    instance.requestPaymentMethod(function (err, payload) {// Submit payload.nonce to your server
+    });
+  });
+});
 
 /***/ }),
 
@@ -50276,8 +50286,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\Proj Finale\proj35-deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Proj Finale\proj35-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
