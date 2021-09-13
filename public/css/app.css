@@ -10150,7 +10150,7 @@ h3 {
 }
 
 .ristorante_info .restaurant_name {
-  border-bottom: 4px solid #00828C;
+  border-bottom: 4px solid #1892ca;
   font-weight: bold !important;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -10215,10 +10215,10 @@ h3 {
   top: 0;
 }
 .cart .btn-brand-secondary {
-  background-color: #00828C;
+  background-color: #1892ca;
 }
 .cart .btn-brand-secondary.active:hover {
-  background-color: #4EAB89;
+  background-color: #4eab89;
 }
 .cart .btn-brand-danger {
   background-color: #8A4747;
@@ -10428,4 +10428,80 @@ footer .copyright i {
 .admin_dishes form .blue:hover {
   background-color: #4f5ddf;
   color: white;
+}
+
+.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+  background-image: linear-gradient(to right, #4EAB89, #00828C);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.left {
+  padding-left: 15%;
+}
+
+#slide_in_l {
+  -webkit-animation: slideIn 1.5s ease-in;
+          animation: slideIn 1.5s ease-in;
+}
+
+@-webkit-keyframes slideIn {
+  0% {
+    transform: skew(-45deg) translateX(-500px);
+  }
+  60% {
+    transform: skew(0deg) translateX(30px);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: skew(-45deg) translateX(-500px);
+  }
+  60% {
+    transform: skew(0deg) translateX(30px);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+}
+.right {
+  text-align: center;
+}
+
+#hero_img {
+  width: 50%;
+  -webkit-animation: grow 1s ease;
+          animation: grow 1s ease;
+}
+
+@-webkit-keyframes grow {
+  0% {
+    transform: scaleX(0);
+  }
+  60% {
+    transform: scaleX(0.5);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes grow {
+  0% {
+    transform: scaleX(0);
+  }
+  60% {
+    transform: scaleX(0.5);
+  }
+  100% {
+    transform: scaleX(1);
+  }
 }

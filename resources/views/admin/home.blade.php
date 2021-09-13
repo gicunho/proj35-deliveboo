@@ -26,7 +26,7 @@
                         @endforeach
                         <span style="font-size: 10px">IMMAGINE:</span> 
                         <div>
-                            <img src="{{ asset('storage/' . $user->restaurant_image) }}" alt="{{ $user->restaurant_name }}">    
+                            <img src="{{ asset('storage/' . $user->restaurant_image) }}" width="250" alt="{{ $user->restaurant_name }}">    
                         </div>
                 </div>
             </div>
