@@ -10354,7 +10354,7 @@ footer .copyright i {
   margin-top: 40px;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 1px 1px 10px 1px #b8b8b8;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .admin_dishes table tbody tr th {
   width: calc(100% / 10);
@@ -10381,7 +10381,7 @@ footer .copyright i {
   color: white;
   font-weight: 600;
   text-transform: uppercase;
-  box-shadow: 1px 1px 10px 1px #b8b8b8;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .admin_dishes form .green {
   background-color: white;

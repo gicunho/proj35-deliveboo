@@ -19,7 +19,7 @@
         margin-top: 40px;
         background-color: white;
         border-radius: 10px;
-        box-shadow: 1px 1px 10px 1px rgb(184, 184, 184);
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
         tbody{
             tr{
@@ -52,7 +52,7 @@
             color: white;
             font-weight: 600;
             text-transform: uppercase;
-            box-shadow: 1px 1px 10px 1px rgb(184, 184, 184);
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         }
         .green{
             background-color: white;
@@ -85,4 +85,4 @@
             }
         }
     }
-}
+} 
