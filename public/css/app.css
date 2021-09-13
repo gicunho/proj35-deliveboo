@@ -10123,9 +10123,10 @@ h3 {
 .restaurant_container .restaurants .restaurant {
   margin: 15px 30px;
   height: 135px;
+  min-width: 150px;
   border-radius: 3px;
   background-color: #DCDCDC;
-  background-size: cover;
+  background-size: 100%;
   background-position: center center;
   overflow: hidden;
   background-repeat: no-repeat;
@@ -10133,8 +10134,10 @@ h3 {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 .restaurant_container .restaurants .restaurant:hover {
-  opacity: 80%;
+  filter: brightness(80%);
   cursor: pointer;
+  background-size: 110%;
+  transition: all 1s;
 }
 .restaurant_container .restaurants a {
   text-decoration: none;
