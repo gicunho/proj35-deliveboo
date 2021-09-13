@@ -10024,10 +10024,10 @@ h3 {
   color: #1892ca;
 }
 #app .searchbar {
-  margin-left: 50px;
+  width: 70%;
 }
 #app .searchbar form {
-  font-size: 15px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #b4b4b4;
@@ -10041,7 +10041,7 @@ h3 {
 }
 #app .searchbar form input {
   border: none;
-  width: 150px;
+  width: 100%;
 }
 #app .searchbar form input:focus {
   outline: none;
@@ -10110,19 +10110,20 @@ h3 {
   border-radius: 50%;
 }
 .restaurant_container h1 {
-  margin: 30px 0px 15px 15px;
+  margin: 30px 0px 15px 29px;
   font-size: 35px;
   margin-bottom: 20px;
 }
 .restaurant_container .restaurants {
   margin: 15px 15px 50px 15px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 .restaurant_container .restaurants .restaurant {
-  margin: 15px 30px;
+  margin: 20px 0 20px 0;
   height: 135px;
+  width: 275px;
   border-radius: 3px;
   background-color: #DCDCDC;
   background-size: cover;
@@ -10140,7 +10141,6 @@ h3 {
   text-decoration: none;
 }
 .restaurant_container .restaurants a h4 {
-  margin-left: 30px;
   color: black;
   font-size: 18px;
   display: inline-block;
@@ -10149,6 +10149,81 @@ h3 {
   cursor: pointer;
 }
 
+.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+  background-image: linear-gradient(to right, #4EAB89, #00828C);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.left {
+  padding-left: 15%;
+}
+
+#slide_in_l {
+  -webkit-animation: slideIn 1.5s ease-in;
+          animation: slideIn 1.5s ease-in;
+}
+
+@-webkit-keyframes slideIn {
+  0% {
+    transform: skew(-45deg) translateX(-500px);
+  }
+  60% {
+    transform: skew(0deg) translateX(30px);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: skew(-45deg) translateX(-500px);
+  }
+  60% {
+    transform: skew(0deg) translateX(30px);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+}
+.right {
+  text-align: center;
+}
+
+#hero_img {
+  width: 50%;
+  -webkit-animation: grow 1s ease;
+          animation: grow 1s ease;
+}
+
+@-webkit-keyframes grow {
+  0% {
+    transform: scaleX(0);
+  }
+  60% {
+    transform: scaleX(0.5);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes grow {
+  0% {
+    transform: scaleX(0);
+  }
+  60% {
+    transform: scaleX(0.5);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
 .ristorante_info .restaurant_name {
   border-bottom: 4px solid #1892ca;
   font-weight: bold !important;
@@ -10430,34 +10505,35 @@ footer .copyright i {
 }
 
 .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
-  background-image: linear-gradient(to right, #4EAB89, #00828C);
+  background-image: linear-gradient(to right, #0092CD, #0CB28B);
+  padding: 2% 0%;
 }
 
 .row {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 
-.left {
-  padding-left: 15%;
+.left_j {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  text-align: center;
 }
 
 #slide_in_l {
   -webkit-animation: slideIn 1.5s ease-in;
           animation: slideIn 1.5s ease-in;
 }
-
-@-webkit-keyframes slideIn {
-  0% {
-    transform: skew(-45deg) translateX(-500px);
-  }
-  60% {
-    transform: skew(0deg) translateX(30px);
-  }
-  100% {
-    transform: skew(0deg);
-  }
+#slide_in_l h1 {
+  font-size: 3.5rem;
+}
+#slide_in_l .lead {
+  font-size: 1.5rem;
 }
 
 @keyframes slideIn {
@@ -10472,35 +10548,60 @@ footer .copyright i {
   }
 }
 .right {
+  display: flex;
+  justify-content: center;
+}
+.right .search_card {
+  background-color: white;
+  width: 60%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-animation: spin 1s ease;
+          animation: spin 1s ease;
+  flex-direction: column;
+  padding: 20px 5px;
   text-align: center;
 }
-
-#hero_img {
-  width: 50%;
-  -webkit-animation: grow 1s ease;
-          animation: grow 1s ease;
+.right .search_card h3 {
+  margin-bottom: 12px;
 }
 
-@-webkit-keyframes grow {
+@-webkit-keyframes spin {
   0% {
     transform: scaleX(0);
   }
+  40% {
+    transform: scaleX(0.4);
+  }
   60% {
-    transform: scaleX(0.5);
+    transform: scaleX(0.6);
   }
   100% {
     transform: scaleX(1);
   }
 }
 
-@keyframes grow {
+@keyframes spin {
   0% {
     transform: scaleX(0);
   }
+  40% {
+    transform: scaleX(0.4);
+  }
   60% {
-    transform: scaleX(0.5);
+    transform: scaleX(0.6);
   }
   100% {
     transform: scaleX(1);
   }
+}
+.cat_search {
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+}
+.cat_search h3 {
+  text-align: center;
 }

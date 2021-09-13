@@ -1,16 +1,31 @@
 .container-fluid{
-    background-image: linear-gradient(to right, #4EAB89, #00828C);
+    background-image: linear-gradient(to right, #0092CD, #0CB28B);
+    padding: 2% 0%;
 }
 .row{
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
 }
-.left{
-    padding-left: 15%;
+.left_j{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    text-align: center;
 }
 #slide_in_l{
     animation: slideIn 1.5s ease-in;
+
+    h1{
+        font-size: 3.5rem;
+    }
+
+    .lead{
+        font-size: 1.5rem;
+    }
 }
 @keyframes slideIn {
     0% {
@@ -23,21 +38,49 @@
         transform: skew(0deg);
     }
 }
+
 .right{
-    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    .search_card{
+        background-color: white;
+        width: 60%;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: spin 1s ease;
+        flex-direction: column;
+        padding: 20px 5px;
+        text-align: center;
+
+        h3{
+            margin-bottom: 12px;
+        }
+    }
 }
-#hero_img{
-    width: 50%;
-    animation: grow 1s ease;
-}
-@keyframes grow{
+@keyframes spin{
     0%{
         transform: scaleX(0);
     }
+    40%{
+        transform: scaleX(0.4);
+    }
     60%{
-        transform: scaleX(0.5);
+        transform: scaleX(0.6);
     }
     100%{
         transform: scaleX(1);
+    }
+}
+
+.cat_search{
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+
+    h3{
+        text-align: center;
     }
 }

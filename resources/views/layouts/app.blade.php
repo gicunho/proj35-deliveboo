@@ -39,17 +39,17 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>
 
-                @if (Route::currentRouteName() == 'restaurants')
+                {{-- @if (Route::currentRouteName() == 'restaurants')
                     <div class="searchbar">
                         <form @submit.prevent="view">
-                            <input id="search-focus" type="search" id="form1" placeholder="Cerca un ristorante"
+                            <input id="search-focus" type="search" id="form1" placeholder="Cerca"
                                 v-model="search">
                             <button type="submit">
                                 <i class="fas fa-search"></i>
                             </button>
                         </form>
                     </div>
-                @endif
+                @endif --}}
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -123,7 +123,7 @@
                             <span>Design</span>
                             <span>Lavora con noi</span>
                             <span>Diventa nostro partner</span>
-                        </div>    
+                        </div>
                     </div>
 
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-3 footer_card">
@@ -142,7 +142,7 @@
                             <span>FAQ</span>
                             <span>Tipi di cucina</span>
                             <span>Mappa del sito</span>
-                        </div> 
+                        </div>
                     </div>
 
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-3 footer_card">
@@ -159,7 +159,7 @@
                                 <i class="fab fa-google-play"></i>
                                 <div>
                                     <h6>DISPONIBILE SU</h6>
-                                    
+
                                     <h5>Google Play</h5>
                                 </div>
                             </div>
