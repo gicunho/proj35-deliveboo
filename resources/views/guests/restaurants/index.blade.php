@@ -1,6 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 left" id="slide_in_l">
+                <h1>Ci pensiamo noi.</h1>
+                <p class="lead">Il delivery veloce <br> per quando l'appetito chiama</p>
+                <!-- searchbar -->
+            </div>
+            <!-- jumbo img -->
+            <div class="col-lg-6 right">
+                <img id="hero_img" src="../../../img/jumbo_img.png" alt="">
+            </div>
+        </div>
+    </div>
 
     <div class="restaurant_container container">
         <div class="row justify-content-center">
