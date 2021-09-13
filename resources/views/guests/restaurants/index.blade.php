@@ -19,7 +19,7 @@
         <div class="row justify-content-center">
             <div class="col-12 categories">
                 <div class="row">
-                    <div class="category col-lg-1 col-md-2 col-3" v-for='(category,index) in categories' v-on:click="selected(index); apiSelected(index); view(index);" :class="category.isSelected ? 'selected' : ''">
+                    <div class="category col-lg-1 col-md-2 col-4" v-for='(category,index) in categories' v-on:click="selected(index); apiSelected(index); view(index);" :class="category.isSelected ? 'selected' : ''">
                         <img :src="'img/' + category.emoji" alt="">
                         <h5>@{{category.name}}</h5>
                     </div>
@@ -34,7 +34,7 @@
 
         <h1>RISTORANTI</h1>
         <div class="restaurants">
-            <div  v-for='user in users ' class='col-4'>
+            <div  v-for='user in users ' class='col-lg-4 col-md-6 col-12'>
                 <a :href="'/' + user.id">
                 <div class="restaurant"  :style="{ backgroundImage: 'url(\'storage/' + user.restaurant_image + '\')' }">
                 </div>
