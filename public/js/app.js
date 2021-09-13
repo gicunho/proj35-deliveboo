@@ -50040,14 +50040,16 @@ var app = new Vue({
           localStorage.setItem('cart', JSON.stringify(this.cart));
           localStorage.setItem('total_price', JSON.stringify(this.total_price));
         } else {
-          this.cart = [];
-          this.total_price = 0;
-          this.cart.push(dish);
-          var price = parseFloat(dish.price);
-          this.total_price += price;
-          this.total_price = Math.round(this.total_price * 100) / 100;
-          localStorage.setItem('cart', JSON.stringify(this.cart));
-          localStorage.setItem('total_price', JSON.stringify(this.total_price));
+          if (confirm('Aggiungendo qualcosa da un nuovo ristorante svuoterai il precedente carrello, continuare?')) {
+            this.cart = [];
+            this.total_price = 0;
+            this.cart.push(dish);
+            var price = parseFloat(dish.price);
+            this.total_price += price;
+            this.total_price = Math.round(this.total_price * 100) / 100;
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+            localStorage.setItem('total_price', JSON.stringify(this.total_price));
+          }
         }
       } else {
         this.cart.push(dish);
@@ -50300,8 +50302,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
