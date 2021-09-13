@@ -21,6 +21,12 @@ use App\Http\Resources\DishResource;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/* Checkout */
+Route::get('/checkout', function () {
+    return view('checkout');
+})->name('checkout');
+
 /* Admin */
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
