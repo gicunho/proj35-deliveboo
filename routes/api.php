@@ -44,3 +44,6 @@ Route::get('categories', 'API\CategoryController@index');
 
 Route::get('dishes', 'API\DishController@index');
 
+Route::get('generate', 'API\OrderController@generate');
+
+Route::post('make/payment', 'API\OrderController@makepayment');

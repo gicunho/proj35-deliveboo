@@ -10123,9 +10123,10 @@ h3 {
 .restaurant_container .restaurants .restaurant {
   margin: 15px 30px;
   height: 135px;
+  min-width: 150px;
   border-radius: 3px;
   background-color: #DCDCDC;
-  background-size: cover;
+  background-size: 100%;
   background-position: center center;
   overflow: hidden;
   background-repeat: no-repeat;
@@ -10133,8 +10134,10 @@ h3 {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 .restaurant_container .restaurants .restaurant:hover {
-  opacity: 80%;
+  filter: brightness(80%);
   cursor: pointer;
+  background-size: 110%;
+  transition: all 1s;
 }
 .restaurant_container .restaurants a {
   text-decoration: none;
@@ -10367,23 +10370,35 @@ footer .copyright i {
 }
 .admin_dishes table {
   width: 100%;
-  height: 200px;
   margin: auto;
   margin-top: 40px;
   background-color: white;
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  height: 150px !important;
 }
-.admin_dishes table tbody tr th {
-  width: calc(100% / 10);
+.admin_dishes table tr th {
+  width: calc(100% / 5);
   padding-top: 15px;
 }
-.admin_dishes table tbody tr th h4 {
+.admin_dishes table tr th h4 {
   font-size: 17px;
   font-weight: 600;
   margin-bottom: -10px;
 }
-.admin_dishes table tbody tr th span {
+.admin_dishes table tbody .description_wrapper {
+  overflow: auto;
+  max-height: 170px;
+}
+.admin_dishes table tbody .description_wrapper .description {
+  height: 100%;
+}
+.admin_dishes table tbody td {
+  width: calc(100% / 5);
+  padding: 2rem 0;
+  overflow-y: scroll;
+}
+.admin_dishes table tbody td span {
   font-size: 18px;
   color: #666666;
   font-weight: 400;
@@ -10427,4 +10442,80 @@ footer .copyright i {
 .admin_dishes form .blue:hover {
   background-color: #4f5ddf;
   color: white;
+}
+
+.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+  background-image: linear-gradient(to right, #4EAB89, #00828C);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.left {
+  padding-left: 15%;
+}
+
+#slide_in_l {
+  -webkit-animation: slideIn 1.5s ease-in;
+          animation: slideIn 1.5s ease-in;
+}
+
+@-webkit-keyframes slideIn {
+  0% {
+    transform: skew(-45deg) translateX(-500px);
+  }
+  60% {
+    transform: skew(0deg) translateX(30px);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: skew(-45deg) translateX(-500px);
+  }
+  60% {
+    transform: skew(0deg) translateX(30px);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+}
+.right {
+  text-align: center;
+}
+
+#hero_img {
+  width: 50%;
+  -webkit-animation: grow 1s ease;
+          animation: grow 1s ease;
+}
+
+@-webkit-keyframes grow {
+  0% {
+    transform: scaleX(0);
+  }
+  60% {
+    transform: scaleX(0.5);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes grow {
+  0% {
+    transform: scaleX(0);
+  }
+  60% {
+    transform: scaleX(0.5);
+  }
+  100% {
+    transform: scaleX(1);
+  }
 }

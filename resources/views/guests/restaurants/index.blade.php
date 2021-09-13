@@ -1,22 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
+    {{-- <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 left" id="slide_in_l">
+                <h1>Ci pensiamo noi.</h1>
+                <p class="lead">Il delivery veloce <br> per quando l'appetito chiama</p>
+                <!-- searchbar -->
+            </div>
+            <!-- jumbo img -->
+            <div class="col-lg-6 right">
+                <img id="hero_img" src="../../../img/jumbo_img.png" alt="">
+            </div>
+        </div>
+    </div> --}}
 
     <div class="restaurant_container container">
         <div class="row justify-content-center">
             <div class="col-12 categories">
                 <div class="row">
-                    <div class="category col-lg-1 col-md-2 col-3" v-for='(category,index) in categories' v-on:click="selected(index); apiSelected(index); view(index);" :class="category.isSelected ? 'selected' : ''">
+                    <div class="category col-lg-1 col-md-2 col-4" v-for='(category,index) in categories' v-on:click="selected(index); apiSelected(index); view(index);" :class="category.isSelected ? 'selected' : ''">
                         <img :src="'img/' + category.emoji" alt="">
                         <h5>@{{category.name}}</h5>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row mt-4" v-if="selectedInApi">
+            <div class="col-12 d-flex justify-content-center">
+                <button class="btn btn-primary" @click="resetCategories()">Deseleziona tutto</button>
+            </div>
+        </div>
 
         <h1>RISTORANTI</h1>
         <div class="restaurants">
-            <div  v-for='user in users ' class='col-4'>
+            <div  v-for='user in users ' class='col-lg-4 col-md-6 col-12'>
                 <a :href="'/' + user.id">
                 <div class="restaurant"  :style="{ backgroundImage: 'url(\'storage/' + user.restaurant_image + '\')' }">
                 </div>
