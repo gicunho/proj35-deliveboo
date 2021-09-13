@@ -49,7 +49,7 @@
             <div class="col-4 position-relative pr-4 mt-5">
                 <div class="row sticky-top">
                     <div class="col-12 cart">
-                        <a href="{{route('checkout')}}" class="btn active btn-brand-secondary text-white btn-block" v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">Vai alla cassa</a>
+                        <a href="{{route('orders.create', $user->id)}}" class="btn active btn-brand-secondary text-white btn-block" v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">Vai alla cassa</a>
                         <button disabled class="btn btn-brand-secondary text-white btn-block" v-else>Vai alla cassa</button>
                         <h4 v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}" class="mt-4">Il tuo ordine:</h4>
                         <ul class='px-0' v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">

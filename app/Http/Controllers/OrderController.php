@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Dish;
+use App\User;
 use App\Order;
 use Illuminate\Http\Request;
 
@@ -24,7 +26,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $dishes = Dish::all();
+
+        return view('guests.orders.create', compact('dishes'));
     }
 
     /**
@@ -34,8 +38,27 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+
     {
-        //
+        $validatedData = $request->validate([
+            'address' => 'required | max:100 | min:10',
+            'name' => 'required | max:50 ',
+            'surname' => 'required | max:50',
+            'phone_number' => 'required | string | numeric',
+            'total_price' => 'required | numeric',
+            'user_id' => 'required | numeric',
+        ]);
+        $dishes[] = $request['dishes'];
+        $quantity = $request['quantity'];
+ 
+        $order = Order::create($validatedData);
+
+        foreach ($dishes as $key => $dish) {
+            foreach ($dish as $k => $item){
+                $order->dishes()->attach([$item], ['quantity' => $quantity[$k]]); //li attacco nella tabella pivot
+            }
+        }
+        return redirect()->route('checkout', compact('order'));
     }
 
     /**

@@ -8,6 +8,7 @@ use App\Order;
 use App\Http\Resources\OrderResource;
 use App\Category;
 use App\Dish;
+use App\Http\Controllers\OrderController;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\DishResource;
 
@@ -27,13 +28,14 @@ Route::get('/checkout', function () {
     return view('checkout');
 })->name('checkout');
 
+
+
 /* Admin */
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('dishes', DishController::class);
     Route::resource('users', UserController::class);
-    /* Route::resource('orders', OrderController::class); */
     Route::get('/orders', 'OrderController@index')->name('orders.index');
     Route::get('/orders/stats', 'OrderController@stats')->name('orders.stats');
 });
@@ -53,6 +55,12 @@ Route::post('register', 'Auth\RegisterController@register');
 /* Home */
 Route::get('/', "PageController@index")->name('restaurants');
 Route::get('/{user}', "PageController@show")->name('restaurant');
+
+// Orders
+
+Route::get('orders/create', 'OrderController@create')->name('orders.create');
+Route::post('orders/store', 'OrderController@store')->name('orders.store');
+
 
 // Api
 Route::get('users/{user}', function (User $user) {
