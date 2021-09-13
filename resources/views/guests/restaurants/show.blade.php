@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row d-flex justify-content-between">
-            <div class="col-sm-12 col-lg-7 mr-5">
+            <div class="col-sm-12 col-lg-7 {{-- mr-5 --}}">
                 <div class="row">
                     <div class="col-12 ristorante_info">
                         <h1 class="restaurant_name text-capitalize">{{$user->restaurant_name}}</h1>
@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6 col-md-5 mx-md-4 col-lg-6 mx-lg-0 col-xl-5 mx-xl-4 p-0 dish" v-for="(dish, index) in dishes" v-if="dish.user_id == {{$user->id}}">
+                            <div class="col-10 ml-4 col-sm-6 {{-- mr-xs-1 --}} col-md-5 mx-md-4 col-lg-6 {{-- mr-lg-3 --}} col-xl-5 mx-xl-4 p-0 dish" v-for="(dish, index) in dishes" v-if="dish.user_id == {{$user->id}}">
                                 <div class="description">
                                     <div>
                                         <h4 class="dish_name">@{{dish.name}}</h4>
@@ -56,8 +56,6 @@
                         <ul class='px-0' v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">
                             <li v-for="(dish, index) in cart" v-if="dish.user_id == {{$user->id}}">
                                 <div class="row d-flex justify-content-around">
-
-
                                     <div class="col-3 col-md-4 col-lg-3 py-1 px-0">
                                         <i class="fa fa-minus-circle" aria-hidden="true" @click="removeFromCart(dish,index)"></i>
                                         <span class="quantity px-1">@{{dish.quantity}}</span>
@@ -72,8 +70,6 @@
                                     <div class="col-1 col-md-1 col-lg-1 py-1 px-0">
                                         <i class="fas fa-times-circle" @click="deleteDish(dish, index)"></i>
                                     </div>
-
-
                                 </div>
                             </li>
                             <hr>

@@ -25,6 +25,7 @@
             th{
                 width: calc(100% / 5);
                 padding-top: 15px;
+
                 h4{
                     font-size: 17px;
                     font-weight: 600;
@@ -36,6 +37,7 @@
                 .description_wrapper{
                     overflow: auto;
                     max-height: 170px;
+
                     .description{
                         height: 100%;
                     }
@@ -43,7 +45,8 @@
                 td{
                     width: calc(100% / 5);
                     padding: 2rem 0;
-                    overflow-y: scroll;
+                    overflow-y: auto;
+
                     span{
                         font-size: 18px;
                         color: #666666;
