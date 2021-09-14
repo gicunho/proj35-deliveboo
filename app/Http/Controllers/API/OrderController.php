@@ -13,6 +13,6 @@ class OrderController extends Controller
 {
     public function index()
     {
-        return OrderResource::collection(Order::with(['user'])->orderBy('created_at', 'DESC')->get());
+        return OrderResource::collection(Order::with('dishes')->orderBy('created_at', 'DESC')->get());
     }
 }

@@ -17,6 +17,7 @@
                     <th scope="col">Indirizzo</th>
                     <th scope="col">Telefono</th>
                     <th scope="col">Data</th>
+                    <th scope="col">Piatti</th>
                     <th scope="col">Totale Ordine</th>
                 </tr>
             </thead>
@@ -26,6 +27,11 @@
                     <td>@{{ order . address }}</td>
                     <td>@{{ order . phone_number }}</td>
                     <td>@{{ order . day }}-@{{ order . month_number }}-@{{ order . year }}</td>
+                    <td>
+                        <div v-if="order.dishes[0]">
+                            <div v-for="dish in order.dishes">@{{ dish . name }} {{-- x @{{ dish . pivot . quantity }} --}}</div>
+                        </div>
+                    </td>
                     <td>@{{ order . total_price }} €</td>
                 </tr>
             </tbody>
