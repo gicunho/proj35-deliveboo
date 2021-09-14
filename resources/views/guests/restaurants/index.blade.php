@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- jumbotron -->
-    <div class="container-fluid">
+    <div class="container-fluid jumbo-fluid">
         <div class="row">
             <div class="col-lg-6 col-sm-12 left_j" id="slide_in_l">
                 <h1>Ci pensiamo noi.</h1>

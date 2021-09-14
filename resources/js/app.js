@@ -153,7 +153,7 @@ const app = new Vue({
                         this.total_price = Math.round(this.total_price * 100) / 100;
                         localStorage.setItem('cart', JSON.stringify(this.cart));
                         localStorage.setItem('total_price', JSON.stringify(this.total_price));
-                    }                    
+                    }
                 }
             } else {
                 this.cart.push(dish);
@@ -260,12 +260,29 @@ const app = new Vue({
 var button = document.querySelector('#submit-button');
 
 braintree.dropin.create({
-    authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
-    selector: '#dropin-container'
+    authorization: 'sandbox_d55rz6pj_hp7cqf8qtnfz6934',
+    selector: '#dropin-container',
+    vaultManager: true,
+    card: {
+        amount: 5001.01,
+        cardholderName: {
+            required: true
+        },
+    }
+
 }, function (err, instance) {
     button.addEventListener('click', function () {
         instance.requestPaymentMethod(function (err, payload) {
-            // Submit payload.nonce to your server
+            sendNonceToServer(nonce, function (transactionError, response) {
+                if (transactionError) {
+                    // Clear selected payment method and add a message
+                    // to the checkout page about the failure.
+                    dropinInstance.clearSelectedPaymentMethod();
+                    errorMessagesDiv.textContent = 'Transazione fallita. Seleziona un altro metodo di pagamente.';
+                } else {
+                    // Success
+                }
+            });
         });
     })
 });
