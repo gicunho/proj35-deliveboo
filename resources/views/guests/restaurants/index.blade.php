@@ -4,7 +4,7 @@
 
     <!-- jumbotron -->
     <div class="container-fluid jumbo-fluid">
-        <div class="row">
+        <div class="row jumbo_row">
             <div class="col-lg-6 col-sm-12 left_j" id="slide_in_l">
                 <h1>Ci pensiamo noi.</h1>
                 <p class="lead">Il delivery <em>veloce</em> <br> per quando l'appetito chiama</p>

@@ -4,6 +4,13 @@
     padding: 2% 0%;
 }
 
+.jumbo_row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 .left_j{
     display: flex;
     flex-direction: column;
