@@ -49,7 +49,7 @@
         </div>
         <div class="row mt-4" v-if="selectedInApi">
             <div class="col-12 d-flex justify-content-center">
-                <button class="btn btn-primary" @click="resetCategories()">Deseleziona tutto</button>
+                <button class="btn deselect" @click="resetCategories()">Deseleziona tutto</button>
             </div>
         </div>
 

@@ -1,6 +1,10 @@
 .restaurant_container{
     max-width: 1170px;
     margin: auto;
+    .deselect{
+        background-color: $brand-secondary;
+        color: white;
+    }
     .categories{
         display: flex;
         justify-content: space-between;

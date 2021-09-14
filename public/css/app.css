@@ -10073,6 +10073,10 @@ h3 {
   max-width: 1170px;
   margin: auto;
 }
+.restaurant_container .deselect {
+  background-color: #1892ca;
+  color: white;
+}
 .restaurant_container .categories {
   display: flex;
   justify-content: space-between;
@@ -10110,6 +10114,7 @@ h3 {
   border-radius: 50%;
 }
 .restaurant_container h1 {
+  margin: 30px 0px 15px 29px;
   margin: 30px 0px 10px 15px;
   font-size: 35px;
   margin-bottom: 20px;
@@ -10537,15 +10542,20 @@ footer .copyright i {
   align-items: center;
   width: 70%;
   text-align: center;
-
-}
-.left{
-    padding-left: 15%;
 }
 
+#slide_in_l {
+  -webkit-animation: slideIn 1.5s ease-in;
+          animation: slideIn 1.5s ease-in;
 }
+#slide_in_l h1 {
+  font-size: 3.5rem;
+}
+#slide_in_l .lead {
+  font-size: 1.5rem;
+}
+
 @keyframes slideIn {
-
   0% {
     transform: skew(-45deg) translateX(-500px);
   }
@@ -10614,31 +10624,3 @@ footer .copyright i {
 .cat_search h3 {
   text-align: center;
 }
-    0% {
-         transform: skew(-45deg) translateX(-500px);
-    }
-    60%{
-        transform: skew(0deg) translateX(30px);
-    }
-    100% {
-        transform: skew(0deg);
-    }
-}
-.right{
-    text-align: center;
-}
-#hero_img{
-    width: 50%;
-    animation: grow 1s ease;
-}
-@keyframes grow{
-    0%{
-        transform: scaleX(0);
-    }
-    60%{
-        transform: scaleX(0.5);
-    }
-    100%{
-        transform: scaleX(1);
-    }
-} */
