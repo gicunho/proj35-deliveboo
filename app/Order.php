@@ -9,7 +9,7 @@ use App\Dish;
 class Order extends Model
 {
     protected $fillable = [
-        'total_price', 'name', 'surname', 'address', 'phone_number', 'user_id',
+        'total_price', 'name', 'surname', 'address', 'phone_number', 'user_id', 'quantity'
     ];
 
     protected $dates = ['month', 'year'];
