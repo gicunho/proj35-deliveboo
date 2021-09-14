@@ -87,7 +87,7 @@
                                     </div>
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-brand-danger text-white btn-block" v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}" @click="emptyCart">Svuota il carrello</button>
+                            <a class="text-danger" v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}" @click="emptyCart">Svuota il carrello</a>
                             <div class="row d-flex text-center align-items-center" v-else>
                                 <div class='col-12 pt-4'>
                                     Il carrello è vuoto
