@@ -50156,7 +50156,8 @@ var app = new Vue({
       console.error('Sorry! ' + e);
     });
   }
-});
+}); //braintree payment
+
 var button = document.querySelector('#submit-button');
 braintree.dropin.create({
   authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
@@ -50302,8 +50303,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/beatrice/Desktop/classe_35/proj35-deliveboo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/beatrice/Desktop/classe_35/proj35-deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -2,6 +2,40 @@
 
 @section('content')
 
+    <!-- jumbotron -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 left_j" id="slide_in_l">
+                <h1>Ci pensiamo noi.</h1>
+                <p class="lead">Il delivery <em>veloce</em> <br> per quando l'appetito chiama</p>
+            </div>
+            <!-- jumbo img -->
+            <div class="col-lg-6 col-sm-12 right">
+                {{-- <img id="hero_img" src="../../../img/jumbo_img.png" alt=""> --}}
+                <div class="search_card">
+                    <h3>Cerca il tuo ristorante preferito</h3>
+                    @if (Route::currentRouteName() == 'restaurants')
+                    <div class="searchbar">
+                        <form @submit.prevent="view">
+                            <input id="search-focus" type="search" id="form1" placeholder="Cerca"
+                                v-model="search">
+                            <button type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row cat_search">
+        <div class="col-lg-12 col-sm-12">
+            <h3>Oppure cerca per categorie:</h3>
+        </div>
+    </div>
+    <!-- /jumbotron -->
+
     <div class="restaurant_container container">
         <div class="row justify-content-center">
             <div class="col-12 categories">

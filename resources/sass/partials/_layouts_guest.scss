@@ -1,14 +1,16 @@
 
 #app{
     .navbar-brand{
-        font-family: 'Courgette', cursive; 
+        font-family: 'Courgette', cursive;
         font-size: 25px;
         color: $brand-secondary;
     }
     .searchbar{
-        margin-left: 50px;
+
+        width: 70%;
+
         form {
-            font-size: 15px;
+            font-size: 20px;
             display: flex;
             align-items: center;
             border-bottom: 1px solid rgb(180, 180, 180);
@@ -22,11 +24,12 @@
 
             input {
                 border: none;
-                width: 150px;
+                width: 100%;
                 &:focus{
                     outline: none;
                     -webkit-appearance: none;
                 }
+
             }
             button {
                 border: none;

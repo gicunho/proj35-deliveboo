@@ -254,6 +254,9 @@ const app = new Vue({
 
 });
 
+
+
+//braintree payment
 var button = document.querySelector('#submit-button');
 
 braintree.dropin.create({
