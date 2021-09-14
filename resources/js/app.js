@@ -226,7 +226,18 @@ const app = new Vue({
                     this.current_page = response.data.meta.current_page;
                     this.last_page = response.data.meta.last_page;
                 });
-        }
+        },
+        pay() {
+            var x = document.getElementById("home");
+            var y = document.getElementById("submit-button");
+    
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "none";
+            } else {
+                x.style.display = "none";
+            }
+        },
     },
     mounted() {
         axios.get('/api/users').then(resp => {
@@ -283,8 +294,8 @@ braintree.dropin.create({
                     dropinInstance.clearSelectedPaymentMethod();
                     errorMessagesDiv.textContent = 'Transazione fallita. Seleziona un altro metodo di pagamente.';
                 } else {
-                    // Success
-                }
+                    
+                }   
             });
         });
     })

@@ -15,23 +15,23 @@
         <div class="row justify-content-center mt-3">
             <div class="col-md-4 card shadow p-3 mb-5 bg-white rounded">
                 <div class="card-body">
-                    <div class="d-flex align-items-center mb-4 pb-1 border-bottom">
-                        <span style="font-size: 10px; width: 160px">NOME RISTORANTE: </span>
+                    <div class="d-flex align-items-center justify-content-between mb-4 pb-1 border-bottom">
+                        <span style="font-size: 10px;">NOME RISTORANTE: </span>
                         <h5 class="pl-2 mb-0">{{ $user->restaurant_name }}</h5>
                     </div>
 
-                    <div class="d-flex align-items-center mb-4 pb-1 border-bottom">
-                        <span style="font-size: 10px; width: 160px">P.IVA: </span>
+                    <div class="d-flex align-items-center justify-content-between mb-4 pb-1 border-bottom">
+                        <span style="font-size: 10px;">P.IVA: </span>
                         <h5 class="pl-2 mb-0">{{ $user->piva }}</h5>
                     </div>
 
-                    <div class="d-flex align-items-center mb-4 pb-1 border-bottom">
-                        <span style="font-size: 10px; width: 160px">EMAIL: </span>
+                    <div class="d-flex align-items-center justify-content-between mb-4 pb-1 border-bottom">
+                        <span style="font-size: 10px;">EMAIL: </span>
                         <h5 class="pl-2 mb-0">{{ $user->email }}</h5>
                     </div>
 
-                    <div class="d-flex align-items-center mb-4 pb-1 border-bottom">
-                        <span style="font-size: 10px; width: 160px">TELEFONO: </span>
+                    <div class="d-flex align-items-center justify-content-between mb-4 pb-1 border-bottom">
+                        <span style="font-size: 10px;">TELEFONO: </span>
                         <h5 class="pl-2 mb-0">{{ $user->phone_number }}</h5>
                     </div>
 

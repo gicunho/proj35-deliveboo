@@ -10501,6 +10501,14 @@ footer .copyright i {
   color: white !important;
 }
 
+.jumbo_row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .left_j {
   display: flex;
   flex-direction: column;

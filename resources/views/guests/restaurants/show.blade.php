@@ -2,7 +2,7 @@
 @section('content')
     <div class="container position-relative mt-4">
         <div class="row d-flex justify-content-between">
-            <div class="col-sm-12 col-lg-7 {{-- mr-5 --}}">
+            <div class="col-sm-12 col-lg-7">
                 <div class="row">
                     <div class="col-12 ristorante_info">
                         <h1 class="restaurant_name text-capitalize">{{$user->restaurant_name}}</h1>

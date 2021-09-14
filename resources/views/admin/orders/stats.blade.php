@@ -3,8 +3,8 @@
     <div class="container">
         <h1 class="text-center">Le tue statistiche</h1>
         <select class="form-select p-1" id="select" name="form_select" onchange="showDiv(this)">
-            <option value="0">Months of this year</option>
-            <option value="1">Years</option>
+            <option value="0">Mesi dell'anno</option>
+            <option value="1">Anni</option>
         </select>
         <div id="hidden_months" style="display:block;">
             <!-- Grafico per mesi -->
@@ -22,7 +22,7 @@
                         type: 'line',
                         data: {
                             labels: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto',
-                                'Settembre', 'Ottobre', 'Novembre', 'Dicembre'
+                                'Settembre'
                             ],
                             datasets: [{
                                 label: 'Ordini x Mese',
@@ -110,7 +110,7 @@
                     var myChart = new Chart(ctx, {
                         type: 'line',
                         data: {
-                            labels: ['2017', '2018', '2019', '2020', '2021', '2022'],
+                            labels: ['2017', '2018', '2019', '2020', '2021'],
                             datasets: [{
                                 label: 'Ordini x Anni',
                                 data: y_orders_year,
@@ -144,7 +144,6 @@
                     var year_3 = 0;
                     var year_4 = 0;
                     var year_5 = 0;
-                    var year_6 = 0;
                     for (let index = 0; index < list.length; index++) {
                         if (list[index].year === '2017') {
                             year_1 += 1;;
@@ -156,11 +155,9 @@
                             year_4 += 1;
                         } else if (list[index].year === '2021') {
                             year_5 += 1;
-                        } else if (list[index].year === '2022') {
-                            year_6 += 1;
                         }
                     }
-                    y_orders_year.push(year_1, year_2, year_3, year_4, year_5, year_6);
+                    y_orders_year.push(year_1, year_2, year_3, year_4, year_5);
                 }
             </script>
         </div>
