@@ -144,14 +144,16 @@ const app = new Vue({
                     localStorage.setItem('total_price', JSON.stringify(this.total_price));
                 }
                 else {
-                    this.cart = [];
-                    this.total_price = 0;
-                    this.cart.push(dish);
-                    var price = parseFloat(dish.price);
-                    this.total_price += price;
-                    this.total_price = Math.round(this.total_price * 100) / 100;
-                    localStorage.setItem('cart', JSON.stringify(this.cart));
-                    localStorage.setItem('total_price', JSON.stringify(this.total_price));
+                    if (confirm('Aggiungendo qualcosa da un nuovo ristorante svuoterai il precedente carrello, continuare?')) {
+                        this.cart = [];
+                        this.total_price = 0;
+                        this.cart.push(dish);
+                        var price = parseFloat(dish.price);
+                        this.total_price += price;
+                        this.total_price = Math.round(this.total_price * 100) / 100;
+                        localStorage.setItem('cart', JSON.stringify(this.cart));
+                        localStorage.setItem('total_price', JSON.stringify(this.total_price));
+                    }                    
                 }
             } else {
                 this.cart.push(dish);
@@ -208,6 +210,19 @@ const app = new Vue({
             this.total_price = 0;
             localStorage.setItem('cart', JSON.stringify(this.cart));
             localStorage.setItem('total_price', JSON.stringify(this.total_price));
+        },
+        resetCategories() {
+            this.selectedInApi = '';
+            this.apiCategories = [];
+            this.categories.forEach(category => {
+                category.isSelected = false;
+            });
+            axios.get(`/api/users?page=1&search=${this.search}${this.selectedInApi}`)
+                .then(response => {
+                    this.users = response.data.data
+                    this.current_page = response.data.meta.current_page;
+                    this.last_page = response.data.meta.last_page;
+                });
         }
     },
     mounted() {
@@ -245,12 +260,12 @@ const app = new Vue({
 var button = document.querySelector('#submit-button');
 
 braintree.dropin.create({
-  authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
-  selector: '#dropin-container'
+    authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
+    selector: '#dropin-container'
 }, function (err, instance) {
-  button.addEventListener('click', function () {
-    instance.requestPaymentMethod(function (err, payload) {
-      // Submit payload.nonce to your server
-    });
-  })
+    button.addEventListener('click', function () {
+        instance.requestPaymentMethod(function (err, payload) {
+            // Submit payload.nonce to your server
+        });
+    })
 });

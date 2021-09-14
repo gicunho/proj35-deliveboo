@@ -50040,14 +50040,16 @@ var app = new Vue({
           localStorage.setItem('cart', JSON.stringify(this.cart));
           localStorage.setItem('total_price', JSON.stringify(this.total_price));
         } else {
-          this.cart = [];
-          this.total_price = 0;
-          this.cart.push(dish);
-          var price = parseFloat(dish.price);
-          this.total_price += price;
-          this.total_price = Math.round(this.total_price * 100) / 100;
-          localStorage.setItem('cart', JSON.stringify(this.cart));
-          localStorage.setItem('total_price', JSON.stringify(this.total_price));
+          if (confirm('Aggiungendo qualcosa da un nuovo ristorante svuoterai il precedente carrello, continuare?')) {
+            this.cart = [];
+            this.total_price = 0;
+            this.cart.push(dish);
+            var price = parseFloat(dish.price);
+            this.total_price += price;
+            this.total_price = Math.round(this.total_price * 100) / 100;
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+            localStorage.setItem('total_price', JSON.stringify(this.total_price));
+          }
         }
       } else {
         this.cart.push(dish);
@@ -50108,34 +50110,48 @@ var app = new Vue({
       this.total_price = 0;
       localStorage.setItem('cart', JSON.stringify(this.cart));
       localStorage.setItem('total_price', JSON.stringify(this.total_price));
+    },
+    resetCategories: function resetCategories() {
+      var _this8 = this;
+
+      this.selectedInApi = '';
+      this.apiCategories = [];
+      this.categories.forEach(function (category) {
+        category.isSelected = false;
+      });
+      axios.get("/api/users?page=1&search=".concat(this.search).concat(this.selectedInApi)).then(function (response) {
+        _this8.users = response.data.data;
+        _this8.current_page = response.data.meta.current_page;
+        _this8.last_page = response.data.meta.last_page;
+      });
     }
   },
   mounted: function mounted() {
-    var _this8 = this;
+    var _this9 = this;
 
     axios.get('/api/users').then(function (resp) {
-      _this8.users = resp.data.data;
-      _this8.current_page = resp.data.meta.current_page;
-      _this8.last_page = resp.data.meta.last_page;
+      _this9.users = resp.data.data;
+      _this9.current_page = resp.data.meta.current_page;
+      _this9.last_page = resp.data.meta.last_page;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/orders').then(function (resp) {
-      _this8.orders = resp.data.data;
+      _this9.orders = resp.data.data;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/categories').then(function (resp) {
-      _this8.categories = resp.data.data;
+      _this9.categories = resp.data.data;
 
-      _this8.categories.forEach(function (category) {
+      _this9.categories.forEach(function (category) {
         return category.isSelected = false;
       });
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/dishes').then(function (resp) {
-      _this8.dishes = resp.data.data;
+      _this9.dishes = resp.data.data;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });

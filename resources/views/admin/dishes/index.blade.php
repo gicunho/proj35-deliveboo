@@ -8,7 +8,7 @@
             @foreach ($dishes->sortBy('name') as $dish)
                 @if ($user->id == $dish->user_id)
                     <table>
-                        <tbody>
+                        <thead>
                             <tr>
                                 <th> <h4>NOME</h4> </th>
                                 <th> <h4>IMMAGINE</h4> </th>
@@ -16,18 +16,24 @@
                                 <th> <h4>DESCRIZIONE</h4> </th>
                                 <th> <h4>VISIBILE</h4> </th>
                             </tr>
+                        </thead>
+                        <tbody>
                                 <tr>
-                                    <th> <span>{{$dish->name}}</span> </th>
-                                    <th> <img class="rounded" width="120" src="{{asset('storage/' . $dish->image )}}" alt=""> </th>
-                                    <th> <span>€ {{$dish->price}}</span> </th>
-                                    <th> <span>{{$dish->description}}</span> </th>
-                                    <th>
+                                    <td> <span>{{$dish->name}}</span> </td>
+                                    <td> <img class="rounded" width="120" src="{{asset('storage/' . $dish->image )}}" alt=""> </td>
+                                    <td> <span>€ {{$dish->price}}</span> </td>
+                                    <td>
+                                        <div class="description_wrapper">
+                                            <span class="description">{{$dish->description}}</span>    
+                                        </div> 
+                                    </td>
+                                    <td>
                                         @if($dish->is_visible)
                                             <span>Sì</span>
                                         @else
                                             <span>No</span>
                                         @endif
-                                    </th>
+                                    </td>
                                 </tr>   
                         </tbody>
                     </table>

@@ -111,7 +111,7 @@
         <footer>
             <div class="container">
                 <div class="row d-flex">
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-3 footer_card">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6  mb-3 footer_card">
                         <div class="container">
                             <h4>Scopri Deliveboo</h4>
                             <span>Investitori</span>
@@ -126,7 +126,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-3 footer_card">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 mb-3 footer_card">
                         <div class="container">
                             <h4>Note Legali</h4>
                             <span>Termini & Condizioni</span>
@@ -135,7 +135,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-3 footer_card">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 mb-3 footer_card">
                         <div class="container">
                             <h4>Aiuto</h4>
                             <span>Contatti</span>
@@ -145,7 +145,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-3 footer_card">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 mb-3 footer_card">
                         <div class="container">
                             <h4>Porta Deliveboo con te</h4>
                             <div class="store">
