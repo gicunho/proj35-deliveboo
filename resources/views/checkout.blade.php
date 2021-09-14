@@ -3,20 +3,43 @@
 @section('content')
 
     <div class="container">
-        <h4>Riepilogo dell'ordine</h4>
-        <div v-for="el in cart">
-            <p>@{{el.name}} x @{{el.quantity}}</p>
-        </div>
+        <div class="row">
+            <div class="d-flex col-12">
+                <div class="col-8 pl-0">
+                    <div class="border-bottom">
+                        <h6>DETTAGLI PAGAMENTO</h6>
+                    </div>
 
-        <div>
-            <h3>Totale: € @{{total_price}}</h3>
-        </div>
+                    <div id="dropin-container">   
+                    </div>
 
-<!-- card details box -->
-        <div id="dropin-container">
+                    <button id="submit-button" class="btn btn-success" @click="setTimeout(pay(),500)">
+                        <h5 class="mb-0">Paga & Ordina</h5>
+                    </button>
+
+                    <a href="{{ url('/') }}" id="home" style="display: none" @click="emptyCart()">
+                        <button id="home" class="btn btn-primary"><h5 class="mb-0">Torna alla home</h5></button>
+                    </a>
+                </div>
+        
+                <div class="col-3 ml-5">
+                    <div class="border-bottom mb-4">
+                        <h6>RIEPILOGO DELL'ORDINE</h6>
+                    </div>
+                    <div v-for="el in cart">
+                        <p class="mb-2 d-flex align-items-center">
+                            <span class="mr-2" style="font-size: 5px">•</span> 
+                            @{{el.name}} x @{{el.quantity}}
+                        </p>
+                    </div>
             
-        </div>
-        <button id="submit-button" class="btn btn-success">Ordina</button>
+                    <div>
+                        <h3 class="mt-3">Totale: € @{{total_price}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
 
 @endsection
 

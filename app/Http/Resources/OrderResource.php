@@ -22,9 +22,12 @@ class OrderResource extends JsonResource
             'name' => $this->name,
             'surname' => $this->surname,
             'phone_number' => $this->phone_number,
-            'quantity' => $this->quantity,
+            'day' => $this->created_at->format('d'),
+            'month_number' => $this->created_at->format('m'),
             'month' => $this->created_at->format('M'),
             'year' => $this->created_at->format('Y'),
+            'date' => $this->created_at->format('Y-m-d H:i:s'),
+            'dishes' => $this->dishes,
         ];
     }
 }

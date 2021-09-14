@@ -4,10 +4,10 @@
 
     <!-- jumbotron -->
     <div class="container-fluid jumbo-fluid">
-        <div class="row w-100">
+        <div class="row w-100 justify-content-center mx-0">
             <div class="col-lg-6 col-sm-12 left_j" id="slide_in_l">
                 <h1>Ci pensiamo noi.</h1>
-                <p class="lead">Il delivery <em>veloce</em> <br> per quando l'appetito chiama <i class="fa fa-phone" aria-hidden="true"></i></p>
+                <p class="lead">Il delivery <em>veloce</em> <br> per quando l'appetito chiama</p>
             </div>
             <!-- jumbo img -->
             <div class="col-lg-6 col-sm-12 right px-0">
@@ -76,7 +76,7 @@
                     <a class="page-link" v-on:click="prev" v-if="current_page > 1">@{{ current_page - 1 }}</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link">@{{ current_page }}</a>
+                    <a class="page-link current-page">@{{ current_page }}</a>
                 </li>
                 <li class="page-item">
                     <a class="page-link" v-on:click="next" v-if="current_page < last_page">@{{ current_page + 1 }}</a>

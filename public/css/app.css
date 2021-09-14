@@ -10155,6 +10155,24 @@ h3 {
 .restaurant_container .restaurants a:hover {
   cursor: pointer;
 }
+.restaurant_container .page-link {
+  background-color: white !important;
+  color: #1892ca !important;
+}
+.restaurant_container .page-link:hover {
+  background-color: #9bd8f48f !important;
+}
+.restaurant_container .current-page {
+  color: white !important;
+  background-color: #1892ca !important;
+}
+
+.btn-brand-secondary {
+  background-color: #1892ca;
+}
+.btn-brand-secondary.active:hover {
+  background-color: #4eab89;
+}
 
 .ristorante_info .restaurant_name {
   border-bottom: 4px solid #1892ca;
@@ -10223,6 +10241,12 @@ h3 {
   border-bottom-right-radius: 5px;
 }
 
+.dish_show {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .cart {
   background-color: white !important;
   padding: 2rem 2rem 1rem 2rem;
@@ -10239,12 +10263,6 @@ h3 {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   background-image: linear-gradient(to right, #0092CD, #0CB28B);
-}
-.cart .btn-brand-secondary {
-  background-color: #1892ca;
-}
-.cart .btn-brand-secondary.active:hover {
-  background-color: #4eab89;
 }
 .cart .btn-brand-danger {
   background-color: #c72020;
@@ -10481,6 +10499,14 @@ footer .copyright i {
   background-image: linear-gradient(to right, #0092CD, #0CB28B);
   padding: 2% 0%;
   color: white !important;
+}
+
+.jumbo_row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .left_j {

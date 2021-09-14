@@ -49935,7 +49935,8 @@ var app = new Vue({
     apiCategories: [],
     selectedInApi: '',
     cart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [],
-    total_price: localStorage.getItem('total_price') ? JSON.parse(localStorage.getItem('total_price')) : 0
+    total_price: localStorage.getItem('total_price') ? JSON.parse(localStorage.getItem('total_price')) : 0,
+    show: true
   },
   methods: {
     // Search bar
@@ -50126,6 +50127,17 @@ var app = new Vue({
         _this8.current_page = response.data.meta.current_page;
         _this8.last_page = response.data.meta.last_page;
       });
+    },
+    pay: function pay() {
+      var x = document.getElementById("home");
+      var y = document.getElementById("submit-button");
+
+      if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";
+      } else {
+        x.style.display = "none";
+      }
     }
   },
   mounted: function mounted() {
@@ -50180,8 +50192,7 @@ braintree.dropin.create({
           // to the checkout page about the failure.
           dropinInstance.clearSelectedPaymentMethod();
           errorMessagesDiv.textContent = 'Transazione fallita. Seleziona un altro metodo di pagamente.';
-        } else {// Success
-        }
+        } else {}
       });
     });
   });
@@ -50321,8 +50332,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

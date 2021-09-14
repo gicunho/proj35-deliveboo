@@ -14,12 +14,7 @@
         border-top-left-radius: 10px;
         background-image: linear-gradient(to right, #0092CD, #0CB28B);
     }
-    .btn-brand-secondary {
-        background-color: $brand-secondary;
-        &.active:hover{
-            background-color: $brand-primary;
-        }
-    }
+    
     .btn-brand-danger{
         background-color: $brand-danger;
         &:hover{
