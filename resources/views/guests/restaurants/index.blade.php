@@ -76,7 +76,7 @@
                     <a class="page-link" v-on:click="prev" v-if="current_page > 1">@{{ current_page - 1 }}</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link">@{{ current_page }}</a>
+                    <a class="page-link current-page">@{{ current_page }}</a>
                 </li>
                 <li class="page-item">
                     <a class="page-link" v-on:click="next" v-if="current_page < last_page">@{{ current_page + 1 }}</a>
