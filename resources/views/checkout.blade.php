@@ -13,7 +13,9 @@
         </div>
 
 <!-- card details box -->
-        <div id="dropin-container"></div>
+        <div id="dropin-container">
+            
+        </div>
         <button id="submit-button" class="btn btn-success">Ordina</button>
 
 @endsection
