@@ -25,6 +25,7 @@ class OrderResource extends JsonResource
             'quantity' => $this->quantity,
             'month' => $this->created_at->format('M'),
             'year' => $this->created_at->format('Y'),
+            'date' => $this->created_at->format('Y-m-d H:i:s'),
         ];
     }
 }

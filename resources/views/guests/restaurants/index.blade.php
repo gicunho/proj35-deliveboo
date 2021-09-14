@@ -11,7 +11,6 @@
             </div>
             <!-- jumbo img -->
             <div class="col-lg-6 col-sm-12 right">
-                {{-- <img id="hero_img" src="../../../img/jumbo_img.png" alt=""> --}}
                 <div class="search_card">
                     <h3>Cerca il tuo ristorante preferito</h3>
                     @if (Route::currentRouteName() == 'restaurants')
