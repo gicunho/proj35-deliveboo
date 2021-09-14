@@ -85,8 +85,24 @@
             }
         }
     }
+    .page-link{
+        background-color: white!important;
+        color: $brand-secondary!important;
+        &:hover{
+            background-color:#9bd8f48f!important;
+        }
+    }
+    .current-page{
+        color: white!important;
+        background-color: $brand-secondary!important;
+    }
 
 }
 
 
-
+.btn-brand-secondary {
+    background-color: $brand-secondary;
+    &.active:hover{
+        background-color: $brand-primary;
+    }
+}

@@ -1,16 +1,20 @@
 .cart{
     background-color: white!important;
-    padding: 2rem;
+    padding: 2rem 2rem 1rem 2rem;
     border-radius: 1rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     position: sticky;
     top: 0;
-    .btn-brand-secondary {
-        background-color: $brand-secondary;
-        &.active:hover{
-            background-color: $brand-primary;
-        }
+    .cart-title{
+        top: 0;
+        left: 0;
+        height: 50px;
+        width: 100%;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        background-image: linear-gradient(to right, #0092CD, #0CB28B);
     }
+    
     .btn-brand-danger{
         background-color: $brand-danger;
         &:hover{
@@ -30,6 +34,17 @@
         &:hover{
             cursor: pointer;
             opacity: 60%;
+        }
+    }
+    .total_price h3{
+        font-size: 20px!important;
+    }
+    .empty{
+        color: $cartGrey;
+        text-decoration: none;
+        &:hover{
+            cursor: pointer;
+            
         }
     }
 }

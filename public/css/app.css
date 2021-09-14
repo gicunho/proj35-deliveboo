@@ -10155,6 +10155,24 @@ h3 {
 .restaurant_container .restaurants a:hover {
   cursor: pointer;
 }
+.restaurant_container .page-link {
+  background-color: white !important;
+  color: #1892ca !important;
+}
+.restaurant_container .page-link:hover {
+  background-color: #9bd8f48f !important;
+}
+.restaurant_container .current-page {
+  color: white !important;
+  background-color: #1892ca !important;
+}
+
+.btn-brand-secondary {
+  background-color: #1892ca;
+}
+.btn-brand-secondary.active:hover {
+  background-color: #4eab89;
+}
 
 .ristorante_info .restaurant_name {
   border-bottom: 4px solid #1892ca;
@@ -10171,6 +10189,16 @@ h3 {
   margin-bottom: 30px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+.ristorante_info .dish .dish_image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .ristorante_info .dish:hover {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -10213,19 +10241,28 @@ h3 {
   border-bottom-right-radius: 5px;
 }
 
+.dish_show {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .cart {
   background-color: white !important;
-  padding: 2rem;
+  padding: 2rem 2rem 1rem 2rem;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   position: sticky;
   top: 0;
 }
-.cart .btn-brand-secondary {
-  background-color: #1892ca;
-}
-.cart .btn-brand-secondary.active:hover {
-  background-color: #4eab89;
+.cart .cart-title {
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  background-image: linear-gradient(to right, #0092CD, #0CB28B);
 }
 .cart .btn-brand-danger {
   background-color: #c72020;
@@ -10243,6 +10280,16 @@ h3 {
 .cart i:hover {
   cursor: pointer;
   opacity: 60%;
+}
+.cart .total_price h3 {
+  font-size: 20px !important;
+}
+.cart .empty {
+  color: #bcbcbc !important;
+  text-decoration: none;
+}
+.cart .empty:hover {
+  cursor: pointer;
 }
 
 .dish_card {
@@ -10451,6 +10498,7 @@ footer .copyright i {
 .jumbo-fluid {
   background-image: linear-gradient(to right, #0092CD, #0CB28B);
   padding: 2% 0%;
+  color: white !important;
 }
 
 .left_j {
@@ -10468,6 +10516,7 @@ footer .copyright i {
 }
 #slide_in_l h1 {
   font-size: 3.5rem;
+  color: white !important;
 }
 #slide_in_l .lead {
   font-size: 1.5rem;
@@ -10515,6 +10564,7 @@ footer .copyright i {
 }
 .right .search_card h3 {
   margin-bottom: 12px;
+  color: #4eab89 !important;
 }
 
 @-webkit-keyframes spin {
