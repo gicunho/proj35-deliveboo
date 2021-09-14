@@ -10156,81 +10156,6 @@ h3 {
   cursor: pointer;
 }
 
-.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
-  background-image: linear-gradient(to right, #4EAB89, #00828C);
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.left {
-  padding-left: 15%;
-}
-
-#slide_in_l {
-  -webkit-animation: slideIn 1.5s ease-in;
-          animation: slideIn 1.5s ease-in;
-}
-
-@-webkit-keyframes slideIn {
-  0% {
-    transform: skew(-45deg) translateX(-500px);
-  }
-  60% {
-    transform: skew(0deg) translateX(30px);
-  }
-  100% {
-    transform: skew(0deg);
-  }
-}
-
-@keyframes slideIn {
-  0% {
-    transform: skew(-45deg) translateX(-500px);
-  }
-  60% {
-    transform: skew(0deg) translateX(30px);
-  }
-  100% {
-    transform: skew(0deg);
-  }
-}
-.right {
-  text-align: center;
-}
-
-#hero_img {
-  width: 50%;
-  -webkit-animation: grow 1s ease;
-          animation: grow 1s ease;
-}
-
-@-webkit-keyframes grow {
-  0% {
-    transform: scaleX(0);
-  }
-  60% {
-    transform: scaleX(0.5);
-  }
-  100% {
-    transform: scaleX(1);
-  }
-}
-
-@keyframes grow {
-  0% {
-    transform: scaleX(0);
-  }
-  60% {
-    transform: scaleX(0.5);
-  }
-  100% {
-    transform: scaleX(1);
-  }
-}
 .ristorante_info .restaurant_name {
   border-bottom: 4px solid #1892ca;
   font-weight: bold !important;
@@ -10523,16 +10448,9 @@ footer .copyright i {
   color: white;
 }
 
-.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+.jumbo-fluid {
   background-image: linear-gradient(to right, #0092CD, #0CB28B);
   padding: 2% 0%;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
 }
 
 .left_j {
@@ -10553,6 +10471,18 @@ footer .copyright i {
 }
 #slide_in_l .lead {
   font-size: 1.5rem;
+}
+
+@-webkit-keyframes slideIn {
+  0% {
+    transform: skew(-45deg) translateX(-500px);
+  }
+  60% {
+    transform: skew(0deg) translateX(30px);
+  }
+  100% {
+    transform: skew(0deg);
+  }
 }
 
 @keyframes slideIn {

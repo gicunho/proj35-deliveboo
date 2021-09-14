@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- jumbotron -->
-    <div class="container-fluid">
+    <div class="container-fluid jumbo-fluid">
         <div class="row">
             <div class="col-lg-6 col-sm-12 left_j" id="slide_in_l">
                 <h1>Ci pensiamo noi.</h1>
@@ -11,7 +11,6 @@
             </div>
             <!-- jumbo img -->
             <div class="col-lg-6 col-sm-12 right">
-                {{-- <img id="hero_img" src="../../../img/jumbo_img.png" alt=""> --}}
                 <div class="search_card">
                     <h3>Cerca il tuo ristorante preferito</h3>
                     @if (Route::currentRouteName() == 'restaurants')
