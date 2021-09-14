@@ -37,7 +37,7 @@
 
                     <div class="d-flex">
                         <div class="mr-5">
-                            <span style="font-size: 10px">CATEGORIA/A:</span>
+                            <span style="font-size: 10px">CATEGORIA/E:</span>
                             @foreach ($user->categories as $category)
                                 <h6 class="pl-2">• {{ $category->name }}</h6>
                             @endforeach
