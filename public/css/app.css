@@ -10451,6 +10451,7 @@ footer .copyright i {
 .jumbo-fluid {
   background-image: linear-gradient(to right, #0092CD, #0CB28B);
   padding: 2% 0%;
+  color: white !important;
 }
 
 .left_j {
@@ -10468,6 +10469,7 @@ footer .copyright i {
 }
 #slide_in_l h1 {
   font-size: 3.5rem;
+  color: white !important;
 }
 #slide_in_l .lead {
   font-size: 1.5rem;
@@ -10515,6 +10517,7 @@ footer .copyright i {
 }
 .right .search_card h3 {
   margin-bottom: 12px;
+  color: #4eab89 !important;
 }
 
 @-webkit-keyframes spin {

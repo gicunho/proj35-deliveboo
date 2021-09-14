@@ -75,13 +75,13 @@
                         @enderror
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row d-none">
                     <label for="total_price" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo *') }}</label>
                     <div class="col-md-6">
                         <input id="total_price" type="number" step='0.01' class="form-control @error('total_price') is-invalid @enderror" name="total_price" required :value="total_price">
                     </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row d-none">
                     <label for="user_id" class="col-md-4 col-form-label text-md-right">{{ __('Indirizzo *') }}</label>
                     <div class="col-md-6">
                         <input id="user_id" type="number" step='0.01' class="form-control @error('user_id') is-invalid @enderror" name="user_id" required :value="cart[0].user_id">
