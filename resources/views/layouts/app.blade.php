@@ -104,7 +104,7 @@
             </div>
         </nav>
 
-        <main class="py-4 position-relative">
+        <main class="pb-4 position-relative">
             @yield('content')
         </main>
 

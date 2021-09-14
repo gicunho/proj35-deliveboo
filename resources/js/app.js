@@ -45,7 +45,8 @@ const app = new Vue({
         apiCategories: [],
         selectedInApi: '',
         cart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [],
-        total_price: localStorage.getItem('total_price') ? JSON.parse(localStorage.getItem('total_price')) : 0
+        total_price: localStorage.getItem('total_price') ? JSON.parse(localStorage.getItem('total_price')) : 0,
+        show: true,
     },
     methods: {
         // Search bar
@@ -203,13 +204,15 @@ const app = new Vue({
             localStorage.setItem('total_price', JSON.stringify(this.total_price));
         },
         emptyCart() {
-            this.cart.forEach((dish, ind) => {
-                this.cart[ind].quantity = 1; //dish
-            })
-            this.cart = [];
-            this.total_price = 0;
-            localStorage.setItem('cart', JSON.stringify(this.cart));
-            localStorage.setItem('total_price', JSON.stringify(this.total_price));
+            if (confirm('Confermi di voler svuotare il carrello?')) {
+                this.cart.forEach((dish, ind) => {
+                    this.cart[ind].quantity = 1; //dish
+                })
+                this.cart = [];
+                this.total_price = 0;
+                localStorage.setItem('cart', JSON.stringify(this.cart));
+                localStorage.setItem('total_price', JSON.stringify(this.total_price));
+            }
         },
         resetCategories() {
             this.selectedInApi = '';

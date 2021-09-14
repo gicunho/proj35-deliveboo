@@ -4,13 +4,13 @@
 
     <!-- jumbotron -->
     <div class="container-fluid jumbo-fluid">
-        <div class="row">
+        <div class="row w-100">
             <div class="col-lg-6 col-sm-12 left_j" id="slide_in_l">
                 <h1>Ci pensiamo noi.</h1>
-                <p class="lead">Il delivery <em>veloce</em> <br> per quando l'appetito chiama</p>
+                <p class="lead">Il delivery <em>veloce</em> <br> per quando l'appetito chiama <i class="fa fa-phone" aria-hidden="true"></i></p>
             </div>
             <!-- jumbo img -->
-            <div class="col-lg-6 col-sm-12 right">
+            <div class="col-lg-6 col-sm-12 right px-0">
                 <div class="search_card">
                     <h3>Cerca il tuo ristorante preferito</h3>
                     @if (Route::currentRouteName() == 'restaurants')
@@ -28,12 +28,14 @@
             </div>
         </div>
     </div>
-    <div class="row cat_search">
-        <div class="col-lg-12 col-sm-12">
-            <h3>Oppure cerca per categorie:</h3>
+    <!-- /jumbotron -->
+    <div class="container">
+        <div class="row cat_search">
+            <div class="col-lg-12 col-sm-12">
+                <h3>Oppure cerca per categorie:</h3>
+            </div>
         </div>
     </div>
-    <!-- /jumbotron -->
 
     <div class="restaurant_container container">
         <div class="row justify-content-center">
@@ -74,7 +76,7 @@
                     <a class="page-link" v-on:click="prev" v-if="current_page > 1">@{{ current_page - 1 }}</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link">@{{ current_page }}</a>
+                    <a class="page-link current-page">@{{ current_page }}</a>
                 </li>
                 <li class="page-item">
                     <a class="page-link" v-on:click="next" v-if="current_page < last_page">@{{ current_page + 1 }}</a>
