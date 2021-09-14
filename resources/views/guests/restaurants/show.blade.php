@@ -52,11 +52,11 @@
             <div class="col-12 col-lg-4  pr-lg-4 px-0 mt-5">
                 <div class="container position-relative h-100">
                     <div class="row sticky-top mx-0">
-                        <div class="col-12 cart">
-                            <a href="{{route('orders.create', $user->id)}}" class="btn active btn-brand-secondary text-white btn-block" v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">Vai alla cassa</a>
-                            <button disabled class="btn btn-brand-secondary text-white btn-block" v-else>Vai alla cassa</button>
-                            <h4 v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}" class="mt-4">Il tuo ordine:</h4>
-                            <ul class='px-0' v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">
+                        <div class="col-12 cart position-relative">
+                                <div v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}" class="text-white cart-title d-flex align-items-center justify-content-center col-12 px-0 position-absolute">
+                                    <h4 class="m-0">Il tuo ordine:</h4>
+                                </div>
+                            <ul class='px-0 mb-0' v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">
                                 <li v-for="(dish, index) in cart" v-if="dish.user_id == {{$user->id}}">
                                     <div class="row d-flex justify-content-around">
                                         <div class="col-3 col-md-4 col-lg-3 py-1 px-0">
@@ -78,16 +78,20 @@
                                 <hr>
                                 <li>
                                     <div class="row">
-                                        <div class="col-sm-3 offset-sm-7 col-md-6 col-lg-4 offset-md-2 offset-lg-5 py-1">
+                                        <div class="col-sm-3 offset-sm-7 col-md-6 col-lg-4 offset-md-2 offset-lg-5 py-1 total_price">
                                             <h3>Totale: </h3>
                                         </div>
-                                        <div class="col-sm-2 col-md-4 col-lg-3 py-1 px-0">
+                                        <div class="col-sm-2 col-md-4 col-lg-3 py-1 px-0 total_price">
                                             <h3>€ @{{total_price}}</h3>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
-                            <a class="text-danger" v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}" @click="emptyCart">Svuota il carrello</a>
+                            <a href="{{route('orders.create', $user->id)}}" class="btn active btn-brand-secondary text-white btn-block" v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">Vai alla cassa</a>
+                            <button disabled class="btn btn-brand-secondary text-white btn-block" v-else>Vai alla cassa</button>
+                            <div class=" text-center mt-2 " v-if="cart.length > 0 && cart[0].user_id == {{$user->id}}">
+                                <a class="empty"  @click="emptyCart">Svuota il carrello</a>
+                            </div>
                             <div class="row d-flex text-center align-items-center" v-else>
                                 <div class='col-12 pt-4'>
                                     Il carrello è vuoto

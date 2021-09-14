@@ -50103,13 +50103,15 @@ var app = new Vue({
     emptyCart: function emptyCart() {
       var _this7 = this;
 
-      this.cart.forEach(function (dish, ind) {
-        _this7.cart[ind].quantity = 1; //dish
-      });
-      this.cart = [];
-      this.total_price = 0;
-      localStorage.setItem('cart', JSON.stringify(this.cart));
-      localStorage.setItem('total_price', JSON.stringify(this.total_price));
+      if (confirm('Confermi di voler svuotare il carrello?')) {
+        this.cart.forEach(function (dish, ind) {
+          _this7.cart[ind].quantity = 1; //dish
+        });
+        this.cart = [];
+        this.total_price = 0;
+        localStorage.setItem('cart', JSON.stringify(this.cart));
+        localStorage.setItem('total_price', JSON.stringify(this.total_price));
+      }
     },
     resetCategories: function resetCategories() {
       var _this8 = this;
