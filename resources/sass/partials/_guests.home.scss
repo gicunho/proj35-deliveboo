@@ -100,4 +100,9 @@
 }
 
 
-
+.btn-brand-secondary {
+    background-color: $brand-secondary;
+    &.active:hover{
+        background-color: $brand-primary;
+    }
+}

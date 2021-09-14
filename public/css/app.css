@@ -10167,6 +10167,13 @@ h3 {
   background-color: #1892ca !important;
 }
 
+.btn-brand-secondary {
+  background-color: #1892ca;
+}
+.btn-brand-secondary.active:hover {
+  background-color: #4eab89;
+}
+
 .ristorante_info .restaurant_name {
   border-bottom: 4px solid #1892ca;
   font-weight: bold !important;
@@ -10250,12 +10257,6 @@ h3 {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   background-image: linear-gradient(to right, #0092CD, #0CB28B);
-}
-.cart .btn-brand-secondary {
-  background-color: #1892ca;
-}
-.cart .btn-brand-secondary.active:hover {
-  background-color: #4eab89;
 }
 .cart .btn-brand-danger {
   background-color: #c72020;
