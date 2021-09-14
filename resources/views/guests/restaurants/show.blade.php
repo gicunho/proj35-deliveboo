@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
+    <div class="container position-relative mt-4">
         <div class="row d-flex justify-content-between">
             <div class="col-sm-12 col-lg-7 {{-- mr-5 --}}">
                 <div class="row">

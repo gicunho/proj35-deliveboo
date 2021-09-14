@@ -49935,7 +49935,8 @@ var app = new Vue({
     apiCategories: [],
     selectedInApi: '',
     cart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [],
-    total_price: localStorage.getItem('total_price') ? JSON.parse(localStorage.getItem('total_price')) : 0
+    total_price: localStorage.getItem('total_price') ? JSON.parse(localStorage.getItem('total_price')) : 0,
+    show: true
   },
   methods: {
     // Search bar
