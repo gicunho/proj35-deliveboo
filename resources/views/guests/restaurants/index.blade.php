@@ -16,8 +16,8 @@
                     @if (Route::currentRouteName() == 'restaurants')
                     <div class="searchbar">
                         <form @submit.prevent="view">
-                            <input id="search-focus" type="search" id="form1" placeholder="Cerca"
-                                v-model="search">
+                                <input id="search-focus" type="search" id="form1" placeholder="Cerca"
+                                    v-model="search">
                             <button type="submit">
                                 <i class="fas fa-search"></i>
                             </button>
@@ -55,7 +55,7 @@
         </div>
 
         <h1>RISTORANTI</h1>
-        <div class="restaurants">
+        <div class="restaurants" id='restaurant_list'>
             <div  v-for='user in users ' class='col-lg-4 col-md-6 col-12'>
                 <a :href="'/' + user.id">
                 <div class="restaurant"  :style="{ backgroundImage: 'url(\'storage/' + user.restaurant_image + '\')' }">

@@ -50,12 +50,17 @@
                         <input type="submit" value="Modifica" class="green">
                     </form>
 
-                    <form action="{{route('admin.dishes.destroy', $dish->id)}}" method="post">
+                    <form onclick="return deleteDish()" action="{{route('admin.dishes.destroy', $dish->id)}}" method="post" class='red'>
                         @csrf
-                        @method('DELETE')
-                
-                        <input type="submit" value="Elimina" class="red">
+                        @method("DELETE")
+                       <input type="submit" value="ELIMINA" class='red'>
                     </form>
+                    <script>
+                        function deleteDish() {
+                            if(!confirm('Attenzione! Clickando conferma, il piatto verrà cancellato.'))
+                            event.preventDefault();
+                        }
+                       </script>
                 @endif
             @endforeach
     </div>
