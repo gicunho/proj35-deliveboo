@@ -10612,3 +10612,16 @@ footer .copyright i {
 .cat_search h3 {
   text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+  #slide_in_l h1 {
+    font-size: 3rem !important;
+  }
+  #slide_in_l .lead {
+    display: none;
+  }
+
+  .search_card h3 {
+    display: none;
+  }
+}
