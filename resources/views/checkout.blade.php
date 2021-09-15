@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="d-flex col-12">
-                <div class="col-8 pl-0">
+                <div class="col-8 pl-0 mt-3">
                     <div class="border-bottom">
                         <h6>DETTAGLI PAGAMENTO</h6>
                     </div>
@@ -17,12 +17,12 @@
                         <h5 class="mb-0">Paga & Ordina</h5>
                     </button>
 
-                    <a href="{{ url('/') }}" id="home" style="display: none" @click="emptyCart()">
+                    <a href="{{ url('/') }}" id="home" style="display: none" @click="emptyCartNoConfirm()">
                         <button id="home" class="btn btn-primary"><h5 class="mb-0">Torna alla home</h5></button>
                     </a>
                 </div>
         
-                <div class="col-3 ml-5">
+                <div class="col-3 ml-5 mt-3">
                     <div class="border-bottom mb-4">
                         <h6>RIEPILOGO DELL'ORDINE</h6>
                     </div>

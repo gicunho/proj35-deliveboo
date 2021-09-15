@@ -50114,8 +50114,19 @@ var app = new Vue({
         localStorage.setItem('total_price', JSON.stringify(this.total_price));
       }
     },
-    resetCategories: function resetCategories() {
+    emptyCartNoConfirm: function emptyCartNoConfirm() {
       var _this8 = this;
+
+      this.cart.forEach(function (dish, ind) {
+        _this8.cart[ind].quantity = 1; //dish
+      });
+      this.cart = [];
+      this.total_price = 0;
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+      localStorage.setItem('total_price', JSON.stringify(this.total_price));
+    },
+    resetCategories: function resetCategories() {
+      var _this9 = this;
 
       this.selectedInApi = '';
       this.apiCategories = [];
@@ -50123,9 +50134,9 @@ var app = new Vue({
         category.isSelected = false;
       });
       axios.get("/api/users?page=1&search=".concat(this.search).concat(this.selectedInApi)).then(function (response) {
-        _this8.users = response.data.data;
-        _this8.current_page = response.data.meta.current_page;
-        _this8.last_page = response.data.meta.last_page;
+        _this9.users = response.data.data;
+        _this9.current_page = response.data.meta.current_page;
+        _this9.last_page = response.data.meta.last_page;
       });
     },
     pay: function pay() {
@@ -50141,31 +50152,31 @@ var app = new Vue({
     }
   },
   mounted: function mounted() {
-    var _this9 = this;
+    var _this10 = this;
 
     axios.get('/api/users').then(function (resp) {
-      _this9.users = resp.data.data;
-      _this9.current_page = resp.data.meta.current_page;
-      _this9.last_page = resp.data.meta.last_page;
+      _this10.users = resp.data.data;
+      _this10.current_page = resp.data.meta.current_page;
+      _this10.last_page = resp.data.meta.last_page;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/orders').then(function (resp) {
-      _this9.orders = resp.data.data;
+      _this10.orders = resp.data.data;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/categories').then(function (resp) {
-      _this9.categories = resp.data.data;
+      _this10.categories = resp.data.data;
 
-      _this9.categories.forEach(function (category) {
+      _this10.categories.forEach(function (category) {
         return category.isSelected = false;
       });
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
     axios.get('/api/dishes').then(function (resp) {
-      _this9.dishes = resp.data.data;
+      _this10.dishes = resp.data.data;
     })["catch"](function (e) {
       console.error('Sorry! ' + e);
     });
@@ -50332,8 +50343,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\loren\Desktop\Esercizi\Esercizi Classe 35\Progetto Finale\proj35-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/Rich/Desktop/deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

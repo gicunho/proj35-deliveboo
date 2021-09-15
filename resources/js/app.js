@@ -214,6 +214,15 @@ const app = new Vue({
                 localStorage.setItem('total_price', JSON.stringify(this.total_price));
             }
         },
+        emptyCartNoConfirm() {
+            this.cart.forEach((dish, ind) => {
+                this.cart[ind].quantity = 1; //dish
+            })
+            this.cart = [];
+            this.total_price = 0;
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+            localStorage.setItem('total_price', JSON.stringify(this.total_price));
+        },
         resetCategories() {
             this.selectedInApi = '';
             this.apiCategories = [];
@@ -230,7 +239,7 @@ const app = new Vue({
         pay() {
             var x = document.getElementById("home");
             var y = document.getElementById("submit-button");
-    
+
             if (x.style.display === "none") {
                 x.style.display = "block";
                 y.style.display = "none";
@@ -294,8 +303,8 @@ braintree.dropin.create({
                     dropinInstance.clearSelectedPaymentMethod();
                     errorMessagesDiv.textContent = 'Transazione fallita. Seleziona un altro metodo di pagamente.';
                 } else {
-                    
-                }   
+
+                }
             });
         });
     })
